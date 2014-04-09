@@ -39,7 +39,7 @@
     <endAuto>false</endAuto>
     <iconReady>false</iconReady>
     <expansion>false</expansion>
-    <googleKey></googleKey>
+    <googleKey/>
   </settings>
   <pages>
     <page id="page1">
@@ -445,7 +445,7 @@
         <endX>677</endX>
         <endY>378</endY>
         <path>Trazado de trabajo</path>
-        <closedPath>true</closedPath>
+        <closedPath>false</closedPath>
         <autoTurn>false</autoTurn>
         <angle>0</angle>
         <adjAngle>180</adjAngle>

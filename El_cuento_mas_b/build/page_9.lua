@@ -127,7 +127,7 @@ function new()
        -- Actions (functions) 
        function hideRosa(event) 
          if (hasRosa == true) then 
-            transitionStash.newTransition_488 = transition.to( Rosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_572 = transition.to( Rosa, {alpha=0, time=0, delay=0}) 
          end 
        end 
 

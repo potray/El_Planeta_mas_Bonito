@@ -84,14 +84,10 @@ function new()
          { x = 1946, y = 96}, 
          { x = 1835, y = 155}, 
 
-         { x = 1835, y = 155}, --close curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
-         { x = 1325, y = 1023}, --close 3 curve
+         { x = 1835, y = 155}, 
+         { x = 1835, y = 155}, 
+         { x = 1835, y = 155}, 
+         { x = 1835, y = 155}, 
 angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=0.1, ""}, {  x=1283, y=984,  alpha=1, rotation=0, xScale=0.01, yScale=0.01, newAngle=180}) 
 
 

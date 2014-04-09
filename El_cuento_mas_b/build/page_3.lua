@@ -110,13 +110,13 @@ function new()
        -- Actions (functions) 
        function hideBiberon(event) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_978 = transition.to( Biberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_652 = transition.to( Biberon, {alpha=0, time=0, delay=0}) 
          end 
        end 
 
        function hideTijeras(event) 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_979 = transition.to( Tijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_653 = transition.to( Tijeras, {alpha=0, time=0, delay=0}) 
          end 
        end 
 

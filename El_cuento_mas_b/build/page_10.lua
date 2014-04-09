@@ -44,14 +44,12 @@ function new()
        -- Layer names 
        local Fondo  
        local Text  
-       local Capa_1  
        local Hija_casa_sorpr  
        local Rosa  
        local Jazmin1  
        local Jazmin2  
        local Bebe_sorprendid  
        local Mama_sorprendid  
-       local Capa_2  
 
        -- Added variables before layers render 
        local hasRosa = false --  
@@ -67,17 +65,10 @@ function new()
 
        -- Text positioning 
        Text = display.newImageRect( imgDir.. "p10_text.png", 1747, 39 ); 
-       Text.x = 1432; Text.y = 105; Text.alpha = 1; Text.oldAlpha = 1 
+       Text.x = 1348; Text.y = 105; Text.alpha = 1; Text.oldAlpha = 1 
        Text.oriX = Text.x; Text.oriY = Text.y 
        Text.name = "Text" 
        menuGroup:insert(Text); menuGroup.Text = Text 
-
-       -- Capa_1 positioning 
-       Capa_1 = display.newImageRect( imgDir.. "p10_capa_1.png", 0, 0 ); 
-       Capa_1.x = 0; Capa_1.y = 0; Capa_1.alpha = 1; Capa_1.oldAlpha = 1 
-       Capa_1.oriX = Capa_1.x; Capa_1.oriY = Capa_1.y 
-       Capa_1.name = "Capa_1" 
-       menuGroup:insert(Capa_1); menuGroup.Capa_1 = Capa_1 
 
        -- Hija_casa_sorpr positioning 
        Hija_casa_sorpr = display.newImageRect( imgDir.. "p10_hija_casa_sorpr.png", 442, 795 ); 
@@ -120,13 +111,6 @@ function new()
        Mama_sorprendid.oriX = Mama_sorprendid.x; Mama_sorprendid.oriY = Mama_sorprendid.y 
        Mama_sorprendid.name = "Mama_sorprendid" 
        menuGroup:insert(Mama_sorprendid); menuGroup.Mama_sorprendid = Mama_sorprendid 
-
-       -- Capa_2 positioning 
-       Capa_2 = display.newImageRect( imgDir.. "p10_capa_2.png", 0, 0 ); 
-       Capa_2.x = 0; Capa_2.y = 0; Capa_2.alpha = 1; Capa_2.oldAlpha = 1 
-       Capa_2.oriX = Capa_2.x; Capa_2.oriY = Capa_2.y 
-       Capa_2.name = "Capa_2" 
-       menuGroup:insert(Capa_2); menuGroup.Capa_2 = Capa_2 
  
        -- Group(s) creation 
 
@@ -135,7 +119,7 @@ function new()
        -- Actions (functions) 
        function hideRosa(event) 
          if (hasRosa == true) then 
-            transitionStash.newTransition_820 = transition.to( Rosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_456 = transition.to( Rosa, {alpha=0, time=0, delay=0}) 
          end 
        end 
 
