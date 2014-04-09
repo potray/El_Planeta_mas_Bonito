@@ -1,0 +1,60 @@
+<project id="El_cuento_mas_b">
+  <settings>
+    <name>El_cuento_mas_b</name>
+    <media>Book</media>
+    <device>Nexus 10</device>
+    <OS>Android</OS>
+    <zoom>zoomStretch</zoom>
+    <width>2560</width>
+    <height>1600</height>
+    <orientation>Landscape</orientation>
+    <resolution>300</resolution>
+    <bookmark>false</bookmark>
+    <swipe>true</swipe>
+    <pinch>false</pinch>
+    <thumbs>false</thumbs>
+  </settings>
+  <pages>
+    <page id="page1">
+      <name>page1</name>
+      <number>1</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page1.psd</file>
+      <fileName>page1.psd</fileName>
+      <button id="but_427">
+        <name>but_427</name>
+        <layer>Mama_casa_00000</layer>
+        <rollover>Mama_casa_00000</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="play_564">
+          <name>play_564</name>
+          <type>Play Sprite</type>
+          <play>Mama_casa_00000</play>
+          <sequence>default</sequence>
+        </action>
+      </button>
+      <replacement id="Mama_casa_00000">
+        <name>Mama_casa_00000</name>
+        <type>Sprite Sheet</type>
+        <layer>Mama_casa_00000</layer>
+        <file>/d/Dropbox/TFG/El_cuento_mas_b/mama_andando.png</file>
+        <frameWidth>1200</frameWidth>
+        <frameHeight>1600</frameHeight>
+        <externalFile>/d/Dropbox/TFG/mama%20andando.lua</externalFile>
+        <exporter>TexturePacker</exporter>
+        <frameStart>1</frameStart>
+        <frameCount>15</frameCount>
+        <frameLength>1</frameLength>
+        <loop>forever</loop>
+        <paused>false</paused>
+        <direction>false</direction>
+        <sheetWidth>512</sheetWidth>
+        <sheetHeight>512</sheetHeight>
+        <mainSeq>default</mainSeq>
+        <useSheet>None</useSheet>
+        <export2>true</export2>
+      </replacement>
+    </page>
+  </pages>
+</project>

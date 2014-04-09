@@ -1,0 +1,109 @@
+<project id="El_cuento_mas_b">
+  <settings>
+    <name>El_cuento_mas_b</name>
+    <media>Book</media>
+    <device>Nexus 10</device>
+    <OS>Android</OS>
+    <zoom>zoomStretch</zoom>
+    <width>2560</width>
+    <height>1600</height>
+    <orientation>Landscape</orientation>
+    <resolution>300</resolution>
+    <bookmark>false</bookmark>
+    <swipe>true</swipe>
+    <pinch>false</pinch>
+    <thumbs>false</thumbs>
+    <codes>
+      <code/>
+    </codes>
+    <libraries>
+      <lib id="Inventory">
+        <name>Inventory</name>
+        <path>/d/Dropbox/TFG/Librer%C3%ADas/inventory.lua</path>
+      </lib>
+    </libraries>
+  </settings>
+  <pages>
+    <page id="page1">
+      <name>page1</name>
+      <number>1</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page1.psd</file>
+      <fileName>page1.psd</fileName>
+      <variables>
+        <variable id="hasBiberon">
+          <name>hasBiberon</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <button id="BotonBiberon">
+        <name>BotonBiberon</name>
+        <layer>Biberon</layer>
+        <rollover>Biberon</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="code_352">
+          <name>code_352</name>
+          <type>External Code</type>
+          <code/>
+          <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/biberon.lua</extFile>
+        </action>
+      </button>
+      <timer id="BiberonTimer">
+        <name>BiberonTimer</name>
+        <delay>1</delay>
+        <trigger>hideBiberon</trigger>
+        <loop>forever</loop>
+      </timer>
+      <trigger id="hideBiberon">
+        <name>hideBiberon</name>
+        <action id="if_472">
+          <name>if_472</name>
+          <type>IF</type>
+          <exp1>hasBiberon</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp></exp2Comp>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="code_352">
+          <name>code_352</name>
+          <type>Show/Hide</type>
+          <showLayer>Biberon</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0.1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_020">
+          <name>end_020</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+    </page>
+    <page id="page2">
+      <name>page2</name>
+      <number>2</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page2.psd</file>
+      <fileName>page2.psd</fileName>
+    </page>
+    <page id="page3">
+      <name>page3</name>
+      <number>3</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page3.psd</file>
+      <fileName>page3.psd</fileName>
+    </page>
+  </pages>
+</project>

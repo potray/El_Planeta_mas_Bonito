@@ -1,0 +1,56 @@
+<project id="El_cuento_mas_b">
+  <settings>
+    <name>El_cuento_mas_b</name>
+    <media>Book</media>
+    <device>Nexus 10</device>
+    <OS>Android</OS>
+    <zoom>zoomStretch</zoom>
+    <width>2560</width>
+    <height>1600</height>
+    <orientation>Landscape</orientation>
+    <resolution>300</resolution>
+    <bookmark>false</bookmark>
+    <swipe>true</swipe>
+    <pinch>false</pinch>
+    <thumbs>false</thumbs>
+  </settings>
+  <pages>
+    <page id="page1">
+      <name>page1</name>
+      <number>1</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page1.psd</file>
+      <fileName>page1.psd</fileName>
+      <button id="BotonBiberon">
+        <name>BotonBiberon</name>
+        <layer>Biberon</layer>
+        <rollover>Biberon</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="erase_701">
+          <name>erase_701</name>
+          <type>Erase Canvas</type>
+          <eraseCanvas>true</eraseCanvas>
+        </action>
+      </button>
+    </page>
+    <page id="page2">
+      <name>page2</name>
+      <number>2</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page2.psd</file>
+      <fileName>page2.psd</fileName>
+    </page>
+    <page id="page3">
+      <name>page3</name>
+      <number>3</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page3.psd</file>
+      <fileName>page3.psd</fileName>
+      <code id="code_855">
+        <name>code_855</name>
+        <code></code>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/El_cuento_mas_b/build/inventory.lua</extFile>
+      </code>
+    </page>
+  </pages>
+</project>

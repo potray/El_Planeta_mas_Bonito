@@ -1,0 +1,99 @@
+FILES FROM APP EL_CUENTO_MAS_B
+------------------------------------------------------------------ 
+btween.lua
+build.settings
+config.lua
+director.lua
+dmc_gesture.lua
+dmc_multitouch.lua
+dmc_touchmanager.lua
+gtween.lua
+icon-hdpi.png
+icon-ldpi.png
+icon-mdpi.png
+icon-xhdpi.png
+inventory.lua
+main.lua
+page_1.lua
+page_10.lua
+page_2.lua
+page_3.lua
+page_4.lua
+page_5.lua
+page_6.lua
+page_7.lua
+page_8.lua
+page_9.lua
+/images/
+   p10_bebe_sorprendid.png
+   p10_capa_1.png
+   p10_capa_2.png
+   p10_fondo.png
+   p10_hija_casa_sorpr.png
+   p10_jazmin1.png
+   p10_jazmin2.png
+   p10_mama_sorprendid.png
+   p10_rosa.png
+   p10_text.png
+   p1_bebe.png
+   p1_biberon.png
+   p1_fondo.png
+   p1_hija_casa.png
+   p1_mama_casa.png
+   p1_texto.png
+   p1_tijeras.png
+   p2_bebe.png
+   p2_biberon.png
+   p2_fondo.png
+   p2_hija_casa.png
+   p2_mama_casa.png
+   p2_texto.png
+   p2_tijeras.png
+   p3_bebe.png
+   p3_biberon.png
+   p3_fondo.png
+   p3_hija_casa.png
+   p3_mama_casa.png
+   p3_texto.png
+   p3_tijeras.png
+   p4_cabeza_bebe_sor.png
+   p4_cabeza_hija_sor.png
+   p4_cabeza_mama_sor.png
+   p4_fondo.png
+   p4_text.png
+   p5_cabeza_bebe_dur.png
+   p5_cabeza_hija_dur.png
+   p5_cabeza_mama_dur.png
+   p5_capa_1.png
+   p5_fondo.png
+   p5_text.png
+   p6_burbuja_.png
+   p6_fondo.png
+   p6_text.png
+   p7_bebe.png
+   p7_capa_1.png
+   p7_fondo.png
+   p7_hija_casa.png
+   p7_jazmin1.png
+   p7_jazmin2.png
+   p7_mama_casa.png
+   p7_rosa.png
+   p7_text.png
+   p8_bebe.png
+   p8_capa_1.png
+   p8_fondo.png
+   p8_hija_casa_sorpr.png
+   p8_jazmin1.png
+   p8_jazmin2.png
+   p8_mama_casa.png
+   p8_rosa.png
+   p8_text.png
+   p9_bebe.png
+   p9_capa_1.png
+   p9_fondo.png
+   p9_hija_casa.png
+   p9_jazmin1.png
+   p9_jazmin2.png
+   p9_mama_casa.png
+   p9_rosa.png
+   p9_text.png
