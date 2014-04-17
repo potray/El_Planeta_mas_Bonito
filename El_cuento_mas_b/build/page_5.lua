@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 10 
+    local numPages = 15 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -12,6 +12,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 5 
+
+       Navigation.new("page", { backColor = {255, 255, 255}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "top", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -36,21 +40,20 @@ function new()
 
  
        -- Layer names 
-       local Fondo  
+       local kwkFondo2  
        local Text  
        local Cabeza_mama_dur  
        local Cabeza_hija_dur  
-       local Capa_1  
        local Cabeza_bebe_dur  
 
        -- (TOP) External code will render here 
 
-       -- Fondo positioning 
-       Fondo = display.newImageRect( imgDir.. "p5_fondo.png", 2560, 1600 ); 
-       Fondo.x = 1280; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
-       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
-       Fondo.name = "Fondo" 
-       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
+       -- kwkFondo2 positioning 
+       kwkFondo2 = display.newImageRect( imgDir.. "kwkfondo2.png", 2560, 1600 ); 
+       kwkFondo2.x = 1280; kwkFondo2.y = 800; kwkFondo2.alpha = 1; kwkFondo2.oldAlpha = 1 
+       kwkFondo2.oriX = kwkFondo2.x; kwkFondo2.oriY = kwkFondo2.y 
+       kwkFondo2.name = "kwkFondo2" 
+       menuGroup:insert(1,kwkFondo2); menuGroup.kwkFondo2 = kwkFondo2 
 
        -- Text positioning 
        Text = display.newImageRect( imgDir.. "p5_text.png", 2312, 39 ); 
@@ -73,13 +76,6 @@ function new()
        Cabeza_hija_dur.name = "Cabeza_hija_dur" 
        menuGroup:insert(Cabeza_hija_dur); menuGroup.Cabeza_hija_dur = Cabeza_hija_dur 
 
-       -- Capa_1 positioning 
-       Capa_1 = display.newImageRect( imgDir.. "p5_capa_1.png", 0, 0 ); 
-       Capa_1.x = 0; Capa_1.y = 0; Capa_1.alpha = 1; Capa_1.oldAlpha = 1 
-       Capa_1.oriX = Capa_1.x; Capa_1.oriY = Capa_1.y 
-       Capa_1.name = "Capa_1" 
-       menuGroup:insert(Capa_1); menuGroup.Capa_1 = Capa_1 
-
        -- Cabeza_bebe_dur positioning 
        Cabeza_bebe_dur = display.newImageRect( imgDir.. "p5_cabeza_bebe_dur.png", 365, 289 ); 
        Cabeza_bebe_dur.x = 1509; Cabeza_bebe_dur.y = 1164; Cabeza_bebe_dur.alpha = 1; Cabeza_bebe_dur.oldAlpha = 1 
@@ -92,7 +88,7 @@ function new()
        -- (MIDDLE) External code will render here 
 
        -- swipe this page with spacer of 120 in normal direction 
-       Gesture.activate( Fondo, {swipeLength=120} ) 
+       Gesture.activate( kwkFondo2, {swipeLength=120} ) 
        local function pageSwap(event ) 
          if event.phase == "ended" and event.direction ~= nil then  
             local wPage = curPage  
@@ -119,13 +115,13 @@ function new()
             end 
          end  
        end 
-       Fondo:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
+       kwkFondo2:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
           saveKwikVars({"hasBiberon",hasBiberon}) 
           saveKwikVars({"hasTijeras",hasTijeras}) 
-          Fondo:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(Fondo) 
+          kwkFondo2:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(kwkFondo2) 
        end 
 
        -- (BOTTOM) External code will render here 

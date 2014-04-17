@@ -1,0 +1,25 @@
+<project id="asd">
+  <settings>
+    <name>asd</name>
+    <media>Book</media>
+    <device>New Universal</device>
+    <OS>all</OS>
+    <zoom>zoomStretch</zoom>
+    <width>2048</width>
+    <height>1536</height>
+    <orientation>Landscape</orientation>
+    <resolution>264</resolution>
+    <bookmark>false</bookmark>
+    <swipe>true</swipe>
+    <pinch>false</pinch>
+    <thumbs>false</thumbs>
+  </settings>
+  <pages>
+    <page id="page1">
+      <name>page1</name>
+      <number>1</number>
+      <file>/d/Dropbox/TFG/asd/page1.psd</file>
+      <fileName>page1.psd</fileName>
+    </page>
+  </pages>
+</project>

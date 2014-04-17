@@ -1,0 +1,58 @@
+<project id="asd">
+  <settings>
+    <name>asd</name>
+    <media>Book</media>
+    <device>New Universal</device>
+    <OS>all</OS>
+    <zoom>zoomStretch</zoom>
+    <width>2048</width>
+    <height>1536</height>
+    <orientation>Landscape</orientation>
+    <resolution>264</resolution>
+    <bookmark>false</bookmark>
+    <swipe>true</swipe>
+    <pinch>false</pinch>
+    <thumbs>false</thumbs>
+  </settings>
+  <pages>
+    <page id="page1">
+      <name>page1</name>
+      <number>1</number>
+      <file>/d/Dropbox/TFG/asd/page1.psd</file>
+      <fileName>page1.psd</fileName>
+      <replacement id="JefeMuseo_00000">
+        <name>JefeMuseo_00000</name>
+        <type>Sprite Sheet</type>
+        <layer>JefeMuseo_00000</layer>
+        <file>/d/Dropbox/TFG/asd/sprite.png</file>
+        <frameWidth>514</frameWidth>
+        <frameHeight>694</frameHeight>
+        <externalFile>/d/Dropbox/TFG/sprite.lua</externalFile>
+        <exporter>TexturePacker</exporter>
+        <frameStart>1</frameStart>
+        <frameCount>32</frameCount>
+        <frameLength>1</frameLength>
+        <loop>forever</loop>
+        <paused>false</paused>
+        <direction>false</direction>
+        <sheetWidth>2048</sheetWidth>
+        <sheetHeight>2048</sheetHeight>
+        <mainSeq>default</mainSeq>
+        <useSheet>None</useSheet>
+        <export2>false</export2>
+      </replacement>
+      <layer id="JefeMuseo_00000">
+        <name>JefeMuseo_00000</name>
+        <scaleW>200</scaleW>
+        <scaleH>200</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>false</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>JefeMuseo_00000</renderAs>
+      </layer>
+    </page>
+  </pages>
+</project>

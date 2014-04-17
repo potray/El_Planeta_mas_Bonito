@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 10 
+    local numPages = 15 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -12,6 +12,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 6 
+
+       Navigation.new("page", { backColor = {255, 255, 255}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "top", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -36,18 +40,18 @@ function new()
 
  
        -- Layer names 
-       local Fondo  
+       local Fondo2SinBurbuj  
        local Burbuja_  
        local Text  
 
        -- (TOP) External code will render here 
 
-       -- Fondo positioning 
-       Fondo = display.newImageRect( imgDir.. "p6_fondo.png", 2560, 1600 ); 
-       Fondo.x = 1280; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
-       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
-       Fondo.name = "Fondo" 
-       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
+       -- Fondo2SinBurbuj positioning 
+       Fondo2SinBurbuj = display.newImageRect( imgDir.. "p6_fondo2sinburbuj.png", 2560, 1600 ); 
+       Fondo2SinBurbuj.x = 1280; Fondo2SinBurbuj.y = 800; Fondo2SinBurbuj.alpha = 1; Fondo2SinBurbuj.oldAlpha = 1 
+       Fondo2SinBurbuj.oriX = Fondo2SinBurbuj.x; Fondo2SinBurbuj.oriY = Fondo2SinBurbuj.y 
+       Fondo2SinBurbuj.name = "Fondo2SinBurbuj" 
+       menuGroup:insert(1,Fondo2SinBurbuj); menuGroup.Fondo2SinBurbuj = Fondo2SinBurbuj 
 
        -- Burbuja_ positioning 
        Burbuja_ = display.newImageRect( imgDir.. "p6_burbuja_.png", 1212, 1212 ); 
@@ -92,7 +96,7 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
 
 
        -- swipe this page with spacer of 120 in normal direction 
-       Gesture.activate( Fondo, {swipeLength=120} ) 
+       Gesture.activate( Fondo2SinBurbuj, {swipeLength=120} ) 
        local function pageSwap(event ) 
          if event.phase == "ended" and event.direction ~= nil then  
             local wPage = curPage  
@@ -119,14 +123,14 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
             end 
          end  
        end 
-       Fondo:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
+       Fondo2SinBurbuj:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
 
        dispose = function(event) 
           cancelAllTweens() 
           cancelAllTimers(); cancelAllTransitions() 
           saveKwikVars({"hasBiberon",hasBiberon}) 
           saveKwikVars({"hasTijeras",hasTijeras}) 
-          Fondo:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(Fondo) 
+          Fondo2SinBurbuj:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(Fondo2SinBurbuj) 
        end 
 
        -- (BOTTOM) External code will render here 

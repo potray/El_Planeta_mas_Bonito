@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Thu Apr 10 2014 00:13:54 GMT+0200 
+-- Exported on Thu Apr 17 2014 16:14:48 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -17,6 +17,7 @@ json = require("json")
 local function versionCheck(event) if "clicked" == event.action then if event.index == 2 then system.openURL( "https://developer.coronalabs.com/downloads/coronasdk" ) end end end 
 if ( system.getInfo("environment") =="simulator" and system.getInfo("build") ~="2013.2100" ) then native.showAlert("Corona SDK Incompatible Version","Your Corona SDK version is different than the certified one with Kwik. Install build 2013.2100 or you may have issues in your project.",{"OK", "Download"}, versionCheck) end 
 
+Navigation = require("kNavi") 
 local gtween = require("gtween") 
 local btween = require("btween") 
 Inventory = require("inventory") 
@@ -71,6 +72,19 @@ function kwkVarCheck(variable)
    return (found) 
 end 
 
+-- Bookmark function 
+local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
+local file = io.open( path, "r" ) 
+if file then 
+   goPage = file:read("*l") 
+   kBookmark = file:read("*l") 
+   io.close(file) 
+else 
+   local file = io.open( path, "w+b" ) 
+   file:write( "1\n1" ) 
+   kBookmark = 1 
+   io.close(file) 
+end 
 
 
 --Create a main group
@@ -84,7 +98,7 @@ local function main()
    -- Adding external code
    saveKwikVars({"hasBiberon",false}) 
 saveKwikVars({"hasTijeras",false}) 
- 
+saveKwikVars({"hasRosa",false})  
 
    director:changeScene("page_"..goPage)
    return true

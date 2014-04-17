@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 10 
+    local numPages = 15 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -12,6 +12,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 8 
+
+       Navigation.new("page", { backColor = {255, 255, 255}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "top", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -36,33 +40,29 @@ function new()
 
  
        -- Button names 
-       local botonRosa
+       local btnRosa
 
        -- Action names 
        local hideRosa 
 
        -- Layer names 
-       local Fondo  
+       local kwkFondo3  
        local Text  
-       local Bebe  
-       local Rosa  
-       local Jazmin1  
-       local Jazmin2  
-       local Mama_casa  
-       local Hija_casa_sorpr  
-       local Capa_1  
-
-       -- Added variables before layers render 
-       local hasRosa = false --  
+       local kwkBebe  
+       local kwkRosa  
+       local kwkJazmin1  
+       local kwkJazmin2  
+       local kwkMama_casa  
+       local kwkHija_casa_so  
 
        -- (TOP) External code will render here 
 
-       -- Fondo positioning 
-       Fondo = display.newImageRect( imgDir.. "p8_fondo.png", 2559, 1600 ); 
-       Fondo.x = 1279; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
-       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
-       Fondo.name = "Fondo" 
-       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
+       -- kwkFondo3 positioning 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
+       kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
+       kwkFondo3.name = "kwkFondo3" 
+       menuGroup:insert(1,kwkFondo3); menuGroup.kwkFondo3 = kwkFondo3 
 
        -- Text positioning 
        Text = display.newImageRect( imgDir.. "p8_text.png", 220, 127 ); 
@@ -71,54 +71,47 @@ function new()
        Text.name = "Text" 
        menuGroup:insert(Text); menuGroup.Text = Text 
 
-       -- Bebe positioning 
-       Bebe = display.newImageRect( imgDir.. "p8_bebe.png", 378, 543 ); 
-       Bebe.x = 1316; Bebe.y = 1242; Bebe.alpha = 1; Bebe.oldAlpha = 1 
-       Bebe.oriX = Bebe.x; Bebe.oriY = Bebe.y 
-       Bebe.name = "Bebe" 
-       menuGroup:insert(Bebe); menuGroup.Bebe = Bebe 
+       -- kwkBebe positioning 
+       kwkBebe = display.newImageRect( imgDir.. "kwkbebe.png", 378, 543 ); 
+       kwkBebe.x = 1316; kwkBebe.y = 1242; kwkBebe.alpha = 1; kwkBebe.oldAlpha = 1 
+       kwkBebe.oriX = kwkBebe.x; kwkBebe.oriY = kwkBebe.y 
+       kwkBebe.name = "kwkBebe" 
+       menuGroup:insert(kwkBebe); menuGroup.kwkBebe = kwkBebe 
 
-       -- Rosa positioning 
-       Rosa = display.newImageRect( imgDir.. "p8_rosa.png", 172, 500 ); 
-       Rosa.x = 2332; Rosa.y = 1116; Rosa.alpha = 1; Rosa.oldAlpha = 1 
-       Rosa.oriX = Rosa.x; Rosa.oriY = Rosa.y 
-       Rosa.name = "Rosa" 
-       menuGroup:insert(Rosa); menuGroup.Rosa = Rosa 
+       -- kwkRosa positioning 
+       kwkRosa = display.newImageRect( imgDir.. "kwkrosa.png", 172, 500 ); 
+       kwkRosa.x = 2332; kwkRosa.y = 1116; kwkRosa.alpha = 1; kwkRosa.oldAlpha = 1 
+       kwkRosa.oriX = kwkRosa.x; kwkRosa.oriY = kwkRosa.y 
+       kwkRosa.name = "kwkRosa" 
+       menuGroup:insert(kwkRosa); menuGroup.kwkRosa = kwkRosa 
 
-       -- Jazmin1 positioning 
-       Jazmin1 = display.newImageRect( imgDir.. "p8_jazmin1.png", 395, 152 ); 
-       Jazmin1.x = 283; Jazmin1.y = 1465; Jazmin1.alpha = 1; Jazmin1.oldAlpha = 1 
-       Jazmin1.oriX = Jazmin1.x; Jazmin1.oriY = Jazmin1.y 
-       Jazmin1.name = "Jazmin1" 
-       menuGroup:insert(Jazmin1); menuGroup.Jazmin1 = Jazmin1 
+       -- kwkJazmin1 positioning 
+       kwkJazmin1 = display.newImageRect( imgDir.. "kwkjazmin1.png", 395, 152 ); 
+       kwkJazmin1.x = 283; kwkJazmin1.y = 1465; kwkJazmin1.alpha = 1; kwkJazmin1.oldAlpha = 1 
+       kwkJazmin1.oriX = kwkJazmin1.x; kwkJazmin1.oriY = kwkJazmin1.y 
+       kwkJazmin1.name = "kwkJazmin1" 
+       menuGroup:insert(kwkJazmin1); menuGroup.kwkJazmin1 = kwkJazmin1 
 
-       -- Jazmin2 positioning 
-       Jazmin2 = display.newImageRect( imgDir.. "p8_jazmin2.png", 433, 215 ); 
-       Jazmin2.x = 2162; Jazmin2.y = 1349; Jazmin2.alpha = 1; Jazmin2.oldAlpha = 1 
-       Jazmin2.oriX = Jazmin2.x; Jazmin2.oriY = Jazmin2.y 
-       Jazmin2.name = "Jazmin2" 
-       menuGroup:insert(Jazmin2); menuGroup.Jazmin2 = Jazmin2 
+       -- kwkJazmin2 positioning 
+       kwkJazmin2 = display.newImageRect( imgDir.. "kwkjazmin2.png", 433, 215 ); 
+       kwkJazmin2.x = 2162; kwkJazmin2.y = 1349; kwkJazmin2.alpha = 1; kwkJazmin2.oldAlpha = 1 
+       kwkJazmin2.oriX = kwkJazmin2.x; kwkJazmin2.oriY = kwkJazmin2.y 
+       kwkJazmin2.name = "kwkJazmin2" 
+       menuGroup:insert(kwkJazmin2); menuGroup.kwkJazmin2 = kwkJazmin2 
 
-       -- Mama_casa positioning 
-       Mama_casa = display.newImageRect( imgDir.. "p8_mama_casa.png", 500, 959 ); 
-       Mama_casa.x = 1730; Mama_casa.y = 991; Mama_casa.alpha = 1; Mama_casa.oldAlpha = 1 
-       Mama_casa.oriX = Mama_casa.x; Mama_casa.oriY = Mama_casa.y 
-       Mama_casa.name = "Mama_casa" 
-       menuGroup:insert(Mama_casa); menuGroup.Mama_casa = Mama_casa 
+       -- kwkMama_casa positioning 
+       kwkMama_casa = display.newImageRect( imgDir.. "kwkmama_casa.png", 500, 959 ); 
+       kwkMama_casa.x = 1730; kwkMama_casa.y = 991; kwkMama_casa.alpha = 1; kwkMama_casa.oldAlpha = 1 
+       kwkMama_casa.oriX = kwkMama_casa.x; kwkMama_casa.oriY = kwkMama_casa.y 
+       kwkMama_casa.name = "kwkMama_casa" 
+       menuGroup:insert(kwkMama_casa); menuGroup.kwkMama_casa = kwkMama_casa 
 
-       -- Hija_casa_sorpr positioning 
-       Hija_casa_sorpr = display.newImageRect( imgDir.. "p8_hija_casa_sorpr.png", 442, 795 ); 
-       Hija_casa_sorpr.x = 866; Hija_casa_sorpr.y = 1022; Hija_casa_sorpr.alpha = 1; Hija_casa_sorpr.oldAlpha = 1 
-       Hija_casa_sorpr.oriX = Hija_casa_sorpr.x; Hija_casa_sorpr.oriY = Hija_casa_sorpr.y 
-       Hija_casa_sorpr.name = "Hija_casa_sorpr" 
-       menuGroup:insert(Hija_casa_sorpr); menuGroup.Hija_casa_sorpr = Hija_casa_sorpr 
-
-       -- Capa_1 positioning 
-       Capa_1 = display.newImageRect( imgDir.. "p8_capa_1.png", 0, 0 ); 
-       Capa_1.x = 0; Capa_1.y = 0; Capa_1.alpha = 1; Capa_1.oldAlpha = 1 
-       Capa_1.oriX = Capa_1.x; Capa_1.oriY = Capa_1.y 
-       Capa_1.name = "Capa_1" 
-       menuGroup:insert(Capa_1); menuGroup.Capa_1 = Capa_1 
+       -- kwkHija_casa_so positioning 
+       kwkHija_casa_so = display.newImageRect( imgDir.. "kwkhija_casa_so.png", 442, 795 ); 
+       kwkHija_casa_so.x = 866; kwkHija_casa_so.y = 1022; kwkHija_casa_so.alpha = 1; kwkHija_casa_so.oldAlpha = 1 
+       kwkHija_casa_so.oriX = kwkHija_casa_so.x; kwkHija_casa_so.oriY = kwkHija_casa_so.y 
+       kwkHija_casa_so.name = "kwkHija_casa_so" 
+       menuGroup:insert(kwkHija_casa_so); menuGroup.kwkHija_casa_so = kwkHija_casa_so 
  
        -- Group(s) creation 
 
@@ -127,7 +120,7 @@ function new()
        -- Actions (functions) 
        function hideRosa(event) 
          if (hasRosa == true) then 
-            transitionStash.newTransition_254 = transition.to( Rosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_285 = transition.to( kwkRosa, {alpha=0, time=100, delay=0}) 
          end 
        end 
 
@@ -136,24 +129,25 @@ function new()
 
  
        -- Timers 
-       timerStash.timerRosa = timer.performWithDelay( 0, hideRosa, 1 ) 
+       timerStash.timerRosa = timer.performWithDelay( 100, hideRosa, 1 ) 
 
        -- Button event listeners 
-       local function onRosaEvent(event) 
-          botonRosa(Rosa) 
+       local function onkwkRosaEvent(event) 
+          btnRosa(kwkRosa) 
           return true 
        end 
-       Rosa:addEventListener("tap", onRosaEvent ) 
+       kwkRosa:addEventListener("tap", onkwkRosaEvent ) 
 
        -- Button functions 
-       function botonRosa(self) 
-           hasRosa = true
+       function btnRosa(self) 
+           _G.hasRosa = true
           saveKwikVars({"hasRosa",true}) 
+           hideRosa() 
        end 
 
 
        -- swipe this page with spacer of 120 in normal direction 
-       Gesture.activate( Fondo, {swipeLength=120} ) 
+       Gesture.activate( kwkFondo3, {swipeLength=120} ) 
        local function pageSwap(event ) 
          if event.phase == "ended" and event.direction ~= nil then  
             local wPage = curPage  
@@ -180,13 +174,13 @@ function new()
             end 
          end  
        end 
-       Fondo:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
+       kwkFondo3:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
           saveKwikVars({"hasBiberon",hasBiberon}) 
           saveKwikVars({"hasTijeras",hasTijeras}) 
-          Fondo:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(Fondo) 
+          kwkFondo3:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(kwkFondo3) 
        end 
 
        -- (BOTTOM) External code will render here 

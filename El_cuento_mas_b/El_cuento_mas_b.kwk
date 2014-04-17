@@ -9,10 +9,10 @@
     <height>1600</height>
     <orientation>Landscape</orientation>
     <resolution>300</resolution>
-    <bookmark>false</bookmark>
+    <bookmark>true</bookmark>
     <swipe>true</swipe>
     <pinch>false</pinch>
-    <thumbs>false</thumbs>
+    <thumbs>true</thumbs>
     <codes>
       <code id="startVariables">
         <name>startVariables</name>
@@ -26,7 +26,7 @@
         <path>/d/Dropbox/TFG/Librer%C3%ADas/inventory.lua</path>
       </lib>
     </libraries>
-    <navigation>false</navigation>
+    <navigation>true</navigation>
     <swipeSpacer>120</swipeSpacer>
     <thumbW>200</thumbW>
     <navDirection>Top</navDirection>
@@ -35,11 +35,13 @@
     <suspend>false</suspend>
     <rotation>false</rotation>
     <startPage>1</startPage>
-    <endPage>10</endPage>
+    <endPage>15</endPage>
     <endAuto>false</endAuto>
     <iconReady>false</iconReady>
     <expansion>false</expansion>
-    <googleKey/>
+    <googleKey></googleKey>
+    <navColor>255, 255, 255</navColor>
+    <navAlpha>0</navAlpha>
   </settings>
   <pages>
     <page id="page1">
@@ -88,7 +90,7 @@
         <action id="code_352">
           <name>code_352</name>
           <type>Show/Hide</type>
-          <showLayer>Biberon</showLayer>
+          <showLayer>kwkBiberon</showLayer>
           <show>false</show>
           <toggle>false</toggle>
           <duration>0.1</duration>
@@ -119,7 +121,7 @@
         <action id="end_110">
           <name>end_110</name>
           <type>Show/Hide</type>
-          <showLayer>Tijeras</showLayer>
+          <showLayer>kwkTijeras</showLayer>
           <show>false</show>
           <toggle>false</toggle>
           <duration>0</duration>
@@ -131,54 +133,78 @@
           <type>End IF</type>
         </action>
       </trigger>
-      <timer id="BiberonTimer">
-        <name>BiberonTimer</name>
+      <timer id="kwkBiberonTimer">
+        <name>kwkBiberonTimer</name>
         <delay>0</delay>
         <trigger>hideBiberon</trigger>
         <loop>1</loop>
       </timer>
-      <timer id="TijerasTimer">
-        <name>TijerasTimer</name>
+      <timer id="kwkTijerasTimer">
+        <name>kwkTijerasTimer</name>
         <delay>0</delay>
         <trigger>hideTijeras</trigger>
         <loop>1</loop>
       </timer>
-      <button id="BotonBiberon">
-        <name>BotonBiberon</name>
-        <layer>Biberon</layer>
-        <rollover>Biberon</rollover>
+      <layer id="Mama_casa">
+        <name>Mama_casa</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>false</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>Mama_casa</renderAs>
+      </layer>
+      <layer id="Fondo">
+        <name>Fondo</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>false</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>Fondo</renderAs>
+      </layer>
+      <button id="btnTijeras">
+        <name>btnTijeras</name>
+        <layer>kwkTijeras</layer>
+        <rollover>kwkTijeras</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_966">
-          <name>var_966</name>
-          <type>Edit Variable</type>
-          <variable>hasBiberon</variable>
-          <value>true</value>
-        </action>
-        <action id="act_142">
-          <name>act_142</name>
-          <type>Play Action</type>
-          <trigger>hideBiberon</trigger>
-        </action>
-      </button>
-      <button id="botonTijeras">
-        <name>botonTijeras</name>
-        <layer>Tijeras</layer>
-        <rollover>Tijeras</rollover>
-        <target>Layer</target>
-        <type>Tap</type>
-        <tap>1</tap>
-        <action id="var_693">
-          <name>var_693</name>
+        <action id="var_169">
+          <name>var_169</name>
           <type>Edit Variable</type>
           <variable>hasTijeras</variable>
           <value>true</value>
         </action>
-        <action id="act_421">
-          <name>act_421</name>
+        <action id="act_582">
+          <name>act_582</name>
           <type>Play Action</type>
           <trigger>hideTijeras</trigger>
+        </action>
+      </button>
+      <button id="btnBiberon">
+        <name>btnBiberon</name>
+        <layer>kwkBiberon</layer>
+        <rollover>kwkBiberon</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_765">
+          <name>var_765</name>
+          <type>Edit Variable</type>
+          <variable>hasBiberon</variable>
+          <value>true</value>
+        </action>
+        <action id="act_456">
+          <name>act_456</name>
+          <type>Play Action</type>
+          <trigger>hideBiberon</trigger>
         </action>
       </button>
     </page>
@@ -207,10 +233,10 @@
         <action id="code_352">
           <name>code_352</name>
           <type>Show/Hide</type>
-          <showLayer>Biberon</showLayer>
+          <showLayer>kwkBiberon</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -238,7 +264,7 @@
         <action id="end_110">
           <name>end_110</name>
           <type>Show/Hide</type>
-          <showLayer>Tijeras</showLayer>
+          <showLayer>kwkTijeras</showLayer>
           <show>false</show>
           <toggle>false</toggle>
           <duration>0</duration>
@@ -250,52 +276,52 @@
           <type>End IF</type>
         </action>
       </trigger>
-      <timer id="BiberonTimer">
-        <name>BiberonTimer</name>
+      <timer id="kwkBiberonTimer">
+        <name>kwkBiberonTimer</name>
         <delay>0</delay>
         <trigger>hideBiberon</trigger>
         <loop>1</loop>
       </timer>
-      <timer id="TijerasTimer">
-        <name>TijerasTimer</name>
+      <timer id="kwkTijerasTimer">
+        <name>kwkTijerasTimer</name>
         <delay>0</delay>
         <trigger>hideTijeras</trigger>
         <loop>1</loop>
       </timer>
-      <button id="BotonBiberon">
-        <name>BotonBiberon</name>
-        <layer>Biberon</layer>
-        <rollover>Biberon</rollover>
+      <button id="btnBiberon">
+        <name>btnBiberon</name>
+        <layer>kwkBiberon</layer>
+        <rollover>kwkBiberon</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_966">
-          <name>var_966</name>
+        <action id="var_765">
+          <name>var_765</name>
           <type>Edit Variable</type>
           <variable>hasBiberon</variable>
           <value>true</value>
         </action>
-        <action id="act_142">
-          <name>act_142</name>
+        <action id="act_456">
+          <name>act_456</name>
           <type>Play Action</type>
           <trigger>hideBiberon</trigger>
         </action>
       </button>
-      <button id="botonTijeras">
-        <name>botonTijeras</name>
-        <layer>Tijeras</layer>
-        <rollover>Tijeras</rollover>
+      <button id="btnTijeras">
+        <name>btnTijeras</name>
+        <layer>kwkTijeras</layer>
+        <rollover>kwkTijeras</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_693">
-          <name>var_693</name>
+        <action id="var_169">
+          <name>var_169</name>
           <type>Edit Variable</type>
           <variable>hasTijeras</variable>
           <value>true</value>
         </action>
-        <action id="act_421">
-          <name>act_421</name>
+        <action id="act_582">
+          <name>act_582</name>
           <type>Play Action</type>
           <trigger>hideTijeras</trigger>
         </action>
@@ -306,44 +332,6 @@
       <number>3</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page3.psd</file>
       <fileName>page3.psd</fileName>
-      <button id="BotonBiberon">
-        <name>BotonBiberon</name>
-        <layer>Biberon</layer>
-        <rollover>Biberon</rollover>
-        <target>Layer</target>
-        <type>Tap</type>
-        <tap>1</tap>
-        <action id="var_966">
-          <name>var_966</name>
-          <type>Edit Variable</type>
-          <variable>hasBiberon</variable>
-          <value>true</value>
-        </action>
-        <action id="act_142">
-          <name>act_142</name>
-          <type>Play Action</type>
-          <trigger>hideBiberon</trigger>
-        </action>
-      </button>
-      <button id="botonTijeras">
-        <name>botonTijeras</name>
-        <layer>Tijeras</layer>
-        <rollover>Tijeras</rollover>
-        <target>Layer</target>
-        <type>Tap</type>
-        <tap>1</tap>
-        <action id="var_693">
-          <name>var_693</name>
-          <type>Edit Variable</type>
-          <variable>hasTijeras</variable>
-          <value>true</value>
-        </action>
-        <action id="act_421">
-          <name>act_421</name>
-          <type>Play Action</type>
-          <trigger>hideTijeras</trigger>
-        </action>
-      </button>
       <variables/>
       <trigger id="hideBiberon">
         <name>hideBiberon</name>
@@ -364,10 +352,10 @@
         <action id="code_352">
           <name>code_352</name>
           <type>Show/Hide</type>
-          <showLayer>Biberon</showLayer>
+          <showLayer>kwkBiberon</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -395,7 +383,7 @@
         <action id="end_110">
           <name>end_110</name>
           <type>Show/Hide</type>
-          <showLayer>Tijeras</showLayer>
+          <showLayer>kwkTijeras</showLayer>
           <show>false</show>
           <toggle>false</toggle>
           <duration>0</duration>
@@ -407,18 +395,56 @@
           <type>End IF</type>
         </action>
       </trigger>
-      <timer id="BiberonTimer">
-        <name>BiberonTimer</name>
+      <timer id="kwkBiberonTimer">
+        <name>kwkBiberonTimer</name>
         <delay>0</delay>
         <trigger>hideBiberon</trigger>
         <loop>1</loop>
       </timer>
-      <timer id="TijerasTimer">
-        <name>TijerasTimer</name>
+      <timer id="kwkTijerasTimer">
+        <name>kwkTijerasTimer</name>
         <delay>0</delay>
         <trigger>hideTijeras</trigger>
         <loop>1</loop>
       </timer>
+      <button id="btnBiberon">
+        <name>btnBiberon</name>
+        <layer>kwkBiberon</layer>
+        <rollover>kwkBiberon</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_765">
+          <name>var_765</name>
+          <type>Edit Variable</type>
+          <variable>hasBiberon</variable>
+          <value>true</value>
+        </action>
+        <action id="act_456">
+          <name>act_456</name>
+          <type>Play Action</type>
+          <trigger>hideBiberon</trigger>
+        </action>
+      </button>
+      <button id="btnTijeras">
+        <name>btnTijeras</name>
+        <layer>kwkTijeras</layer>
+        <rollover>kwkTijeras</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_169">
+          <name>var_169</name>
+          <type>Edit Variable</type>
+          <variable>hasTijeras</variable>
+          <value>true</value>
+        </action>
+        <action id="act_582">
+          <name>act_582</name>
+          <type>Play Action</type>
+          <trigger>hideTijeras</trigger>
+        </action>
+      </button>
     </page>
     <page id="page4">
       <name>page4</name>
@@ -486,8 +512,8 @@
           <value>false</value>
           <comment/>
           <table>false</table>
-          <save>false</save>
-          <type>local</type>
+          <save>true</save>
+          <type>global</type>
           <content>Formula</content>
           <where>before</where>
         </variable>
@@ -511,10 +537,10 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
-          <showLayer>Rosa</showLayer>
+          <showLayer>kwkRosa</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -523,44 +549,38 @@
           <type>End IF</type>
         </action>
       </trigger>
-      <timer id="timerRosa">
-        <name>timerRosa</name>
-        <delay>0</delay>
-        <trigger>hideRosa</trigger>
-        <loop>1</loop>
-      </timer>
-      <button id="botonRosa">
-        <name>botonRosa</name>
-        <layer>Rosa</layer>
-        <rollover>Rosa</rollover>
+      <button id="btnRosa">
+        <name>btnRosa</name>
+        <layer>kwkRosa</layer>
+        <rollover>kwkRosa</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_716">
-          <name>var_716</name>
+        <action id="var_944">
+          <name>var_944</name>
           <type>Edit Variable</type>
           <variable>hasRosa</variable>
           <value>true</value>
         </action>
+        <action id="act_249">
+          <name>act_249</name>
+          <type>Play Action</type>
+          <trigger>hideRosa</trigger>
+        </action>
       </button>
+      <timer id="timerRosa">
+        <name>timerRosa</name>
+        <delay>0.1</delay>
+        <trigger>hideRosa</trigger>
+        <loop>1</loop>
+      </timer>
     </page>
     <page id="page8">
       <name>page8</name>
       <number>8</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page8.psd</file>
       <fileName>page8.psd</fileName>
-      <variables>
-        <variable id="hasRosa">
-          <name>hasRosa</name>
-          <value>false</value>
-          <comment/>
-          <table>false</table>
-          <save>false</save>
-          <type>local</type>
-          <content>Formula</content>
-          <where>before</where>
-        </variable>
-      </variables>
+      <variables/>
       <trigger id="hideRosa">
         <name>hideRosa</name>
         <action id="if_069">
@@ -580,10 +600,10 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
-          <showLayer>Rosa</showLayer>
+          <showLayer>kwkRosa</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -594,22 +614,27 @@
       </trigger>
       <timer id="timerRosa">
         <name>timerRosa</name>
-        <delay>0</delay>
+        <delay>0.1</delay>
         <trigger>hideRosa</trigger>
         <loop>1</loop>
       </timer>
-      <button id="botonRosa">
-        <name>botonRosa</name>
-        <layer>Rosa</layer>
-        <rollover>Rosa</rollover>
+      <button id="btnRosa">
+        <name>btnRosa</name>
+        <layer>kwkRosa</layer>
+        <rollover>kwkRosa</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_716">
-          <name>var_716</name>
+        <action id="var_944">
+          <name>var_944</name>
           <type>Edit Variable</type>
           <variable>hasRosa</variable>
           <value>true</value>
+        </action>
+        <action id="act_249">
+          <name>act_249</name>
+          <type>Play Action</type>
+          <trigger>hideRosa</trigger>
         </action>
       </button>
     </page>
@@ -618,18 +643,7 @@
       <number>9</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page9.psd</file>
       <fileName>page9.psd</fileName>
-      <variables>
-        <variable id="hasRosa">
-          <name>hasRosa</name>
-          <value>false</value>
-          <comment/>
-          <table>false</table>
-          <save>false</save>
-          <type>local</type>
-          <content>Formula</content>
-          <where>before</where>
-        </variable>
-      </variables>
+      <variables/>
       <trigger id="hideRosa">
         <name>hideRosa</name>
         <action id="if_069">
@@ -649,10 +663,10 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
-          <showLayer>Rosa</showLayer>
+          <showLayer>kwkRosa</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -663,22 +677,27 @@
       </trigger>
       <timer id="timerRosa">
         <name>timerRosa</name>
-        <delay>0</delay>
+        <delay>0.1</delay>
         <trigger>hideRosa</trigger>
         <loop>1</loop>
       </timer>
-      <button id="botonRosa">
-        <name>botonRosa</name>
-        <layer>Rosa</layer>
-        <rollover>Rosa</rollover>
+      <button id="btnRosa">
+        <name>btnRosa</name>
+        <layer>kwkRosa</layer>
+        <rollover>kwkRosa</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_716">
-          <name>var_716</name>
+        <action id="var_944">
+          <name>var_944</name>
           <type>Edit Variable</type>
           <variable>hasRosa</variable>
           <value>true</value>
+        </action>
+        <action id="act_249">
+          <name>act_249</name>
+          <type>Play Action</type>
+          <trigger>hideRosa</trigger>
         </action>
       </button>
     </page>
@@ -687,18 +706,7 @@
       <number>10</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page10.psd</file>
       <fileName>page10.psd</fileName>
-      <variables>
-        <variable id="hasRosa">
-          <name>hasRosa</name>
-          <value>false</value>
-          <comment/>
-          <table>false</table>
-          <save>false</save>
-          <type>local</type>
-          <content>Formula</content>
-          <where>before</where>
-        </variable>
-      </variables>
+      <variables/>
       <trigger id="hideRosa">
         <name>hideRosa</name>
         <action id="if_069">
@@ -718,10 +726,10 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
-          <showLayer>Rosa</showLayer>
+          <showLayer>kwkRosa</showLayer>
           <show>false</show>
           <toggle>false</toggle>
-          <duration>0</duration>
+          <duration>0.1</duration>
           <delay>0</delay>
           <target>Layer</target>
         </action>
@@ -732,24 +740,246 @@
       </trigger>
       <timer id="timerRosa">
         <name>timerRosa</name>
-        <delay>0</delay>
+        <delay>0.1</delay>
         <trigger>hideRosa</trigger>
         <loop>1</loop>
       </timer>
-      <button id="botonRosa">
-        <name>botonRosa</name>
-        <layer>Rosa</layer>
-        <rollover>Rosa</rollover>
+      <button id="btnRosa">
+        <name>btnRosa</name>
+        <layer>kwkRosa</layer>
+        <rollover>kwkRosa</rollover>
         <target>Layer</target>
         <type>Tap</type>
         <tap>1</tap>
-        <action id="var_716">
-          <name>var_716</name>
+        <action id="var_944">
+          <name>var_944</name>
           <type>Edit Variable</type>
           <variable>hasRosa</variable>
           <value>true</value>
         </action>
+        <action id="act_249">
+          <name>act_249</name>
+          <type>Play Action</type>
+          <trigger>hideRosa</trigger>
+        </action>
       </button>
+    </page>
+    <page id="page11">
+      <name>page11</name>
+      <number>11</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page11.psd</file>
+      <fileName>page11.psd</fileName>
+      <trigger id="HideSeres">
+        <name>HideSeres</name>
+        <action id="nav_896">
+          <name>nav_896</name>
+          <type>Show/Hide</type>
+          <showLayer>Ser_2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_896">
+          <name>nav_896</name>
+          <type>Show/Hide</type>
+          <showLayer>Ser_3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_896">
+          <name>nav_896</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkSer_1</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_896">
+          <name>nav_896</name>
+          <type>Show/Hide</type>
+          <showLayer>Ser_4</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_793">
+          <name>reload_793</name>
+          <type>Show/Hide</type>
+          <showLayer>Ser_5</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_018">
+          <name>act_018</name>
+          <type>Play Action</type>
+          <trigger>act_730</trigger>
+        </action>
+      </trigger>
+      <trigger id="act_730">
+        <name>act_730</name>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>kwkSer_1</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>1</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>3</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_4</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>4</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_5</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>5</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <timer id="AnimateSeres">
+        <name>AnimateSeres</name>
+        <delay>0</delay>
+        <trigger>HideSeres</trigger>
+        <loop>1</loop>
+      </timer>
+    </page>
+    <page id="page12">
+      <name>page12</name>
+      <number>12</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page12.psd</file>
+      <fileName>page12.psd</fileName>
+    </page>
+    <page id="page13">
+      <name>page13</name>
+      <number>13</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page13.psd</file>
+      <fileName>page13.psd</fileName>
+    </page>
+    <page id="page14">
+      <name>page14</name>
+      <number>14</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page14.psd</file>
+      <fileName>page14.psd</fileName>
+    </page>
+    <page id="page15">
+      <name>page15</name>
+      <number>15</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page15.psd</file>
+      <fileName>page15.psd</fileName>
+      <trigger id="HideAnimationPa">
+        <name>HideAnimationPa</name>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_de_dos_cabe</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <trigger id="ShowAnimationpa">
+        <name>ShowAnimationpa</name>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Ser_de_dos_cabe</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>1</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <timer id="timer_909">
+        <name>timer_909</name>
+        <delay>0</delay>
+        <trigger>HideAnimationPa</trigger>
+        <loop>1</loop>
+      </timer>
+      <timer id="timer_318">
+        <name>timer_318</name>
+        <delay>1</delay>
+        <trigger>ShowAnimationpa</trigger>
+        <loop>1</loop>
+      </timer>
+      <layer id="Ser_de_dos_cabe">
+        <name>Ser_de_dos_cabe</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>false</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>Ser_de_dos_cabe</renderAs>
+      </layer>
     </page>
   </pages>
 </project>

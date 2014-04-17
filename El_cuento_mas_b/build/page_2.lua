@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 10 
+    local numPages = 15 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -12,6 +12,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 2 
+
+       Navigation.new("page", { backColor = {255, 255, 255}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "top", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -36,44 +40,44 @@ function new()
 
  
        -- Button names 
-       local BotonBiberon
-       local botonTijeras
+       local btnBiberon
+       local btnTijeras
 
        -- Action names 
        local hideBiberon 
        local hideTijeras 
 
        -- Layer names 
-       local Fondo  
-       local Biberon  
-       local Tijeras  
+       local kwkFondo1  
+       local kwkBiberon  
+       local kwkTijeras  
        local Texto  
-       local Hija_casa  
-       local Mama_casa  
-       local Bebe  
+       local kwkHija_casa  
+       local kwkMama_casa  
+       local kwkBebe  
 
        -- (TOP) External code will render here 
 
-       -- Fondo positioning 
-       Fondo = display.newImageRect( imgDir.. "p2_fondo.png", 2560, 1598 ); 
-       Fondo.x = 1280; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
-       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
-       Fondo.name = "Fondo" 
-       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
+       -- kwkFondo1 positioning 
+       kwkFondo1 = display.newImageRect( imgDir.. "kwkfondo1.png", 2560, 1598 ); 
+       kwkFondo1.x = 1280; kwkFondo1.y = 800; kwkFondo1.alpha = 1; kwkFondo1.oldAlpha = 1 
+       kwkFondo1.oriX = kwkFondo1.x; kwkFondo1.oriY = kwkFondo1.y 
+       kwkFondo1.name = "kwkFondo1" 
+       menuGroup:insert(1,kwkFondo1); menuGroup.kwkFondo1 = kwkFondo1 
 
-       -- Biberon positioning 
-       Biberon = display.newImageRect( imgDir.. "p2_biberon.png", 64, 158 ); 
-       Biberon.x = 2272; Biberon.y = 388; Biberon.alpha = 1; Biberon.oldAlpha = 1 
-       Biberon.oriX = Biberon.x; Biberon.oriY = Biberon.y 
-       Biberon.name = "Biberon" 
-       menuGroup:insert(Biberon); menuGroup.Biberon = Biberon 
+       -- kwkBiberon positioning 
+       kwkBiberon = display.newImageRect( imgDir.. "kwkbiberon.png", 64, 158 ); 
+       kwkBiberon.x = 2272; kwkBiberon.y = 388; kwkBiberon.alpha = 1; kwkBiberon.oldAlpha = 1 
+       kwkBiberon.oriX = kwkBiberon.x; kwkBiberon.oriY = kwkBiberon.y 
+       kwkBiberon.name = "kwkBiberon" 
+       menuGroup:insert(kwkBiberon); menuGroup.kwkBiberon = kwkBiberon 
 
-       -- Tijeras positioning 
-       Tijeras = display.newImageRect( imgDir.. "p2_tijeras.png", 95, 262 ); 
-       Tijeras.x = 1135; Tijeras.y = 309; Tijeras.alpha = 1; Tijeras.oldAlpha = 1 
-       Tijeras.oriX = Tijeras.x; Tijeras.oriY = Tijeras.y 
-       Tijeras.name = "Tijeras" 
-       menuGroup:insert(Tijeras); menuGroup.Tijeras = Tijeras 
+       -- kwkTijeras positioning 
+       kwkTijeras = display.newImageRect( imgDir.. "kwktijeras.png", 95, 262 ); 
+       kwkTijeras.x = 1135; kwkTijeras.y = 309; kwkTijeras.alpha = 1; kwkTijeras.oldAlpha = 1 
+       kwkTijeras.oriX = kwkTijeras.x; kwkTijeras.oriY = kwkTijeras.y 
+       kwkTijeras.name = "kwkTijeras" 
+       menuGroup:insert(kwkTijeras); menuGroup.kwkTijeras = kwkTijeras 
 
        -- Texto positioning 
        Texto = display.newImageRect( imgDir.. "p2_texto.png", 1090, 82 ); 
@@ -82,26 +86,26 @@ function new()
        Texto.name = "Texto" 
        menuGroup:insert(Texto); menuGroup.Texto = Texto 
 
-       -- Hija_casa positioning 
-       Hija_casa = display.newImageRect( imgDir.. "p2_hija_casa.png", 476, 856 ); 
-       Hija_casa.x = 684; Hija_casa.y = 1108; Hija_casa.alpha = 1; Hija_casa.oldAlpha = 1 
-       Hija_casa.oriX = Hija_casa.x; Hija_casa.oriY = Hija_casa.y 
-       Hija_casa.name = "Hija_casa" 
-       menuGroup:insert(Hija_casa); menuGroup.Hija_casa = Hija_casa 
+       -- kwkHija_casa positioning 
+       kwkHija_casa = display.newImageRect( imgDir.. "kwkhija_casa.png", 476, 856 ); 
+       kwkHija_casa.x = 684; kwkHija_casa.y = 1108; kwkHija_casa.alpha = 1; kwkHija_casa.oldAlpha = 1 
+       kwkHija_casa.oriX = kwkHija_casa.x; kwkHija_casa.oriY = kwkHija_casa.y 
+       kwkHija_casa.name = "kwkHija_casa" 
+       menuGroup:insert(kwkHija_casa); menuGroup.kwkHija_casa = kwkHija_casa 
 
-       -- Mama_casa positioning 
-       Mama_casa = display.newImageRect( imgDir.. "p2_mama_casa.png", 548, 1052 ); 
-       Mama_casa.x = 1183; Mama_casa.y = 966; Mama_casa.alpha = 1; Mama_casa.oldAlpha = 1 
-       Mama_casa.oriX = Mama_casa.x; Mama_casa.oriY = Mama_casa.y 
-       Mama_casa.name = "Mama_casa" 
-       menuGroup:insert(Mama_casa); menuGroup.Mama_casa = Mama_casa 
+       -- kwkMama_casa positioning 
+       kwkMama_casa = display.newImageRect( imgDir.. "kwkmama_casa.png", 548, 1052 ); 
+       kwkMama_casa.x = 1183; kwkMama_casa.y = 966; kwkMama_casa.alpha = 1; kwkMama_casa.oldAlpha = 1 
+       kwkMama_casa.oriX = kwkMama_casa.x; kwkMama_casa.oriY = kwkMama_casa.y 
+       kwkMama_casa.name = "kwkMama_casa" 
+       menuGroup:insert(kwkMama_casa); menuGroup.kwkMama_casa = kwkMama_casa 
 
-       -- Bebe positioning 
-       Bebe = display.newImageRect( imgDir.. "p2_bebe.png", 378, 543 ); 
-       Bebe.x = 1646; Bebe.y = 1219; Bebe.alpha = 1; Bebe.oldAlpha = 1 
-       Bebe.oriX = Bebe.x; Bebe.oriY = Bebe.y 
-       Bebe.name = "Bebe" 
-       menuGroup:insert(Bebe); menuGroup.Bebe = Bebe 
+       -- kwkBebe positioning 
+       kwkBebe = display.newImageRect( imgDir.. "kwkbebe.png", 378, 543 ); 
+       kwkBebe.x = 1646; kwkBebe.y = 1219; kwkBebe.alpha = 1; kwkBebe.oldAlpha = 1 
+       kwkBebe.oriX = kwkBebe.x; kwkBebe.oriY = kwkBebe.y 
+       kwkBebe.name = "kwkBebe" 
+       menuGroup:insert(kwkBebe); menuGroup.kwkBebe = kwkBebe 
  
        -- Group(s) creation 
 
@@ -110,13 +114,13 @@ function new()
        -- Actions (functions) 
        function hideBiberon(event) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_387 = transition.to( Biberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_930 = transition.to( kwkBiberon, {alpha=0, time=100, delay=0}) 
          end 
        end 
 
        function hideTijeras(event) 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_388 = transition.to( Tijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_931 = transition.to( kwkTijeras, {alpha=0, time=0, delay=0}) 
          end 
        end 
 
@@ -125,29 +129,29 @@ function new()
 
  
        -- Timers 
-       timerStash.BiberonTimer = timer.performWithDelay( 0, hideBiberon, 1 ) 
-       timerStash.TijerasTimer = timer.performWithDelay( 0, hideTijeras, 1 ) 
+       timerStash.kwkBiberonTimer = timer.performWithDelay( 0, hideBiberon, 1 ) 
+       timerStash.kwkTijerasTimer = timer.performWithDelay( 0, hideTijeras, 1 ) 
 
        -- Button event listeners 
-       local function onBiberonEvent(event) 
-          BotonBiberon(Biberon) 
+       local function onkwkBiberonEvent(event) 
+          btnBiberon(kwkBiberon) 
           return true 
        end 
-       Biberon:addEventListener("tap", onBiberonEvent ) 
-       local function onTijerasEvent(event) 
-          botonTijeras(Tijeras) 
+       kwkBiberon:addEventListener("tap", onkwkBiberonEvent ) 
+       local function onkwkTijerasEvent(event) 
+          btnTijeras(kwkTijeras) 
           return true 
        end 
-       Tijeras:addEventListener("tap", onTijerasEvent ) 
+       kwkTijeras:addEventListener("tap", onkwkTijerasEvent ) 
 
        -- Button functions 
-       function BotonBiberon(self) 
+       function btnBiberon(self) 
            _G.hasBiberon = true
           saveKwikVars({"hasBiberon",true}) 
            hideBiberon() 
        end 
 
-       function botonTijeras(self) 
+       function btnTijeras(self) 
            _G.hasTijeras = true
           saveKwikVars({"hasTijeras",true}) 
            hideTijeras() 
@@ -155,7 +159,7 @@ function new()
 
 
        -- swipe this page with spacer of 120 in normal direction 
-       Gesture.activate( Fondo, {swipeLength=120} ) 
+       Gesture.activate( kwkFondo1, {swipeLength=120} ) 
        local function pageSwap(event ) 
          if event.phase == "ended" and event.direction ~= nil then  
             local wPage = curPage  
@@ -182,13 +186,13 @@ function new()
             end 
          end  
        end 
-       Fondo:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
+       kwkFondo1:addEventListener( Gesture.SWIPE_EVENT, pageSwap ) 
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
           saveKwikVars({"hasBiberon",hasBiberon}) 
           saveKwikVars({"hasTijeras",hasTijeras}) 
-          Fondo:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(Fondo) 
+          kwkFondo1:removeEventListener( Gesture.SWIPE_EVENT, pageSwap ); Gesture.deactivate(kwkFondo1) 
        end 
 
        -- (BOTTOM) External code will render here 
