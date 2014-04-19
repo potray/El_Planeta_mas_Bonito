@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 17 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -117,13 +117,13 @@ function new()
  
        -- Actions (functions) 
        function HideAnimationPa(event) 
-            transitionStash.newTransition_781 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_781 = transition.to( Ser_de_dos_cabe, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_526 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_526 = transition.to( Ser_de_dos_cabe, {alpha=0, time=0, delay=0}) 
        end 
 
        function ShowAnimationpa(event) 
-            transitionStash.newTransition_781 = transition.to( Ser_de_dos_cabe, {alpha=Ser_de_dos_cabe.oldAlpha, time=1000, delay=1000}) 
-            transitionStash.newTransition_782 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=2000}) 
+            transitionStash.newTransition_526 = transition.to( Ser_de_dos_cabe, {alpha=Ser_de_dos_cabe.oldAlpha, time=1000, delay=1000}) 
+            transitionStash.newTransition_527 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=2000}) 
        end 
 
  

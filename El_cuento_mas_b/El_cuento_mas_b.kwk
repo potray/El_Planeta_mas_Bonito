@@ -35,18 +35,18 @@
     <suspend>false</suspend>
     <rotation>false</rotation>
     <startPage>1</startPage>
-    <endPage>15</endPage>
+    <endPage>22</endPage>
     <endAuto>false</endAuto>
     <iconReady>false</iconReady>
     <expansion>false</expansion>
-    <googleKey></googleKey>
+    <googleKey/>
     <navColor>255, 255, 255</navColor>
     <navAlpha>0</navAlpha>
   </settings>
   <pages>
     <page id="page1">
       <name>page1</name>
-      <number>1</number>
+      <number>2</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page1.psd</file>
       <fileName>page1.psd</fileName>
       <variables>
@@ -210,7 +210,7 @@
     </page>
     <page id="page2">
       <name>page2</name>
-      <number>2</number>
+      <number>1</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page2.psd</file>
       <fileName>page2.psd</fileName>
       <variables/>
@@ -980,6 +980,374 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>Ser_de_dos_cabe</renderAs>
       </layer>
+    </page>
+    <page id="page16">
+      <name>page16</name>
+      <number>16</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page16.psd</file>
+      <fileName>page16.psd</fileName>
+    </page>
+    <page id="page17">
+      <name>page17</name>
+      <number>17</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page17.psd</file>
+      <fileName>page17.psd</fileName>
+      <trigger id="hideAll">
+        <name>hideAll</name>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Set_de_gafas</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <trigger id="act_398">
+        <name>act_398</name>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>1</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Set_de_gafas</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>3</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <timer id="timerHideAll">
+        <name>timerHideAll</name>
+        <delay>0</delay>
+        <trigger>hideAll</trigger>
+        <loop>1</loop>
+      </timer>
+      <timer id="timerAnimation">
+        <name>timerAnimation</name>
+        <delay>1</delay>
+        <trigger>act_398</trigger>
+        <loop>1</loop>
+      </timer>
+    </page>
+    <page id="page18">
+      <name>page18</name>
+      <number>18</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page18.psd</file>
+      <fileName>page18.psd</fileName>
+      <variables>
+        <variable id="hasChanclaVerde">
+          <name>hasChanclaVerde</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <trigger id="hideChancla">
+        <name>hideChancla</name>
+        <action id="if_326">
+          <name>if_326</name>
+          <type>IF</type>
+          <exp1>hasChanclaVerde</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasChanclaVerde</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Chancla_verde</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_195">
+          <name>end_195</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+      <timer id="timerChancla">
+        <name>timerChancla</name>
+        <delay>0</delay>
+        <trigger>hideChancla</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnChancla">
+        <name>btnChancla</name>
+        <layer>Chancla_verde</layer>
+        <rollover>Chancla_verde</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_812">
+          <name>var_812</name>
+          <type>Edit Variable</type>
+          <variable>hasChanclaVerde</variable>
+          <value>true</value>
+        </action>
+        <action id="act_537">
+          <name>act_537</name>
+          <type>Play Action</type>
+          <trigger>hideChancla</trigger>
+        </action>
+      </button>
+    </page>
+    <page id="page19">
+      <name>page19</name>
+      <number>19</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page19.psd</file>
+      <fileName>page19.psd</fileName>
+      <button id="btnChancla">
+        <name>btnChancla</name>
+        <layer>Chancla_verde</layer>
+        <rollover>Chancla_verde</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_812">
+          <name>var_812</name>
+          <type>Edit Variable</type>
+          <variable>hasChanclaVerde</variable>
+          <value>true</value>
+        </action>
+        <action id="act_537">
+          <name>act_537</name>
+          <type>Play Action</type>
+          <trigger>hideChancla</trigger>
+        </action>
+      </button>
+      <trigger id="hideChancla">
+        <name>hideChancla</name>
+        <action id="if_326">
+          <name>if_326</name>
+          <type>IF</type>
+          <exp1>hasChanclaVerde</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasChanclaVerde</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Chancla_verde</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_195">
+          <name>end_195</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+      <timer id="timerChancla">
+        <name>timerChancla</name>
+        <delay>0</delay>
+        <trigger>hideChancla</trigger>
+        <loop>1</loop>
+      </timer>
+    </page>
+    <page id="page20">
+      <name>page20</name>
+      <number>20</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page20.psd</file>
+      <fileName>page20.psd</fileName>
+    </page>
+    <page id="page21">
+      <name>page21</name>
+      <number>21</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page21.psd</file>
+      <fileName>page21.psd</fileName>
+    </page>
+    <page id="page22">
+      <name>page22</name>
+      <number>22</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page22.psd</file>
+      <fileName>page22.psd</fileName>
+      <anim id="pathBurbuja2">
+        <name>pathBurbuja2</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>Burbuja</layer>
+        <endX>1146</endX>
+        <endY>822</endY>
+        <path>Trazado 2</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>3</duration>
+        <delay>0</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>1</scaleW>
+        <scaleH>1</scaleH>
+        <event>Wait request</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>None</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <anim id="pathBebe">
+        <name>pathBebe</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>kwkBebe_gafas_e</layer>
+        <endX>1328</endX>
+        <endY>873</endY>
+        <path>Trazado 2</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>3</duration>
+        <delay>0</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>1</scaleW>
+        <scaleH>1</scaleH>
+        <event>Wait request</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>None</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <anim id="pathBurbuja1">
+        <name>pathBurbuja1</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>Burbuja</layer>
+        <endX>1146</endX>
+        <endY>822</endY>
+        <path>Trazado 3</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>3</duration>
+        <delay>0</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <event>When page starts</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>playAnimationBu</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <trigger id="playAnimationBu">
+        <name>playAnimationBu</name>
+        <action id="anim_184">
+          <name>anim_184</name>
+          <type>Play Animation</type>
+          <animation>pathBebe</animation>
+        </action>
+        <action id="anim_954">
+          <name>anim_954</name>
+          <type>Play Animation</type>
+          <animation>pathBurbuja2</animation>
+        </action>
+      </trigger>
     </page>
   </pages>
 </project>
