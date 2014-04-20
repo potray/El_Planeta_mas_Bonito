@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 22 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -71,7 +71,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo1 positioning 
-       kwkFondo1 = display.newImageRect( imgDir.. "kwkfondo1.png", 2560, 1598 ); 
+       kwkFondo1 = display.newImageRect( imgDir.. "kwkfondo1.jpg", 2560, 1598 ); 
        kwkFondo1.x = 1280; kwkFondo1.y = 800; kwkFondo1.alpha = 1; kwkFondo1.oldAlpha = 1 
        kwkFondo1.oriX = kwkFondo1.x; kwkFondo1.oriY = kwkFondo1.y 
        kwkFondo1.name = "kwkFondo1" 
@@ -126,13 +126,13 @@ function new()
        -- Actions (functions) 
        function hideBiberon(event) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_538 = transition.to( kwkBiberon, {alpha=0, time=100, delay=0}) 
+            transitionStash.newTransition_904 = transition.to( kwkBiberon, {alpha=0, time=100, delay=0}) 
          end 
        end 
 
        function hideTijeras(event) 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_539 = transition.to( kwkTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_905 = transition.to( kwkTijeras, {alpha=0, time=0, delay=0}) 
          end 
        end 
 

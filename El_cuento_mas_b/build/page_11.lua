@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 22 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -40,13 +40,13 @@ function new()
 
  
        -- Action names 
-       local HideSeres 
        local act_730 
+       local HideSeres 
 
        -- Layer names 
        local kwkFondo3  
        local Ser_2  
-       local Ser_3  
+       local kwikSer_3  
        local kwkSer_1  
        local Ser_4  
        local Ser_5  
@@ -55,7 +55,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo3 positioning 
-       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
        kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
        kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
        kwkFondo3.name = "kwkFondo3" 
@@ -68,12 +68,12 @@ function new()
        Ser_2.name = "Ser_2" 
        menuGroup:insert(Ser_2); menuGroup.Ser_2 = Ser_2 
 
-       -- Ser_3 positioning 
-       Ser_3 = display.newImageRect( imgDir.. "p11_ser_3.png", 614, 979 ); 
-       Ser_3.x = 1359; Ser_3.y = 932; Ser_3.alpha = 1; Ser_3.oldAlpha = 1 
-       Ser_3.oriX = Ser_3.x; Ser_3.oriY = Ser_3.y 
-       Ser_3.name = "Ser_3" 
-       menuGroup:insert(Ser_3); menuGroup.Ser_3 = Ser_3 
+       -- kwikSer_3 positioning 
+       kwikSer_3 = display.newImageRect( imgDir.. "p11_kwikser_3.png", 614, 979 ); 
+       kwikSer_3.x = 1359; kwikSer_3.y = 932; kwikSer_3.alpha = 1; kwikSer_3.oldAlpha = 1 
+       kwikSer_3.oriX = kwikSer_3.x; kwikSer_3.oriY = kwikSer_3.y 
+       kwikSer_3.name = "kwikSer_3" 
+       menuGroup:insert(kwikSer_3); menuGroup.kwikSer_3 = kwikSer_3 
 
        -- kwkSer_1 positioning 
        kwkSer_1 = display.newImageRect( imgDir.. "kwkser_1.png", 616, 983 ); 
@@ -108,21 +108,21 @@ function new()
        -- (MIDDLE) External code will render here 
  
        -- Actions (functions) 
-       function HideSeres(event) 
-            transitionStash.newTransition_447 = transition.to( Ser_2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_448 = transition.to( Ser_3, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_448 = transition.to( kwkSer_1, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_449 = transition.to( Ser_4, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_449 = transition.to( Ser_5, {alpha=0, time=0, delay=0}) 
-           act_730() 
+       function act_730(event) 
+            transitionStash.newTransition_678 = transition.to( kwkSer_1, {alpha=kwkSer_1.oldAlpha, time=1000, delay=1000}) 
+            transitionStash.newTransition_678 = transition.to( Ser_2, {alpha=Ser_2.oldAlpha, time=1000, delay=2000}) 
+            transitionStash.newTransition_678 = transition.to( kwikSer_3, {alpha=kwikSer_3.oldAlpha, time=1000, delay=3000}) 
+            transitionStash.newTransition_679 = transition.to( Ser_4, {alpha=Ser_4.oldAlpha, time=1000, delay=4000}) 
+            transitionStash.newTransition_679 = transition.to( Ser_5, {alpha=Ser_5.oldAlpha, time=1000, delay=5000}) 
        end 
 
-       function act_730(event) 
-            transitionStash.newTransition_450 = transition.to( kwkSer_1, {alpha=kwkSer_1.oldAlpha, time=1000, delay=1000}) 
-            transitionStash.newTransition_450 = transition.to( Ser_2, {alpha=Ser_2.oldAlpha, time=1000, delay=2000}) 
-            transitionStash.newTransition_451 = transition.to( Ser_3, {alpha=Ser_3.oldAlpha, time=1000, delay=3000}) 
-            transitionStash.newTransition_451 = transition.to( Ser_4, {alpha=Ser_4.oldAlpha, time=1000, delay=4000}) 
-            transitionStash.newTransition_452 = transition.to( Ser_5, {alpha=Ser_5.oldAlpha, time=1000, delay=5000}) 
+       function HideSeres(event) 
+            transitionStash.newTransition_679 = transition.to( Ser_2, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_679 = transition.to( kwikSer_3, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_680 = transition.to( kwkSer_1, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_680 = transition.to( Ser_4, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_680 = transition.to( Ser_5, {alpha=0, time=0, delay=0}) 
+           act_730() 
        end 
 
  

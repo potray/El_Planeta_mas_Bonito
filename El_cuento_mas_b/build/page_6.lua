@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 22 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -47,7 +47,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- Fondo2SinBurbuj positioning 
-       Fondo2SinBurbuj = display.newImageRect( imgDir.. "p6_fondo2sinburbuj.png", 2560, 1600 ); 
+       Fondo2SinBurbuj = display.newImageRect( imgDir.. "p6_fondo2sinburbuj.jpg", 2560, 1600 ); 
        Fondo2SinBurbuj.x = 1280; Fondo2SinBurbuj.y = 800; Fondo2SinBurbuj.alpha = 1; Fondo2SinBurbuj.oldAlpha = 1 
        Fondo2SinBurbuj.oriX = Fondo2SinBurbuj.x; Fondo2SinBurbuj.oriY = Fondo2SinBurbuj.y 
        Fondo2SinBurbuj.name = "Fondo2SinBurbuj" 

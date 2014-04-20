@@ -58,7 +58,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo3 positioning 
-       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
        kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
        kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
        kwkFondo3.name = "kwkFondo3" 
@@ -120,7 +120,7 @@ function new()
        -- Actions (functions) 
        function hideChancla(event) 
          if (hasChanclaVerde == true) then 
-            transitionStash.newTransition_693 = transition.to( Chancla_verde, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_711 = transition.to( Chancla_verde, {alpha=0, time=1000, delay=0}) 
          end 
        end 
 

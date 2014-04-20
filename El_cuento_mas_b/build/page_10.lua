@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 22 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -58,7 +58,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo3 positioning 
-       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
        kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
        kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
        kwkFondo3.name = "kwkFondo3" 
@@ -120,7 +120,7 @@ function new()
        -- Actions (functions) 
        function hideRosa(event) 
          if (hasRosa == true) then 
-            transitionStash.newTransition_073 = transition.to( kwkRosa, {alpha=0, time=100, delay=0}) 
+            transitionStash.newTransition_214 = transition.to( kwkRosa, {alpha=0, time=100, delay=0}) 
          end 
        end 
 

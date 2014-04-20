@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 15 
+    local numPages = 22 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -49,7 +49,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo2 positioning 
-       kwkFondo2 = display.newImageRect( imgDir.. "kwkfondo2.png", 2560, 1600 ); 
+       kwkFondo2 = display.newImageRect( imgDir.. "kwkfondo2.jpg", 2560, 1600 ); 
        kwkFondo2.x = 1280; kwkFondo2.y = 800; kwkFondo2.alpha = 1; kwkFondo2.oldAlpha = 1 
        kwkFondo2.oriX = kwkFondo2.x; kwkFondo2.oriY = kwkFondo2.y 
        kwkFondo2.name = "kwkFondo2" 

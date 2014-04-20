@@ -55,7 +55,7 @@ function new()
        -- (TOP) External code will render here 
 
        -- kwkFondo3 positioning 
-       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
        kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
        kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
        kwkFondo3.name = "kwkFondo3" 
@@ -203,20 +203,20 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
 
        end --closes function pathBebe
 
-       local onEnd_pathBurbuja1_953 = function() 
+       local onEnd_pathBurbuja1_630 = function() 
           playAnimationBu(); 
        end --ends reStart for pathBurbuja1 
        gtStash.gt_pathBurbuja1 = btween.new( Burbuja, 3, { 
-         { x = 54, y = 443}, --regular curve
-         { x = 1280, y = 256}, 
+         { x = 53, y = 442}, --regular curve
+         { x = 1280, y = 255}, 
          { x = 1470, y = 1189}, 
-         { x = 1472, y = 1222}, 
+         { x = 1471, y = 1221}, 
 
-         { x = 1472, y = 1222}, 
-         { x = 1472, y = 1222}, 
-         { x = 1472, y = 1222}, 
-         { x = 1472, y = 1222}, 
-angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=0.1, onComplete=onEnd_pathBurbuja1_953}, {  x=1495, y=1171,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
+         { x = 1471, y = 1221}, 
+         { x = 1471, y = 1221}, 
+         { x = 1471, y = 1221}, 
+         { x = 1471, y = 1221}, 
+angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=0.1, onComplete=onEnd_pathBurbuja1_630}, {  x=1495, y=1171,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
 
  
        -- Actions (functions) 
