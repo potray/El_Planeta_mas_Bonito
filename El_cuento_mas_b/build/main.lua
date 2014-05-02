@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Sun Apr 20 2014 20:21:17 GMT+0200 
+-- Exported on Fri May 02 2014 18:16:53 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -17,7 +17,6 @@ json = require("json")
 local function versionCheck(event) if "clicked" == event.action then if event.index == 2 then system.openURL( "https://developer.coronalabs.com/downloads/coronasdk" ) end end end 
 if ( system.getInfo("environment") =="simulator" and system.getInfo("build") ~="2013.2100" ) then native.showAlert("Corona SDK Incompatible Version","Your Corona SDK version is different than the certified one with Kwik. Install build 2013.2100 or you may have issues in your project.",{"OK", "Download"}, versionCheck) end 
 
-Navigation = require("kNavi") 
 local gtween = require("gtween") 
 local btween = require("btween") 
 Inventory = require("inventory") 
@@ -33,7 +32,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 1 
+local goPage = 7 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 
@@ -72,19 +71,6 @@ function kwkVarCheck(variable)
    return (found) 
 end 
 
--- Bookmark function 
-local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
-local file = io.open( path, "r" ) 
-if file then 
-   goPage = file:read("*l") 
-   kBookmark = file:read("*l") 
-   io.close(file) 
-else 
-   local file = io.open( path, "w+b" ) 
-   file:write( "1\n1" ) 
-   kBookmark = 1 
-   io.close(file) 
-end 
 
 
 --Create a main group
@@ -96,10 +82,41 @@ local function main()
    mainGroup:insert(director.directorView)
 
    -- Adding external code
-   saveKwikVars({"hasBiberon",false}) 
-saveKwikVars({"hasTijeras",false}) 
-saveKwikVars({"hasRosa",false}) 
-saveKwikVars({"hasChanclaVerde", false}) 
+   local doIt = true;
+
+if (doIt) then
+
+	saveKwikVars({"hasBiberon",false}) 
+	saveKwikVars({"hasTijeras",false}) 
+	saveKwikVars({"hasRosa",false}) 
+	saveKwikVars({"hasChanclaVerde", false})
+	saveKwikVars({"hasErizo", false})
+	saveKwikVars({"hasBotaAbeja", false})
+
+	saveKwikVars({"CL1", 0})
+	saveKwikVars({"CL2", 0})
+	saveKwikVars({"CL3", 0})
+	saveKwikVars({"CL5", 0})
+
+	saveKwikVars({"CI2", 0})
+	saveKwikVars({"CI3", 0})
+	saveKwikVars({"CI4", 0})
+	saveKwikVars({"CI5", 0})
+
+	saveKwikVars({"CG1", 0})
+	saveKwikVars({"CG2", 0})
+	saveKwikVars({"CG8", 0})
+
+	print("Patata!!!")
+
+	saveKwikVars({"comodin", 0})
+	saveKwikVars({"CL", 0})
+	saveKwikVars({"CI", 0})
+	saveKwikVars({"CG", 0})
+
+	saveKwikVars({"Fav01Completed", false})
+
+end 
 
    director:changeScene("page_"..goPage)
    return true

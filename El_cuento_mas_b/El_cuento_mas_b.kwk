@@ -9,8 +9,8 @@
     <height>1600</height>
     <orientation>Landscape</orientation>
     <resolution>300</resolution>
-    <bookmark>true</bookmark>
-    <swipe>true</swipe>
+    <bookmark>false</bookmark>
+    <swipe>false</swipe>
     <pinch>false</pinch>
     <thumbs>true</thumbs>
     <codes>
@@ -26,7 +26,7 @@
         <path>/d/Dropbox/TFG/Librer%C3%ADas/inventory.lua</path>
       </lib>
     </libraries>
-    <navigation>true</navigation>
+    <navigation>false</navigation>
     <swipeSpacer>120</swipeSpacer>
     <thumbW>200</thumbW>
     <navDirection>Top</navDirection>
@@ -36,7 +36,7 @@
     <rotation>false</rotation>
     <startPage>1</startPage>
     <endPage>22</endPage>
-    <endAuto>false</endAuto>
+    <endAuto>true</endAuto>
     <iconReady>false</iconReady>
     <expansion>false</expansion>
     <googleKey/>
@@ -68,6 +68,156 @@
           <save>true</save>
           <type>global</type>
           <content>Formula</content>
+          <where>before</where>
+        </variable>
+        <variable id="CI2">
+          <name>CI2</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CI3">
+          <name>CI3</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CI4">
+          <name>CI4</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CI5">
+          <name>CI5</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CG8">
+          <name>CG8</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CG1">
+          <name>CG1</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CG2">
+          <name>CG2</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="comodin">
+          <name>comodin</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CG">
+          <name>CG</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>after</where>
+        </variable>
+        <variable id="CI">
+          <name>CI</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>after</where>
+        </variable>
+        <variable id="CL">
+          <name>CL</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CL1">
+          <name>CL1</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CL2">
+          <name>CL2</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CL3">
+          <name>CL3</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
+          <where>before</where>
+        </variable>
+        <variable id="CL5">
+          <name>CL5</name>
+          <value>0</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Number</content>
           <where>before</where>
         </variable>
       </variables>
@@ -219,6 +369,71 @@
           <trigger>hideBiberon</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <code id="startVariables">
+        <name>startVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/startVariables.lua</extFile>
+      </code>
+      <code id="updateCoeficientes">
+        <name>updateCoeficientes</name>
+        <code/>
+        <position>bottom</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/updateCoefs.lua</extFile>
+      </code>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page2">
       <name>page2</name>
@@ -338,6 +553,36 @@
           <trigger>hideTijeras</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo1">
         <name>kwkFondo1</name>
         <scaleW>100</scaleW>
@@ -350,6 +595,44 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo1</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page3">
       <name>page3</name>
@@ -469,6 +752,36 @@
           <trigger>hideTijeras</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo1">
         <name>kwkFondo1</name>
         <scaleW>100</scaleW>
@@ -481,6 +794,44 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo1</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page4">
       <name>page4</name>
@@ -499,6 +850,75 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo2</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page5">
       <name>page5</name>
@@ -517,49 +937,121 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo2</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="if_265">
+          <name>if_265</name>
+          <type>IF</type>
+          <exp1>Fav01Completed</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>page6</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+        <action id="else_602">
+          <name>else_602</name>
+          <type>Else</type>
+          <elseType>Simple</elseType>
+          <exp1>Fav01Completed</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>false</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="goPage_796">
+          <name>goPage_796</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+        <action id="end_645">
+          <name>end_645</name>
+          <type>End IF</type>
+        </action>
+      </button>
     </page>
     <page id="page6">
       <name>page6</name>
-      <number>6</number>
+      <number>7</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page6.psd</file>
       <fileName>page6.psd</fileName>
-      <anim id="PathBurbuja">
-        <name>PathBurbuja</name>
-        <target>Layer</target>
-        <type>Path</type>
-        <layer>Burbuja_</layer>
-        <endX>677</endX>
-        <endY>378</endY>
-        <path>Trazado de trabajo</path>
-        <closedPath>false</closedPath>
-        <autoTurn>false</autoTurn>
-        <angle>0</angle>
-        <adjAngle>180</adjAngle>
-        <endAlpha>100</endAlpha>
-        <duration>3</duration>
-        <delay>0</delay>
-        <easing>Linear</easing>
-        <pause>false</pause>
-        <linearLoop>1</linearLoop>
-        <linearReverse>false</linearReverse>
-        <rotate>0</rotate>
-        <anchor>MiddleCenter</anchor>
-        <scaleW>1</scaleW>
-        <scaleH>1</scaleH>
-        <event>When page starts</event>
-        <reStart>false</reStart>
-        <audio>None</audio>
-        <trigger>None</trigger>
-        <breadCrumb>false</breadCrumb>
-        <breadAnchor>Center</breadAnchor>
-        <breadShape>Rectangle</breadShape>
-        <breadWidth>10</breadWidth>
-        <breadHeight>10</breadHeight>
-        <breadColor>255,255,255</breadColor>
-        <breadInterval>50</breadInterval>
-        <breadDispose>true</breadDispose>
-        <breadSec>1</breadSec>
-      </anim>
       <layer id="Fondo2SinBurbuj">
         <name>Fondo2SinBurbuj</name>
         <scaleW>100</scaleW>
@@ -572,10 +1064,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>Fondo2SinBurbuj</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>page5</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page7">
       <name>page7</name>
-      <number>7</number>
+      <number>8</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page7.psd</file>
       <fileName>page7.psd</fileName>
       <variables>
@@ -640,6 +1201,36 @@
           <trigger>hideRosa</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <timer id="timerRosa">
         <name>timerRosa</name>
         <delay>0.1</delay>
@@ -658,10 +1249,48 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page8">
       <name>page8</name>
-      <number>8</number>
+      <number>9</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page8.psd</file>
       <fileName>page8.psd</fileName>
       <variables/>
@@ -721,6 +1350,36 @@
           <trigger>hideRosa</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo3">
         <name>kwkFondo3</name>
         <scaleW>100</scaleW>
@@ -733,10 +1392,48 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page9">
       <name>page9</name>
-      <number>9</number>
+      <number>10</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page9.psd</file>
       <fileName>page9.psd</fileName>
       <variables/>
@@ -796,6 +1493,36 @@
           <trigger>hideRosa</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo3">
         <name>kwkFondo3</name>
         <scaleW>100</scaleW>
@@ -808,10 +1535,48 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page10">
       <name>page10</name>
-      <number>10</number>
+      <number>11</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page10.psd</file>
       <fileName>page10.psd</fileName>
       <variables/>
@@ -871,6 +1636,36 @@
           <trigger>hideRosa</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo3">
         <name>kwkFondo3</name>
         <scaleW>100</scaleW>
@@ -883,10 +1678,48 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page11">
       <name>page11</name>
-      <number>11</number>
+      <number>12</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page11.psd</file>
       <fileName>page11.psd</fileName>
       <trigger id="act_730">
@@ -1018,10 +1851,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page12">
       <name>page12</name>
-      <number>12</number>
+      <number>13</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page12.psd</file>
       <fileName>page12.psd</fileName>
       <layer id="kwkFondo3">
@@ -1036,10 +1938,119 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>30</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>30</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>30</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>30</offset>
+      </replacement>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page13">
       <name>page13</name>
-      <number>13</number>
+      <number>14</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page13.psd</file>
       <fileName>page13.psd</fileName>
       <layer id="kwkFondo3">
@@ -1054,10 +2065,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page14">
       <name>page14</name>
-      <number>14</number>
+      <number>15</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page14.psd</file>
       <fileName>page14.psd</fileName>
       <layer id="kwkFondo3">
@@ -1072,10 +2152,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page15">
       <name>page15</name>
-      <number>15</number>
+      <number>16</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page15.psd</file>
       <fileName>page15.psd</fileName>
       <trigger id="HideAnimationPa">
@@ -1160,10 +2309,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page16">
       <name>page16</name>
-      <number>16</number>
+      <number>17</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page16.psd</file>
       <fileName>page16.psd</fileName>
       <layer id="kwkFondo3">
@@ -1178,10 +2396,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page17">
       <name>page17</name>
-      <number>17</number>
+      <number>18</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page17.psd</file>
       <fileName>page17.psd</fileName>
       <trigger id="hideAll">
@@ -1274,10 +2561,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page18">
       <name>page18</name>
-      <number>18</number>
+      <number>19</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page18.psd</file>
       <fileName>page18.psd</fileName>
       <variables>
@@ -1348,6 +2704,36 @@
           <trigger>hideChancla</trigger>
         </action>
       </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
       <layer id="kwkFondo3">
         <name>kwkFondo3</name>
         <scaleW>100</scaleW>
@@ -1360,10 +2746,48 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page19">
       <name>page19</name>
-      <number>19</number>
+      <number>20</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page19.psd</file>
       <fileName>page19.psd</fileName>
       <button id="btnChancla">
@@ -1383,6 +2807,36 @@
           <name>act_537</name>
           <type>Play Action</type>
           <trigger>hideChancla</trigger>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
         </action>
       </button>
       <trigger id="hideChancla">
@@ -1494,10 +2948,49 @@
         <jpgQuality>2</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
     <page id="page20">
       <name>page20</name>
-      <number>20</number>
+      <number>21</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page20.psd</file>
       <fileName>page20.psd</fileName>
       <layer id="kwkFondo3">
@@ -1512,10 +3005,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page21">
       <name>page21</name>
-      <number>21</number>
+      <number>22</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page21.psd</file>
       <fileName>page21.psd</fileName>
       <layer id="kwkFondo3">
@@ -1530,10 +3092,79 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables/>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
     </page>
     <page id="page22">
       <name>page22</name>
-      <number>22</number>
+      <number>23</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page22.psd</file>
       <fileName>page22.psd</fileName>
       <anim id="pathBurbuja2">
@@ -1660,6 +3291,37 @@
           <animation>pathBurbuja2</animation>
         </action>
       </trigger>
+      <trigger id="hideErizo">
+        <name>hideErizo</name>
+        <action id="if_602">
+          <name>if_602</name>
+          <type>IF</type>
+          <exp1>hasErizo</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_602">
+          <name>if_602</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkErizo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_419">
+          <name>end_419</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
       <layer id="kwkFondo3">
         <name>kwkFondo3</name>
         <scaleW>100</scaleW>
@@ -1672,6 +3334,1199 @@
         <jpgQuality>6</jpgQuality>
         <renderAs>kwkFondo3</renderAs>
       </layer>
+      <variables>
+        <variable id="hasErizo">
+          <name>hasErizo</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <timer id="timerErizo">
+        <name>timerErizo</name>
+        <delay>0</delay>
+        <trigger>hideErizo</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnErizo">
+        <name>btnErizo</name>
+        <layer>kwkErizo</layer>
+        <rollover>kwkErizo</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_252">
+          <name>var_252</name>
+          <type>Edit Variable</type>
+          <variable>hasErizo</variable>
+          <value>true</value>
+        </action>
+        <action id="act_564">
+          <name>act_564</name>
+          <type>Play Action</type>
+          <trigger>hideErizo</trigger>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+    </page>
+    <page id="page23">
+      <name>page23</name>
+      <number>24</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page23.psd</file>
+      <fileName>page23.psd</fileName>
+      <trigger id="hideAll">
+        <name>hideAll</name>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text4</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text5</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_733">
+          <name>act_733</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_4</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <trigger id="animateAll">
+        <name>animateAll</name>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>4</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text4</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>6</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text5</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>8</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>10</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>10</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>10</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>Text6_4</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>10</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Play Action</type>
+          <trigger>hideSeres</trigger>
+        </action>
+      </trigger>
+      <trigger id="hideSeres">
+        <name>hideSeres</name>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkSer_gafas_1</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>2</duration>
+          <delay>12</delay>
+          <target>Layer</target>
+        </action>
+        <action id="reload_031">
+          <name>reload_031</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkSer_gafas_3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>2</duration>
+          <delay>12</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <trigger id="hideErizo">
+        <name>hideErizo</name>
+        <action id="if_602">
+          <name>if_602</name>
+          <type>IF</type>
+          <exp1>hasErizo</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_602">
+          <name>if_602</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkErizo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_419">
+          <name>end_419</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+      <layer id="kwkFondo3">
+        <name>kwkFondo3</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo3</renderAs>
+      </layer>
+      <variables/>
+      <timer id="timerErizo">
+        <name>timerErizo</name>
+        <delay>0</delay>
+        <trigger>hideErizo</trigger>
+        <loop>1</loop>
+      </timer>
+      <timer id="timerHideAll">
+        <name>timerHideAll</name>
+        <delay>0</delay>
+        <trigger>hideAll</trigger>
+        <loop>1</loop>
+      </timer>
+      <timer id="timerAnimateAll">
+        <name>timerAnimateAll</name>
+        <delay>1</delay>
+        <trigger>animateAll</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnErizo">
+        <name>btnErizo</name>
+        <layer>kwkErizo</layer>
+        <rollover>kwkErizo</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_252">
+          <name>var_252</name>
+          <type>Edit Variable</type>
+          <variable>hasErizo</variable>
+          <value>true</value>
+        </action>
+        <action id="act_564">
+          <name>act_564</name>
+          <type>Play Action</type>
+          <trigger>hideErizo</trigger>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+    </page>
+    <page id="page24">
+      <name>page24</name>
+      <number>25</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page24.psd</file>
+      <fileName>page24.psd</fileName>
+      <trigger id="hideAll">
+        <name>hideAll</name>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2_1</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2_2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkCaballo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2_1</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text2_2</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>2</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkCaballo</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>2</duration>
+          <delay>4</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_486">
+          <name>act_486</name>
+          <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>7</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <trigger id="hideBotaAbeja">
+        <name>hideBotaAbeja</name>
+        <action id="if_782">
+          <name>if_782</name>
+          <type>IF</type>
+          <exp1>hasBotaAbeja</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="act_564">
+          <name>act_564</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkBota_abeja</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_440">
+          <name>end_440</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+      <layer id="kwkFondo3">
+        <name>kwkFondo3</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo3</renderAs>
+      </layer>
+      <variables>
+        <variable id="hasBotaAbeja">
+          <name>hasBotaAbeja</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <timer id="timerAnimation">
+        <name>timerAnimation</name>
+        <delay>0</delay>
+        <trigger>hideAll</trigger>
+        <loop>1</loop>
+      </timer>
+      <timer id="timerBotaAbeja">
+        <name>timerBotaAbeja</name>
+        <delay>0</delay>
+        <trigger>hideBotaAbeja</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnBotaAbeja">
+        <name>btnBotaAbeja</name>
+        <layer>kwkBota_abeja</layer>
+        <rollover>kwkBota_abeja</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_562">
+          <name>var_562</name>
+          <type>Edit Variable</type>
+          <variable>hasBotaAbeja</variable>
+          <value>true</value>
+        </action>
+        <action id="act_999">
+          <name>act_999</name>
+          <type>Play Action</type>
+          <trigger>hideBotaAbeja</trigger>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+    </page>
+    <page id="page25">
+      <name>page25</name>
+      <number>26</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/page25.psd</file>
+      <fileName>page25.psd</fileName>
+      <trigger id="hideBotaAbeja">
+        <name>hideBotaAbeja</name>
+        <action id="if_782">
+          <name>if_782</name>
+          <type>IF</type>
+          <exp1>hasBotaAbeja</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="act_564">
+          <name>act_564</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkBota_abeja</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_440">
+          <name>end_440</name>
+          <type>End IF</type>
+        </action>
+      </trigger>
+      <layer id="kwkFondo3">
+        <name>kwkFondo3</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo3</renderAs>
+      </layer>
+      <variables/>
+      <timer id="timerBotaAbeja">
+        <name>timerBotaAbeja</name>
+        <delay>0</delay>
+        <trigger>hideBotaAbeja</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnBotaAbeja">
+        <name>btnBotaAbeja</name>
+        <layer>kwkBota_abeja</layer>
+        <rollover>kwkBota_abeja</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="var_562">
+          <name>var_562</name>
+          <type>Edit Variable</type>
+          <variable>hasBotaAbeja</variable>
+          <value>true</value>
+        </action>
+        <action id="act_999">
+          <name>act_999</name>
+          <type>Play Action</type>
+          <trigger>hideBotaAbeja</trigger>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>Previous (auto)</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <anim id="pathCaballo">
+        <name>pathCaballo</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>kwkCaballo</layer>
+        <endX>1769</endX>
+        <endY>-84</endY>
+        <path>Trazado caballo</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>1</duration>
+        <delay>4</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <event>When page starts</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>None</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <anim id="pathHija">
+        <name>pathHija</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>kwkHija_gafas</layer>
+        <endX>899</endX>
+        <endY>591</endY>
+        <path>Trazado hija</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>1</duration>
+        <delay>2</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <event>When page starts</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>None</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <anim id="pathMama">
+        <name>pathMama</name>
+        <target>Layer</target>
+        <type>Path</type>
+        <layer>kwkMama_gafas</layer>
+        <endX>1280</endX>
+        <endY>542</endY>
+        <path>Trazado madre</path>
+        <closedPath>false</closedPath>
+        <autoTurn>false</autoTurn>
+        <angle>0</angle>
+        <adjAngle>180</adjAngle>
+        <endAlpha>100</endAlpha>
+        <duration>1</duration>
+        <delay>2</delay>
+        <easing>Linear</easing>
+        <pause>false</pause>
+        <linearLoop>1</linearLoop>
+        <linearReverse>false</linearReverse>
+        <rotate>0</rotate>
+        <anchor>MiddleCenter</anchor>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <event>When page starts</event>
+        <reStart>false</reStart>
+        <audio>None</audio>
+        <trigger>None</trigger>
+        <breadCrumb>false</breadCrumb>
+        <breadAnchor>Center</breadAnchor>
+        <breadShape>Rectangle</breadShape>
+        <breadWidth>10</breadWidth>
+        <breadHeight>10</breadHeight>
+        <breadColor>255,255,255</breadColor>
+        <breadInterval>50</breadInterval>
+        <breadDispose>true</breadDispose>
+        <breadSec>1</breadSec>
+      </anim>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+    </page>
+    <page id="favor1">
+      <name>favor1</name>
+      <number>6</number>
+      <file>/d/Dropbox/TFG/El_cuento_mas_b/favor1.psd</file>
+      <fileName>favor1.psd</fileName>
+      <layer id="kwkFondo2">
+        <name>kwkFondo2</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo2</renderAs>
+      </layer>
+      <swipePage>false</swipePage>
+      <swipeSpacer>120</swipeSpacer>
+      <scaleW>100</scaleW>
+      <scaleH>100</scaleH>
+      <alpha>100</alpha>
+      <showNav>true</showNav>
+      <inApp/>
+      <variables>
+        <variable id="Fav01Completed">
+          <name>Fav01Completed</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <trigger id="Fallar">
+        <name>Fallar</name>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Text</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Fallo</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="code_524">
+          <name>code_524</name>
+          <type>External Code</type>
+          <code/>
+          <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/Favor%201/fallarFavor1.lua</extFile>
+        </action>
+      </trigger>
+      <trigger id="Acertar">
+        <name>Acertar</name>
+        <action id="end_269">
+          <name>end_269</name>
+          <type>Show/Hide</type>
+          <showLayer>Acierto</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Fallo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Text</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="code_291">
+          <name>code_291</name>
+          <type>External Code</type>
+          <code/>
+          <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/Favor%201/acertarFavor1.lua</extFile>
+        </action>
+        <action id="var_943">
+          <name>var_943</name>
+          <type>Edit Variable</type>
+          <variable>Fav01Completed</variable>
+          <value>true</value>
+        </action>
+        <action id="goPage_168">
+          <name>goPage_168</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>2</wait>
+        </action>
+        <action id="code_381">
+          <name>code_381</name>
+          <type>External Code</type>
+          <code/>
+          <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/updateCoefs.lua</extFile>
+        </action>
+      </trigger>
+      <trigger id="hideStuff">
+        <name>hideStuff</name>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Acierto</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="var_336">
+          <name>var_336</name>
+          <type>Show/Hide</type>
+          <showLayer>Fallo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <timer id="timerHideStuff">
+        <name>timerHideStuff</name>
+        <delay>0</delay>
+        <trigger>hideStuff</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnBar">
+        <name>btnBar</name>
+        <layer>Bar</layer>
+        <rollover>Bar</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="act_850">
+          <name>act_850</name>
+          <type>Play Action</type>
+          <trigger>Fallar</trigger>
+        </action>
+      </button>
+      <button id="btnRestaurante">
+        <name>btnRestaurante</name>
+        <layer>Restaurante</layer>
+        <rollover>Restaurante</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="act_862">
+          <name>act_862</name>
+          <type>Play Action</type>
+          <trigger>Fallar</trigger>
+        </action>
+      </button>
+      <button id="btnChurreria">
+        <name>btnChurreria</name>
+        <layer>Churreria</layer>
+        <rollover>Churreria</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="act_368">
+          <name>act_368</name>
+          <type>Play Action</type>
+          <trigger>Acertar</trigger>
+        </action>
+      </button>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <code id="killDisposal">
+        <name>killDisposal</name>
+        <code/>
+        <position>bottom</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/killDispose.lua</extFile>
+      </code>
+      <code id="Preparar">
+        <name>Preparar</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/Favor%201/prepararFavor1.lua</extFile>
+      </code>
     </page>
   </pages>
 </project>
