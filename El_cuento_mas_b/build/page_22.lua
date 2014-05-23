@@ -1,9 +1,10 @@
 -- Code created by Kwik - Copyright: kwiksher.com 
 -- Version: 2.7.6b 
 module(..., package.seeall) 
+local widget = require("widget") 
 
 function new() 
-    local numPages = 26 
+    local numPages = 34 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -38,16 +39,14 @@ function new()
        -- Button names 
        local btnNextPage
        local btnPrevPage
+       local btnInventario
+
+       -- Action names 
+       local hideInventory 
+       local showInventory 
 
        -- Layer names 
        local kwkFondo3  
-       local Text1  
-       local Text2  
-       local kwkMama_gafas_s  
-       local kwkSer_gafas_1  
-       local kwkSer_gafas_3  
-       local kwkHija_gafas_s  
-       local kwkBebe_gafas_e  
        local kwkRect2  
        local kwkRect1  
        local kwkCLText  
@@ -56,10 +55,29 @@ function new()
        local kwkCGText  
        local kwkDiamante  
        local kwkEsmeralda  
-       local kwkRubi  
        local kwkMedalla  
+       local Text1  
+       local kwkMama_gafas_s  
+       local kwkSer_gafas_1  
+       local kwkSer_gafas_3  
+       local kwkHija_gafas_s  
+       local kwkBebe_gafas_e  
        local kwkNavnext  
        local kwkNavprev  
+       local kwkruby  
+       local kwkMochila  
+       local kwkRectInv  
+       local kwkInvBiberon  
+       local kwkInvTijeras  
+       local kwkInvRosa  
+       local kwkInvErizo  
+       local kwkInvMaquina  
+       local kwkInvCelo  
+       local kwkInvGuitarra  
+       local kwkInvCola  
+
+       -- Added variables before layers render 
+       local InventoryShown = false --  
 
        -- (TOP) External code will render here 
        local CL1 = kwkVarCheck("CL1")
@@ -79,8 +97,19 @@ local CG8 = kwkVarCheck("CG8")
 local CL = kwkVarCheck("CL")
 local CI = kwkVarCheck("CI")
 local CG = kwkVarCheck("CG")
-print ("Loaded CL = "..CL)
-local comodin = kwkVarCheck("comodin") 
+local comodin = kwkVarCheck("comodin")
+
+local favor2Started = kwkVarCheck("Favor2Visitado")
+local Fav01Completed = kwkVarCheck("Fav01Completed")
+local Fav02Completed = kwkVarCheck("Fav02Completed") 
+       local hasRosa = kwkVarCheck("hasRosa")
+local hasTijeras = kwkVarCheck("hasTijeras")
+local hasBiberon = kwkVarCheck("hasBiberon")
+local hasGuitarra = kwkVarCheck("hasGuitarra")
+local hasMaquina = kwkVarCheck("hasMaquina")
+local hasErizo = kwkVarCheck("hasErizo")
+local hasCelo = kwkVarCheck("hasCelo")
+local hasCola = kwkVarCheck("hasCola") 
 
        -- kwkFondo3 positioning 
        kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
@@ -88,55 +117,6 @@ local comodin = kwkVarCheck("comodin")
        kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
        kwkFondo3.name = "kwkFondo3" 
        menuGroup:insert(1,kwkFondo3); menuGroup.kwkFondo3 = kwkFondo3 
-
-       -- Text1 positioning 
-       Text1 = display.newImageRect( imgDir.. "p22_text1.png", 310, 82 ); 
-       Text1.x = 1279; Text1.y = 109; Text1.alpha = 1; Text1.oldAlpha = 1 
-       Text1.oriX = Text1.x; Text1.oriY = Text1.y 
-       Text1.name = "Text1" 
-       menuGroup:insert(Text1); menuGroup.Text1 = Text1 
-
-       -- Text2 positioning 
-       Text2 = display.newImageRect( imgDir.. "p22_text2.png", 1078, 39 ); 
-       Text2.x = 1309; Text2.y = 235; Text2.alpha = 1; Text2.oldAlpha = 1 
-       Text2.oriX = Text2.x; Text2.oriY = Text2.y 
-       Text2.name = "Text2" 
-       menuGroup:insert(Text2); menuGroup.Text2 = Text2 
-
-       -- kwkMama_gafas_s positioning 
-       kwkMama_gafas_s = display.newImageRect( imgDir.. "kwkmama_gafas_s.png", 522, 1001 ); 
-       kwkMama_gafas_s.x = 1967; kwkMama_gafas_s.y = 1020; kwkMama_gafas_s.alpha = 1; kwkMama_gafas_s.oldAlpha = 1 
-       kwkMama_gafas_s.oriX = kwkMama_gafas_s.x; kwkMama_gafas_s.oriY = kwkMama_gafas_s.y 
-       kwkMama_gafas_s.name = "kwkMama_gafas_s" 
-       menuGroup:insert(kwkMama_gafas_s); menuGroup.kwkMama_gafas_s = kwkMama_gafas_s 
-
-       -- kwkSer_gafas_1 positioning 
-       kwkSer_gafas_1 = display.newImageRect( imgDir.. "kwkser_gafas_1.png", 619, 988 ); 
-       kwkSer_gafas_1.x = 414; kwkSer_gafas_1.y = 934; kwkSer_gafas_1.alpha = 1; kwkSer_gafas_1.oldAlpha = 1 
-       kwkSer_gafas_1.oriX = kwkSer_gafas_1.x; kwkSer_gafas_1.oriY = kwkSer_gafas_1.y 
-       kwkSer_gafas_1.name = "kwkSer_gafas_1" 
-       menuGroup:insert(kwkSer_gafas_1); menuGroup.kwkSer_gafas_1 = kwkSer_gafas_1 
-
-       -- kwkSer_gafas_3 positioning 
-       kwkSer_gafas_3 = display.newImageRect( imgDir.. "kwkser_gafas_3.png", 617, 984 ); 
-       kwkSer_gafas_3.x = 2409; kwkSer_gafas_3.y = 966; kwkSer_gafas_3.alpha = 1; kwkSer_gafas_3.oldAlpha = 1 
-       kwkSer_gafas_3.oriX = kwkSer_gafas_3.x; kwkSer_gafas_3.oriY = kwkSer_gafas_3.y 
-       kwkSer_gafas_3.name = "kwkSer_gafas_3" 
-       menuGroup:insert(kwkSer_gafas_3); menuGroup.kwkSer_gafas_3 = kwkSer_gafas_3 
-
-       -- kwkHija_gafas_s positioning 
-       kwkHija_gafas_s = display.newImageRect( imgDir.. "kwkhija_gafas_s.png", 455, 829 ); 
-       kwkHija_gafas_s.x = 1020; kwkHija_gafas_s.y = 972; kwkHija_gafas_s.alpha = 1; kwkHija_gafas_s.oldAlpha = 1 
-       kwkHija_gafas_s.oriX = kwkHija_gafas_s.x; kwkHija_gafas_s.oriY = kwkHija_gafas_s.y 
-       kwkHija_gafas_s.name = "kwkHija_gafas_s" 
-       menuGroup:insert(kwkHija_gafas_s); menuGroup.kwkHija_gafas_s = kwkHija_gafas_s 
-
-       -- kwkBebe_gafas_e positioning 
-       kwkBebe_gafas_e = display.newImageRect( imgDir.. "kwkbebe_gafas_e.png", 334, 547 ); 
-       kwkBebe_gafas_e.x = 1495; kwkBebe_gafas_e.y = 1146; kwkBebe_gafas_e.alpha = 1; kwkBebe_gafas_e.oldAlpha = 1 
-       kwkBebe_gafas_e.oriX = kwkBebe_gafas_e.x; kwkBebe_gafas_e.oriY = kwkBebe_gafas_e.y 
-       kwkBebe_gafas_e.name = "kwkBebe_gafas_e" 
-       menuGroup:insert(kwkBebe_gafas_e); menuGroup.kwkBebe_gafas_e = kwkBebe_gafas_e 
 
        -- kwkRect2 positioning 
        kwkRect2 = display.newImageRect( imgDir.. "kwkrect2.png", 523, 264 ); 
@@ -194,19 +174,54 @@ local comodin = kwkVarCheck("comodin")
        kwkEsmeralda.name = "kwkEsmeralda" 
        menuGroup:insert(kwkEsmeralda); menuGroup.kwkEsmeralda = kwkEsmeralda 
 
-       -- kwkRubi positioning 
-       kwkRubi = display.newImageRect( imgDir.. "kwkrubi.png", 123, 180 ); 
-       kwkRubi.x = 340; kwkRubi.y = 114; kwkRubi.alpha = 1; kwkRubi.oldAlpha = 1 
-       kwkRubi.oriX = kwkRubi.x; kwkRubi.oriY = kwkRubi.y 
-       kwkRubi.name = "kwkRubi" 
-       menuGroup:insert(kwkRubi); menuGroup.kwkRubi = kwkRubi 
-
        -- kwkMedalla positioning 
        kwkMedalla = display.newImageRect( imgDir.. "kwkmedalla.png", 176, 199 ); 
        kwkMedalla.x = 2392; kwkMedalla.y = 113; kwkMedalla.alpha = 1; kwkMedalla.oldAlpha = 1 
        kwkMedalla.oriX = kwkMedalla.x; kwkMedalla.oriY = kwkMedalla.y 
        kwkMedalla.name = "kwkMedalla" 
        menuGroup:insert(kwkMedalla); menuGroup.kwkMedalla = kwkMedalla 
+
+       -- Text1 positioning 
+       Text1 = display.newImageRect( imgDir.. "p22_text1.png", 908, 82 ); 
+       Text1.x = 1336; Text1.y = 121; Text1.alpha = 1; Text1.oldAlpha = 1 
+       Text1.oriX = Text1.x; Text1.oriY = Text1.y 
+       Text1.name = "Text1" 
+       menuGroup:insert(Text1); menuGroup.Text1 = Text1 
+
+       -- kwkMama_gafas_s positioning 
+       kwkMama_gafas_s = display.newImageRect( imgDir.. "kwkmama_gafas_s.png", 522, 1001 ); 
+       kwkMama_gafas_s.x = 1967; kwkMama_gafas_s.y = 1020; kwkMama_gafas_s.alpha = 1; kwkMama_gafas_s.oldAlpha = 1 
+       kwkMama_gafas_s.oriX = kwkMama_gafas_s.x; kwkMama_gafas_s.oriY = kwkMama_gafas_s.y 
+       kwkMama_gafas_s.name = "kwkMama_gafas_s" 
+       menuGroup:insert(kwkMama_gafas_s); menuGroup.kwkMama_gafas_s = kwkMama_gafas_s 
+
+       -- kwkSer_gafas_1 positioning 
+       kwkSer_gafas_1 = display.newImageRect( imgDir.. "kwkser_gafas_1.png", 619, 988 ); 
+       kwkSer_gafas_1.x = 414; kwkSer_gafas_1.y = 934; kwkSer_gafas_1.alpha = 1; kwkSer_gafas_1.oldAlpha = 1 
+       kwkSer_gafas_1.oriX = kwkSer_gafas_1.x; kwkSer_gafas_1.oriY = kwkSer_gafas_1.y 
+       kwkSer_gafas_1.name = "kwkSer_gafas_1" 
+       menuGroup:insert(kwkSer_gafas_1); menuGroup.kwkSer_gafas_1 = kwkSer_gafas_1 
+
+       -- kwkSer_gafas_3 positioning 
+       kwkSer_gafas_3 = display.newImageRect( imgDir.. "kwkser_gafas_3.png", 617, 984 ); 
+       kwkSer_gafas_3.x = 2409; kwkSer_gafas_3.y = 966; kwkSer_gafas_3.alpha = 1; kwkSer_gafas_3.oldAlpha = 1 
+       kwkSer_gafas_3.oriX = kwkSer_gafas_3.x; kwkSer_gafas_3.oriY = kwkSer_gafas_3.y 
+       kwkSer_gafas_3.name = "kwkSer_gafas_3" 
+       menuGroup:insert(kwkSer_gafas_3); menuGroup.kwkSer_gafas_3 = kwkSer_gafas_3 
+
+       -- kwkHija_gafas_s positioning 
+       kwkHija_gafas_s = display.newImageRect( imgDir.. "kwkhija_gafas_s.png", 455, 829 ); 
+       kwkHija_gafas_s.x = 1020; kwkHija_gafas_s.y = 972; kwkHija_gafas_s.alpha = 1; kwkHija_gafas_s.oldAlpha = 1 
+       kwkHija_gafas_s.oriX = kwkHija_gafas_s.x; kwkHija_gafas_s.oriY = kwkHija_gafas_s.y 
+       kwkHija_gafas_s.name = "kwkHija_gafas_s" 
+       menuGroup:insert(kwkHija_gafas_s); menuGroup.kwkHija_gafas_s = kwkHija_gafas_s 
+
+       -- kwkBebe_gafas_e positioning 
+       kwkBebe_gafas_e = display.newImageRect( imgDir.. "kwkbebe_gafas_e.png", 334, 547 ); 
+       kwkBebe_gafas_e.x = 1495; kwkBebe_gafas_e.y = 1146; kwkBebe_gafas_e.alpha = 1; kwkBebe_gafas_e.oldAlpha = 1 
+       kwkBebe_gafas_e.oriX = kwkBebe_gafas_e.x; kwkBebe_gafas_e.oriY = kwkBebe_gafas_e.y 
+       kwkBebe_gafas_e.name = "kwkBebe_gafas_e" 
+       menuGroup:insert(kwkBebe_gafas_e); menuGroup.kwkBebe_gafas_e = kwkBebe_gafas_e 
 
        -- kwkNavnext positioning 
        kwkNavnext = display.newImageRect( imgDir.. "kwknavnext.png", 106, 361 ); 
@@ -221,10 +236,150 @@ local comodin = kwkVarCheck("comodin")
        kwkNavprev.oriX = kwkNavprev.x; kwkNavprev.oriY = kwkNavprev.y 
        kwkNavprev.name = "kwkNavprev" 
        menuGroup:insert(kwkNavprev); menuGroup.kwkNavprev = kwkNavprev 
+
+       -- kwkruby positioning 
+       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
+       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
+       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
+       kwkruby.name = "kwkruby" 
+       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
+
+       -- kwkMochila positioning 
+
+       local function onkwkMochilaEvent() 
+          btnInventario() 
+       end 
+       kwkMochila = widget.newButton { 
+          id = "kwkMochila", 
+          defaultFile = imgDir.."kwkmochila.png", 
+          overFile = imgDir.."kwkmochila.png", 
+          width = 216, height = 263, 
+          onRelease = onkwkMochilaEvent 
+       } 
+       kwkMochila.x = 146; kwkMochila.y = 1444 
+       kwkMochila.oriX = 146; kwkMochila.oriY = 1444 
+       kwkMochila.alpha = 1; kwkMochila.oldAlpha = 1 
+       kwkMochila.name = "kwkMochila" 
+       menuGroup:insert(kwkMochila); menuGroup.kwkMochila = kwkMochila 
+
+       -- kwkRectInv positioning 
+       kwkRectInv = display.newImageRect( imgDir.. "kwkrectinv.png", 1028, 517 ); 
+       kwkRectInv.x = 1278; kwkRectInv.y = 1276; kwkRectInv.alpha = 1; kwkRectInv.oldAlpha = 1 
+       kwkRectInv.oriX = kwkRectInv.x; kwkRectInv.oriY = kwkRectInv.y 
+       kwkRectInv.name = "kwkRectInv" 
+       menuGroup:insert(kwkRectInv); menuGroup.kwkRectInv = kwkRectInv 
+
+       -- kwkInvBiberon positioning 
+       kwkInvBiberon = display.newImageRect( imgDir.. "kwkinvbiberon.png", 103, 256 ); 
+       kwkInvBiberon.x = 896; kwkInvBiberon.y = 1408; kwkInvBiberon.alpha = 1; kwkInvBiberon.oldAlpha = 1 
+       kwkInvBiberon.oriX = kwkInvBiberon.x; kwkInvBiberon.oriY = kwkInvBiberon.y 
+       kwkInvBiberon.name = "kwkInvBiberon" 
+       menuGroup:insert(kwkInvBiberon); menuGroup.kwkInvBiberon = kwkInvBiberon 
+
+       -- kwkInvTijeras positioning 
+       kwkInvTijeras = display.newImageRect( imgDir.. "kwkinvtijeras.png", 88, 257 ); 
+       kwkInvTijeras.x = 1083; kwkInvTijeras.y = 1147; kwkInvTijeras.alpha = 1; kwkInvTijeras.oldAlpha = 1 
+       kwkInvTijeras.oriX = kwkInvTijeras.x; kwkInvTijeras.oriY = kwkInvTijeras.y 
+       kwkInvTijeras.name = "kwkInvTijeras" 
+       menuGroup:insert(kwkInvTijeras); menuGroup.kwkInvTijeras = kwkInvTijeras 
+
+       -- kwkInvRosa positioning 
+       kwkInvRosa = display.newImageRect( imgDir.. "kwkinvrosa.png", 88, 255 ); 
+       kwkInvRosa.x = 1236; kwkInvRosa.y = 1152; kwkInvRosa.alpha = 1; kwkInvRosa.oldAlpha = 1 
+       kwkInvRosa.oriX = kwkInvRosa.x; kwkInvRosa.oriY = kwkInvRosa.y 
+       kwkInvRosa.name = "kwkInvRosa" 
+       menuGroup:insert(kwkInvRosa); menuGroup.kwkInvRosa = kwkInvRosa 
+
+       -- kwkInvErizo positioning 
+       kwkInvErizo = display.newImageRect( imgDir.. "kwkinverizo.png", 403, 254 ); 
+       kwkInvErizo.x = 1590; kwkInvErizo.y = 1149; kwkInvErizo.alpha = 1; kwkInvErizo.oldAlpha = 1 
+       kwkInvErizo.oriX = kwkInvErizo.x; kwkInvErizo.oriY = kwkInvErizo.y 
+       kwkInvErizo.name = "kwkInvErizo" 
+       menuGroup:insert(kwkInvErizo); menuGroup.kwkInvErizo = kwkInvErizo 
+
+       -- kwkInvMaquina positioning 
+       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
+       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
+       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
+       kwkInvMaquina.name = "kwkInvMaquina" 
+       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
+
+       -- kwkInvCelo positioning 
+       kwkInvCelo = display.newImageRect( imgDir.. "kwkinvcelo.png", 271, 253 ); 
+       kwkInvCelo.x = 1159; kwkInvCelo.y = 1409; kwkInvCelo.alpha = 1; kwkInvCelo.oldAlpha = 1 
+       kwkInvCelo.oriX = kwkInvCelo.x; kwkInvCelo.oriY = kwkInvCelo.y 
+       kwkInvCelo.name = "kwkInvCelo" 
+       menuGroup:insert(kwkInvCelo); menuGroup.kwkInvCelo = kwkInvCelo 
+
+       -- kwkInvGuitarra positioning 
+       kwkInvGuitarra = display.newImageRect( imgDir.. "kwkinvguitarra.png", 152, 238 ); 
+       kwkInvGuitarra.x = 1480; kwkInvGuitarra.y = 1396; kwkInvGuitarra.alpha = 1; kwkInvGuitarra.oldAlpha = 1 
+       kwkInvGuitarra.oriX = kwkInvGuitarra.x; kwkInvGuitarra.oriY = kwkInvGuitarra.y 
+       kwkInvGuitarra.name = "kwkInvGuitarra" 
+       menuGroup:insert(kwkInvGuitarra); menuGroup.kwkInvGuitarra = kwkInvGuitarra 
+
+       -- kwkInvCola positioning 
+       kwkInvCola = display.newImageRect( imgDir.. "kwkinvcola.png", 108, 259 ); 
+       kwkInvCola.x = 1674; kwkInvCola.y = 1405; kwkInvCola.alpha = 1; kwkInvCola.oldAlpha = 1 
+       kwkInvCola.oriX = kwkInvCola.x; kwkInvCola.oriY = kwkInvCola.y 
+       kwkInvCola.name = "kwkInvCola" 
+       menuGroup:insert(kwkInvCola); menuGroup.kwkInvCola = kwkInvCola 
  
        -- Group(s) creation 
 
        -- (MIDDLE) External code will render here 
+ 
+       -- Actions (functions) 
+       function hideInventory(event) 
+            transitionStash.newTransition_482 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_482 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_482 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_483 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_483 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_483 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_483 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_484 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_484 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+           InventoryShown = false
+          saveKwikVars({"InventoryShown",false}) 
+       end 
+
+       function showInventory(event) 
+            transitionStash.newTransition_491 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+         if (hasBiberon == true) then 
+            transitionStash.newTransition_491 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasTijeras == true) then 
+            transitionStash.newTransition_492 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasMaquina == true) then 
+            transitionStash.newTransition_493 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasRosa == true) then 
+            transitionStash.newTransition_493 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasErizo == true) then 
+            transitionStash.newTransition_494 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasCelo == true) then 
+            transitionStash.newTransition_495 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasGuitarra == true) then 
+            transitionStash.newTransition_496 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasCola == true) then 
+            transitionStash.newTransition_496 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+         end 
+           InventoryShown = true
+          saveKwikVars({"InventoryShown",true}) 
+       end 
+
+ 
+      --End Actions (functions) 
+
+ 
+       -- Timers 
+       timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
 
        -- Button event listeners 
        local function onkwkNavnextEvent(event) 
@@ -243,14 +398,22 @@ local comodin = kwkVarCheck("comodin")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_23", "moveFromRight" ) 
             end 
-            timerStash.newTimer_567 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_560 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnPrevPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_21", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_568 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_560 = timer.performWithDelay(0, myClosure_switch, 1) 
+       end 
+
+       function btnInventario(self) 
+         if (InventoryShown == false) then 
+           showInventory() 
+         else 
+           hideInventory() 
+         end 
        end 
 
 
@@ -258,23 +421,6 @@ local comodin = kwkVarCheck("comodin")
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
-          saveKwikVars({"hasBiberon",hasBiberon}) 
-          saveKwikVars({"hasTijeras",hasTijeras}) 
-          saveKwikVars({"CI2",CI2}) 
-          saveKwikVars({"CI3",CI3}) 
-          saveKwikVars({"CI4",CI4}) 
-          saveKwikVars({"CI5",CI5}) 
-          saveKwikVars({"CG8",CG8}) 
-          saveKwikVars({"CG1",CG1}) 
-          saveKwikVars({"CG2",CG2}) 
-          saveKwikVars({"comodin",comodin}) 
-          saveKwikVars({"CG",CG}) 
-          saveKwikVars({"CI",CI}) 
-          saveKwikVars({"CL",CL}) 
-          saveKwikVars({"CL1",CL1}) 
-          saveKwikVars({"CL2",CL2}) 
-          saveKwikVars({"CL3",CL3}) 
-          saveKwikVars({"CL5",CL5}) 
        end 
 
        -- (BOTTOM) External code will render here 

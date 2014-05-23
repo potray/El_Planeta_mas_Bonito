@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 26 
+    local numPages = 34 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -36,12 +36,22 @@ function new()
 
  
        -- Button names 
-       local btnNextPage
-       local btnPrevPage
+       local btnBar
+       local btnRestaurante
+       local btnChurreria
+
+       -- Action names 
+       local Fallar 
+       local Acertar 
+       local hideStuff 
 
        -- Layer names 
-       local kwkFondo2SinBur  
-       local Capa_1  
+       local Fondo  
+       local Burbuja_vacia  
+       local Cabeza_mama_sor  
+       local Cabeza_hija_sor  
+       local Cabeza_bebe_sor  
+       local Bar  
        local kwkRect2  
        local kwkRect1  
        local kwkCLText  
@@ -50,12 +60,21 @@ function new()
        local kwkCGText  
        local kwkDiamante  
        local kwkEsmeralda  
-       local kwkRubi  
+       local kwkruby  
        local kwkMedalla  
-       local Burbuja_  
+       local Restaurante  
+       local Churreria  
+       local Fallo  
+       local Acierto  
        local Text  
-       local kwkNavnext  
-       local kwkNavprev  
+       local Ayuda  
+
+       -- Added variables before layers render 
+       _G.Fav01Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav01Completed") ~= nil then  
+          _G.Fav01Completed = kwkVarCheck("Fav01Completed") 
+       end  
 
        -- (TOP) External code will render here 
        local CL1 = kwkVarCheck("CL1")
@@ -75,22 +94,57 @@ local CG8 = kwkVarCheck("CG8")
 local CL = kwkVarCheck("CL")
 local CI = kwkVarCheck("CI")
 local CG = kwkVarCheck("CG")
-print ("Loaded CL = "..CL)
-local comodin = kwkVarCheck("comodin") 
+local comodin = kwkVarCheck("comodin")
 
-       -- kwkFondo2SinBur positioning 
-       kwkFondo2SinBur = display.newImageRect( imgDir.. "kwkfondo2sinbur.png", 2560, 1600 ); 
-       kwkFondo2SinBur.x = 1280; kwkFondo2SinBur.y = 800; kwkFondo2SinBur.alpha = 1; kwkFondo2SinBur.oldAlpha = 1 
-       kwkFondo2SinBur.oriX = kwkFondo2SinBur.x; kwkFondo2SinBur.oriY = kwkFondo2SinBur.y 
-       kwkFondo2SinBur.name = "kwkFondo2SinBur" 
-       menuGroup:insert(1,kwkFondo2SinBur); menuGroup.kwkFondo2SinBur = kwkFondo2SinBur 
+local favor2Started = kwkVarCheck("Favor2Visitado")
+local Fav01Completed = kwkVarCheck("Fav01Completed")
+local Fav02Completed = kwkVarCheck("Fav02Completed") 
+       local addCL1 = 5
+local addCL3 = 5
+local addCI2 = 5
+local addCI4 = 5 
 
-       -- Capa_1 positioning 
-       Capa_1 = display.newImageRect( imgDir.. "p7_capa_1.png", 0, 0 ); 
-       Capa_1.x = 0; Capa_1.y = 0; Capa_1.alpha = 1; Capa_1.oldAlpha = 1 
-       Capa_1.oriX = Capa_1.x; Capa_1.oriY = Capa_1.y 
-       Capa_1.name = "Capa_1" 
-       menuGroup:insert(Capa_1); menuGroup.Capa_1 = Capa_1 
+       -- Fondo positioning 
+       Fondo = display.newImageRect( imgDir.. "p7_fondo.png", 2560, 1600 ); 
+       Fondo.x = 1280; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
+       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
+       Fondo.name = "Fondo" 
+       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
+
+       -- Burbuja_vacia positioning 
+       Burbuja_vacia = display.newImageRect( imgDir.. "p7_burbuja_vacia.png", 692, 692 ); 
+       Burbuja_vacia.x = 1269; Burbuja_vacia.y = 512; Burbuja_vacia.alpha = 1; Burbuja_vacia.oldAlpha = 1 
+       Burbuja_vacia.oriX = Burbuja_vacia.x; Burbuja_vacia.oriY = Burbuja_vacia.y 
+       Burbuja_vacia.name = "Burbuja_vacia" 
+       menuGroup:insert(Burbuja_vacia); menuGroup.Burbuja_vacia = Burbuja_vacia 
+
+       -- Cabeza_mama_sor positioning 
+       Cabeza_mama_sor = display.newImageRect( imgDir.. "p7_cabeza_mama_sor.png", 311, 332 ); 
+       Cabeza_mama_sor.x = 1268; Cabeza_mama_sor.y = 356; Cabeza_mama_sor.alpha = 1; Cabeza_mama_sor.oldAlpha = 1 
+       Cabeza_mama_sor.oriX = Cabeza_mama_sor.x; Cabeza_mama_sor.oriY = Cabeza_mama_sor.y 
+       Cabeza_mama_sor.name = "Cabeza_mama_sor" 
+       menuGroup:insert(Cabeza_mama_sor); menuGroup.Cabeza_mama_sor = Cabeza_mama_sor 
+
+       -- Cabeza_hija_sor positioning 
+       Cabeza_hija_sor = display.newImageRect( imgDir.. "p7_cabeza_hija_sor.png", 207, 254 ); 
+       Cabeza_hija_sor.x = 1112; Cabeza_hija_sor.y = 650; Cabeza_hija_sor.alpha = 1; Cabeza_hija_sor.oldAlpha = 1 
+       Cabeza_hija_sor.oriX = Cabeza_hija_sor.x; Cabeza_hija_sor.oriY = Cabeza_hija_sor.y 
+       Cabeza_hija_sor.name = "Cabeza_hija_sor" 
+       menuGroup:insert(Cabeza_hija_sor); menuGroup.Cabeza_hija_sor = Cabeza_hija_sor 
+
+       -- Cabeza_bebe_sor positioning 
+       Cabeza_bebe_sor = display.newImageRect( imgDir.. "p7_cabeza_bebe_sor.png", 232, 185 ); 
+       Cabeza_bebe_sor.x = 1386; Cabeza_bebe_sor.y = 618; Cabeza_bebe_sor.alpha = 1; Cabeza_bebe_sor.oldAlpha = 1 
+       Cabeza_bebe_sor.oriX = Cabeza_bebe_sor.x; Cabeza_bebe_sor.oriY = Cabeza_bebe_sor.y 
+       Cabeza_bebe_sor.name = "Cabeza_bebe_sor" 
+       menuGroup:insert(Cabeza_bebe_sor); menuGroup.Cabeza_bebe_sor = Cabeza_bebe_sor 
+
+       -- Bar positioning 
+       Bar = display.newImageRect( imgDir.. "p7_bar.png", 620, 576 ); 
+       Bar.x = 566; Bar.y = 1312; Bar.alpha = 1; Bar.oldAlpha = 1 
+       Bar.oriX = Bar.x; Bar.oriY = Bar.y 
+       Bar.name = "Bar" 
+       menuGroup:insert(Bar); menuGroup.Bar = Bar 
 
        -- kwkRect2 positioning 
        kwkRect2 = display.newImageRect( imgDir.. "kwkrect2.png", 523, 264 ); 
@@ -148,12 +202,12 @@ local comodin = kwkVarCheck("comodin")
        kwkEsmeralda.name = "kwkEsmeralda" 
        menuGroup:insert(kwkEsmeralda); menuGroup.kwkEsmeralda = kwkEsmeralda 
 
-       -- kwkRubi positioning 
-       kwkRubi = display.newImageRect( imgDir.. "kwkrubi.png", 123, 180 ); 
-       kwkRubi.x = 340; kwkRubi.y = 114; kwkRubi.alpha = 1; kwkRubi.oldAlpha = 1 
-       kwkRubi.oriX = kwkRubi.x; kwkRubi.oriY = kwkRubi.y 
-       kwkRubi.name = "kwkRubi" 
-       menuGroup:insert(kwkRubi); menuGroup.kwkRubi = kwkRubi 
+       -- kwkruby positioning 
+       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
+       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
+       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
+       kwkruby.name = "kwkruby" 
+       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
 
        -- kwkMedalla positioning 
        kwkMedalla = display.newImageRect( imgDir.. "kwkmedalla.png", 176, 199 ); 
@@ -162,90 +216,189 @@ local comodin = kwkVarCheck("comodin")
        kwkMedalla.name = "kwkMedalla" 
        menuGroup:insert(kwkMedalla); menuGroup.kwkMedalla = kwkMedalla 
 
-       -- Burbuja_ positioning 
-       Burbuja_ = display.newImageRect( imgDir.. "p7_burbuja_.png", 1212, 1212 ); 
-       Burbuja_.x = 1283; Burbuja_.y = 984; Burbuja_.alpha = 1; Burbuja_.oldAlpha = 1 
-       Burbuja_.oriX = Burbuja_.x; Burbuja_.oriY = Burbuja_.y 
-       Burbuja_.name = "Burbuja_" 
-       menuGroup:insert(Burbuja_); menuGroup.Burbuja_ = Burbuja_ 
+       -- Restaurante positioning 
+       Restaurante = display.newImageRect( imgDir.. "p7_restaurante.png", 623, 579 ); 
+       Restaurante.x = 1275; Restaurante.y = 1310; Restaurante.alpha = 1; Restaurante.oldAlpha = 1 
+       Restaurante.oriX = Restaurante.x; Restaurante.oriY = Restaurante.y 
+       Restaurante.name = "Restaurante" 
+       menuGroup:insert(Restaurante); menuGroup.Restaurante = Restaurante 
+
+       -- Churreria positioning 
+       Churreria = display.newImageRect( imgDir.. "p7_churreria.png", 624, 578 ); 
+       Churreria.x = 1992; Churreria.y = 1313; Churreria.alpha = 1; Churreria.oldAlpha = 1 
+       Churreria.oriX = Churreria.x; Churreria.oriY = Churreria.y 
+       Churreria.name = "Churreria" 
+       menuGroup:insert(Churreria); menuGroup.Churreria = Churreria 
+
+       -- Fallo positioning 
+       Fallo = display.newImageRect( imgDir.. "p7_fallo.png", 852, 39 ); 
+       Fallo.x = 1280; Fallo.y = 113; Fallo.alpha = 1; Fallo.oldAlpha = 1 
+       Fallo.oriX = Fallo.x; Fallo.oriY = Fallo.y 
+       Fallo.name = "Fallo" 
+       menuGroup:insert(Fallo); menuGroup.Fallo = Fallo 
+
+       -- Acierto positioning 
+       Acierto = display.newImageRect( imgDir.. "p7_acierto.png", 608, 39 ); 
+       Acierto.x = 1280; Acierto.y = 116; Acierto.alpha = 1; Acierto.oldAlpha = 1 
+       Acierto.oriX = Acierto.x; Acierto.oriY = Acierto.y 
+       Acierto.name = "Acierto" 
+       menuGroup:insert(Acierto); menuGroup.Acierto = Acierto 
 
        -- Text positioning 
-       Text = display.newImageRect( imgDir.. "p7_text.png", 1486, 83 ); 
-       Text.x = 1294; Text.y = 108; Text.alpha = 1; Text.oldAlpha = 1 
+       Text = display.newImageRect( imgDir.. "p7_text.png", 1206, 82 ); 
+       Text.x = 1280; Text.y = 120; Text.alpha = 1; Text.oldAlpha = 1 
        Text.oriX = Text.x; Text.oriY = Text.y 
        Text.name = "Text" 
        menuGroup:insert(Text); menuGroup.Text = Text 
 
-       -- kwkNavnext positioning 
-       kwkNavnext = display.newImageRect( imgDir.. "kwknavnext.png", 106, 361 ); 
-       kwkNavnext.x = 2445; kwkNavnext.y = 767; kwkNavnext.alpha = 1; kwkNavnext.oldAlpha = 1 
-       kwkNavnext.oriX = kwkNavnext.x; kwkNavnext.oriY = kwkNavnext.y 
-       kwkNavnext.name = "kwkNavnext" 
-       menuGroup:insert(kwkNavnext); menuGroup.kwkNavnext = kwkNavnext 
-
-       -- kwkNavprev positioning 
-       kwkNavprev = display.newImageRect( imgDir.. "kwknavprev.png", 106, 361 ); 
-       kwkNavprev.x = 130; kwkNavprev.y = 767; kwkNavprev.alpha = 1; kwkNavprev.oldAlpha = 1 
-       kwkNavprev.oriX = kwkNavprev.x; kwkNavprev.oriY = kwkNavprev.y 
-       kwkNavprev.name = "kwkNavprev" 
-       menuGroup:insert(kwkNavprev); menuGroup.kwkNavprev = kwkNavprev 
+       -- Ayuda positioning 
+       Ayuda = display.newImageRect( imgDir.. "p7_ayuda.png", 1480, 40 ); 
+       Ayuda.x = 1306; Ayuda.y = 961; Ayuda.alpha = 1; Ayuda.oldAlpha = 1 
+       Ayuda.oriX = Ayuda.x; Ayuda.oriY = Ayuda.y 
+       Ayuda.name = "Ayuda" 
+       menuGroup:insert(Ayuda); menuGroup.Ayuda = Ayuda 
  
        -- Group(s) creation 
 
        -- (MIDDLE) External code will render here 
+ 
+       -- Actions (functions) 
+       function Fallar(event) 
+            transitionStash.newTransition_561 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_561 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
+           --External code 
+           addCL1 = addCL1 - 2
 
-       -- Button event listeners 
-       local function onkwkNavnextEvent(event) 
-          btnNextPage(kwkNavnext) 
-          return true 
+if (addCL1 < 0) then
+	addCL1 = 0
+end 
        end 
-       kwkNavnext:addEventListener("tap", onkwkNavnextEvent ) 
-       local function onkwkNavprevEvent(event) 
-          btnPrevPage(kwkNavprev) 
-          return true 
-       end 
-       kwkNavprev:addEventListener("tap", onkwkNavprevEvent ) 
 
-       -- Button functions 
-       function btnNextPage(self) 
+       function Acertar(event) 
+            transitionStash.newTransition_562 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_562 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_562 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+           --External code 
+           local currentCL1 = kwkVarCheck("CL1")
+local currentCL3 = kwkVarCheck("CL3")
+local currentCI2 = kwkVarCheck("CI2")
+local currentCI4 = kwkVarCheck("CI4")
+
+saveKwikVars({"CL1", addCL1 + currentCL1})
+saveKwikVars({"CL3", addCL3 + currentCL3})
+saveKwikVars({"CI2", addCI2 + currentCI2})
+saveKwikVars({"CI4", addCI4 + currentCI4})
+
+local p1 = kwkVarCheck("CL1")
+local p2 = kwkVarCheck("CL3")
+local p3 = kwkVarCheck("CI2")
+local p4 = kwkVarCheck("CI4")
+
+print (p1.." "..p2.." "..p3.." "..p4) 
+           _G.Fav01Completed = true
+          saveKwikVars({"Fav01Completed",true}) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_8", "moveFromRight" ) 
             end 
-            timerStash.newTimer_543 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_571 = timer.performWithDelay(2000, myClosure_switch, 1) 
+           --External code 
+           local newCL
+local newCI
+local newCG
+
+local uCL1 = kwkVarCheck("CL1")
+local uCL2 = kwkVarCheck("CL2")
+local uCL3 = kwkVarCheck("CL3")
+local uCL5 = kwkVarCheck("CL5")
+
+print("UCL5 = "..uCL5)
+
+
+local uCI2 = kwkVarCheck("CI2")
+local uCI3 = kwkVarCheck("CI3")
+local uCI4 = kwkVarCheck("CI4")
+local uCI5 = kwkVarCheck("CI5")
+
+
+local uCG1 = kwkVarCheck("CG1")
+local uCG2 = kwkVarCheck("CG2")
+local uCG8 = kwkVarCheck("CG8")
+
+newCL = uCL1 + uCL2 + uCL3 + uCL5
+newCI = uCI2 + uCI3 + uCI4 + uCI5
+newCG = uCG1 + uCG2 + uCG8
+
+print("CL = "..newCL..", CI = "..newCI..", CG = "..newCG)
+
+saveKwikVars({"CL", newCL})
+saveKwikVars({"CI", newCI})
+saveKwikVars({"CG", newCG})
+
+local a = kwkVarCheck("CL")
+local s = kwkVarCheck("CI")
+local d = kwkVarCheck("CG")
+
+print ("AHora todo vale: "..a.." "..s.." "..d) 
        end 
 
-       function btnPrevPage(self) 
-            local myClosure_switch = function() 
-                dispose(); director:changeScene( "page_5", "moveFromLeft" ) 
-            end 
-            timerStash.newTimer_545 = timer.performWithDelay(0, myClosure_switch, 1) 
+       function hideStuff(event) 
+            transitionStash.newTransition_572 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_573 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
        end 
 
+ 
+      --End Actions (functions) 
+
+ 
+       -- Timers 
+       timerStash.timerHideStuff = timer.performWithDelay( 0, hideStuff, 1 ) 
+
+       -- Button event listeners 
+       local function onBarEvent(event) 
+          btnBar(Bar) 
+          return true 
+       end 
+       Bar:addEventListener("tap", onBarEvent ) 
+       local function onRestauranteEvent(event) 
+          btnRestaurante(Restaurante) 
+          return true 
+       end 
+       Restaurante:addEventListener("tap", onRestauranteEvent ) 
+       local function onChurreriaEvent(event) 
+          btnChurreria(Churreria) 
+          return true 
+       end 
+       Churreria:addEventListener("tap", onChurreriaEvent ) 
+
+       -- Button functions 
+       function btnBar(self) 
+           Fallar() 
+       end 
+
+       function btnRestaurante(self) 
+           Fallar() 
+       end 
+
+       function btnChurreria(self) 
+           Acertar() 
+       end 
+
+ 
+       -- Page properties 
+       menuGroup.xScale = 1; menuGroup.yScale = 1; 
+       menuGroup.alpha = 1; 
+ 
 
        -- do not swipe this page 
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
-          saveKwikVars({"hasBiberon",hasBiberon}) 
-          saveKwikVars({"hasTijeras",hasTijeras}) 
-          saveKwikVars({"CI2",CI2}) 
-          saveKwikVars({"CI3",CI3}) 
-          saveKwikVars({"CI4",CI4}) 
-          saveKwikVars({"CI5",CI5}) 
-          saveKwikVars({"CG8",CG8}) 
-          saveKwikVars({"CG1",CG1}) 
-          saveKwikVars({"CG2",CG2}) 
-          saveKwikVars({"comodin",comodin}) 
-          saveKwikVars({"CG",CG}) 
-          saveKwikVars({"CI",CI}) 
-          saveKwikVars({"CL",CL}) 
-          saveKwikVars({"CL1",CL1}) 
-          saveKwikVars({"CL2",CL2}) 
-          saveKwikVars({"CL3",CL3}) 
-          saveKwikVars({"CL5",CL5}) 
        end 
 
        -- (BOTTOM) External code will render here 
+       dispose = function()
+
+end 
 
 
     end 

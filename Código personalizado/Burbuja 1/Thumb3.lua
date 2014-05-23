@@ -1,0 +1,1 @@
+pos3 = whereIs (thumb3)

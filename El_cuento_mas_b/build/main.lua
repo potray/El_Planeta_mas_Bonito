@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Fri May 02 2014 18:16:53 GMT+0200 
+-- Exported on Fri May 23 2014 02:17:05 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -32,7 +32,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 7 
+local goPage = 6 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 
@@ -71,6 +71,19 @@ function kwkVarCheck(variable)
    return (found) 
 end 
 
+-- Bookmark function 
+local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
+local file = io.open( path, "r" ) 
+if file then 
+   goPage = file:read("*l") 
+   kBookmark = file:read("*l") 
+   io.close(file) 
+else 
+   local file = io.open( path, "w+b" ) 
+   file:write( "1\n1" ) 
+   kBookmark = 1 
+   io.close(file) 
+end 
 
 
 --Create a main group
@@ -82,16 +95,59 @@ local function main()
    mainGroup:insert(director.directorView)
 
    -- Adding external code
-   local doIt = true;
+   function hide (toHide)
+    transition.to( toHide, {alpha=0, time=500, delay=0}) 
+end
 
-if (doIt) then
+function show (toShow)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=0}) 
+end
 
+
+function instantHide(toHide)
+    transition.to( toHide, {alpha=0, time=0, delay=0}) 
+end
+
+function updateCoefs()
+	local newCL
+	local newCI
+	local newCG
+
+	local uCL1 = kwkVarCheck("CL1")
+	local uCL2 = kwkVarCheck("CL2")
+	local uCL3 = kwkVarCheck("CL3")
+	local uCL5 = kwkVarCheck("CL5")
+
+	local uCI2 = kwkVarCheck("CI2")
+	local uCI3 = kwkVarCheck("CI3")
+	local uCI4 = kwkVarCheck("CI4")
+	local uCI5 = kwkVarCheck("CI5")
+
+	local uCG1 = kwkVarCheck("CG1")
+	local uCG2 = kwkVarCheck("CG2")
+	local uCG8 = kwkVarCheck("CG8")
+
+	newCL = uCL1 + uCL2 + uCL3 + uCL5
+	newCI = uCI2 + uCI3 + uCI4 + uCI5
+	newCG = uCG1 + uCG2 + uCG8
+
+	saveKwikVars({"CL", newCL})
+	saveKwikVars({"CI", newCI})
+	saveKwikVars({"CG", newCG})
+	
+end
+
+function startVariables()
 	saveKwikVars({"hasBiberon",false}) 
 	saveKwikVars({"hasTijeras",false}) 
 	saveKwikVars({"hasRosa",false}) 
 	saveKwikVars({"hasChanclaVerde", false})
 	saveKwikVars({"hasErizo", false})
 	saveKwikVars({"hasBotaAbeja", false})
+	saveKwikVars({"hasMaquina", false})
+	saveKwikVars({"hasGuitarra", false})
+	saveKwikVars({"hasCola", false})
+	saveKwikVars({"hasCelo", false})
 
 	saveKwikVars({"CL1", 0})
 	saveKwikVars({"CL2", 0})
@@ -107,16 +163,23 @@ if (doIt) then
 	saveKwikVars({"CG2", 0})
 	saveKwikVars({"CG8", 0})
 
-	print("Patata!!!")
-
 	saveKwikVars({"comodin", 0})
 	saveKwikVars({"CL", 0})
 	saveKwikVars({"CI", 0})
 	saveKwikVars({"CG", 0})
 
+	saveKwikVars({"Reiniciado", true})
+
 	saveKwikVars({"Fav01Completed", false})
 
-end 
+	saveKwikVars({"Favor2Visitado", false})
+	saveKwikVars({"Fav02Completed", false})
+
+	print("Variables reiniciadas")
+end
+
+--Mandar siempre a la primera pagina
+director:changeScene("page_1") 
 
    director:changeScene("page_"..goPage)
    return true
