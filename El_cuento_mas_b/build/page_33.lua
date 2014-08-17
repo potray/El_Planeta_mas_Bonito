@@ -1,17 +1,27 @@
 -- Code created by Kwik - Copyright: kwiksher.com 
 -- Version: 2.7.6b 
 module(..., package.seeall) 
+local widget = require("widget") 
 
 function new() 
-    local numPages = 34 
+    local numPages = 43 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
     local _H = display.contentHeight; 
 
+    -- Audio callings 
+    local fallo =  audio.loadSound( audioDir.."fallo.mp3") 
+    local acierto =  audio.loadSound( audioDir.."acierto.mp3") 
+
+
     local drawScreen = function() 
 
        local curPage = 33 
+
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={{ 2, "fallo"},{ 1, "acierto"},} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -36,203 +46,86 @@ function new()
 
  
        -- Button names 
-       local btnBoton
-       local btnBurbuja
+       local btnInventario
+       local btnCerrarInvent
+       local btnTick
+       local btnA
+       local btnB
+       local btnC
+       local btnD
 
        -- Action names 
-       local Drag1 
-       local Drag2 
-       local Drag3 
-       local Drag4 
-       local Drag5 
+       local hideInventory 
+       local showInventory 
 
        -- Layer names 
-       local rect1  
-       local rect2  
-       local rect3  
-       local rect4  
-       local rect5  
-       local T1  
-       local T2  
-       local T3  
-       local T4  
-       local T5  
-       local thumb3  
-       local thumb1  
-       local thumb2  
-       local thumb4  
-       local thumb5  
-       local Rubi  
+       local kwkFondo5  
+       local kwkHija_gafas  
+       local kwkSabio  
+       local kwkMama_gafas  
+       local kwkRect2  
+       local kwkRect1  
+       local kwkCLText  
+       local kwkComodinText  
+       local kwkCIText  
+       local kwkCGText  
+       local kwkDiamante  
+       local kwkEsmeralda  
+       local kwkMedalla  
        local Text1  
-       local TextFaltan  
-       local TextMal  
-       local TextTerminado  
-       local kwkBurbuja  
+       local A  
+       local B  
+       local C  
+       local D  
+       local circuloA  
+       local circuloB  
+       local circuloC  
+       local circuloD  
+       local kwkTick  
+       local End1  
+       local kwkruby  
+       local kwkInvDestacado  
+       local kwkMochila  
+       local kwkRectInv  
+       local kwkInvCerrar  
+       local kwkInvMaquina  
+       local kwkInvBiberon  
+       local kwkInvTijeras  
+       local kwkInvRosa  
+       local kwkInvErizo  
+       local kwkInvCelo  
+       local kwkInvGuitarra  
+       local kwkInvCola  
+
+       -- Added variables before layers render 
+       local InventoryShown = false --  
 
        -- (TOP) External code will render here 
-       local pos1 = -1
-local pos2 = -1
-local pos3 = -1
-local pos4 = -1
-local pos5 = -1
+       local CL1 = kwkVarCheck("CL1")
+local CL2 = kwkVarCheck("CL2")
+local CL3 = kwkVarCheck("CL3")
+local CL5 = kwkVarCheck("CL5")
 
-local addCI3 = 5
-local addCG8 = 5
+local CI2 = kwkVarCheck("CI2")
+local CI3 = kwkVarCheck("CI3")
+local CI4 = kwkVarCheck("CI4")
+local CI5 = kwkVarCheck("CI5")
 
-local lastText = Text1
+local CG1 = kwkVarCheck("CG1")
+local CG2 = kwkVarCheck("CG2")
+local CG8 = kwkVarCheck("CG8")
 
-saveKwikVars({"Favor2Visitado", true})
-print("Guardado favor2visitado a true")
+local CL = kwkVarCheck("CL")
+local CI = kwkVarCheck("CI")
+local CG = kwkVarCheck("CG")
+local comodin = kwkVarCheck("comodin")
 
-function isOn (moving, static)
-	local condicion1 = moving.x >= static.x - static.width/2
-	local condicion2 = moving.x <= static.x + static.width/2
-	local condicion3 = moving.y >= static.y - static.height/2
-	local condicion4 = moving.y <= static.y + static.height/2
-
-	if (condicion1 and condicion2 and condicion3 and condicion4) then
-		return true
-	else
-		return false
-	end
-end
-
-function moveTo (moving, static)
-	moving.x = static.x
-	moving.y = static.y
-end
-
-function moveToNumber (moving, number)
-	if (number == 1) then
-		moveTo (moving, rect1)
-	end
-	if (number == 2) then
-		moveTo (moving, rect2)
-	end
-	if (number == 3) then
-		moveTo (moving, rect3)
-	end
-	if (number == 4) then
-		moveTo (moving, rect4)
-	end
-	if (number == 5) then
-		moveTo (moving, rect5)
-	end
-end
-
-function switchText (textToHide, textToShow)
-    transition.to( textToHide, {alpha=0, time=500, delay=0}) 
-    transition.to( textToShow, {alpha=textToShow.oldAlpha, time=500, delay=0}) 
-    lastText = textToShow
-end
-
-function hide (toHide)
-    transition.to( toHide, {alpha=0, time=500, delay=0}) 
-end
-
-function show (toShow)
-    transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=0}) 
-end
-
-
-function instantHide(toHide)
-    transition.to( toHide, {alpha=0, time=0, delay=0}) 
-end
-
-function whereIs (thumbnail)
-	switchText (lastText, Text1)
-	local returnValue = -1
-	if (isOn (thumbnail, rect1)) then
-		returnValue = 1
-	end
-	if (isOn (thumbnail, rect2)) then
-		returnValue = 2
-	end
-	if (isOn (thumbnail, rect3)) then
-		returnValue = 3
-	end
-	if (isOn (thumbnail, rect4)) then
-		returnValue = 4
-	end
-	if (isOn (thumbnail, rect5)) then
-		returnValue = 5
-	end
-
-	if (returnValue ~= -1) then
-		moveToNumber (thumbnail, returnValue)
-	end
-
-	return returnValue
-end
-
-function todosEnPosicion()
-	if (pos1 ~= -1 and pos2 ~= -1 and pos3 ~= -1 and pos4 ~= -1 and pos5 ~= -1) then
-		return true
-	else 
-		return false
-	end
-end
-
-function todosEnSuSitio()
-	if (pos1 == 1 and pos2 == 2 and pos3 == 3 and pos4 == 4 and pos5 == 5) then
-		return true
-	else
-		return false
-	end
-end
-
-function terminarPrueba()
-	switchText(lastText, TextTerminado)
-	show(kwkBurbuja)
-	hide(Rubi)
-
-	local currentCI3 = kwkVarCheck("CI3")
-	local currentCG8 = kwkVarCheck("CG8")
-
-	saveKwikVars({"CI3", currentCI3 + addCI3})	
-	saveKwikVars({"CG8", currentCG8 + addCG8})
-
-	updateCoefs()
-end
-
-function comprobar()
-	if (todosEnPosicion()) then
-		if (not todosEnSuSitio()) then
-			switchText(lastText, TextMal)
-			if (pos1 ~= 1) then
-				addCI3 = addCI3 - 1
-				addCG8 = addCG8 - 1
-			end
-			if (pos2 ~= 2) then
-				addCI3 = addCI3 - 1
-				addCG8 = addCG8 - 1
-			end
-			if (pos3 ~= 3) then
-				addCI3 = addCI3 - 1
-				addCG8 = addCG8 - 1
-			end
-			if (pos4 ~= 4) then
-				addCI3 = addCI3 - 1
-				addCG8 = addCG8 - 1
-			end
-			if (pos5 ~= 5) then
-				addCI3 = addCI3 - 1
-				addCG8 = addCG8 - 1
-			end
-		else 
-			terminarPrueba()
-		end
-	else
-		switchText(lastText, TextFaltan)
-	end
-
-	print ("CI3 = "..addCI3..", CG8 = "..addCG8)
-end
-
-
-
-
- 
+local favor2Started = kwkVarCheck("Favor2Visitado")
+local Fav01Completed = kwkVarCheck("Fav01Completed")
+local Fav02Completed = kwkVarCheck("Fav02Completed")
+local Preg01Completed = kwkVarCheck("Preg01Completed")
+local Preg02Completed = kwkVarCheck("Preg02Completed")
+local Preg03Completed = kwkVarCheck("Preg03Completed") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -242,290 +135,499 @@ local hasErizo = kwkVarCheck("hasErizo")
 local hasCelo = kwkVarCheck("hasCelo")
 local hasCola = kwkVarCheck("hasCola") 
 
-       -- rect1 positioning 
-       rect1 = display.newImageRect( imgDir.. "p33_rect1.png", 522, 330 ); 
-       rect1.x = 256; rect1.y = 864; rect1.alpha = 0.67843137254902; rect1.oldAlpha = 0.67843137254902 
-       rect1.oriX = rect1.x; rect1.oriY = rect1.y 
-       rect1.name = "rect1" 
-       menuGroup:insert(1,rect1); menuGroup.rect1 = rect1 
+       -- kwkFondo5 positioning 
+       kwkFondo5 = display.newImageRect( imgDir.. "kwkfondo5.png", 2560, 1600 ); 
+       kwkFondo5.x = 1280; kwkFondo5.y = 800; kwkFondo5.alpha = 1; kwkFondo5.oldAlpha = 1 
+       kwkFondo5.oriX = kwkFondo5.x; kwkFondo5.oriY = kwkFondo5.y 
+       kwkFondo5.name = "kwkFondo5" 
+       menuGroup:insert(1,kwkFondo5); menuGroup.kwkFondo5 = kwkFondo5 
 
-       -- rect2 positioning 
-       rect2 = display.newImageRect( imgDir.. "p33_rect2.png", 522, 330 ); 
-       rect2.x = 1274; rect2.y = 864; rect2.alpha = 0.67843137254902; rect2.oldAlpha = 0.67843137254902 
-       rect2.oriX = rect2.x; rect2.oriY = rect2.y 
-       rect2.name = "rect2" 
-       menuGroup:insert(rect2); menuGroup.rect2 = rect2 
+       -- kwkHija_gafas positioning 
+       kwkHija_gafas = display.newImageRect( imgDir.. "kwkhija_gafas.png", 287, 522 ); 
+       kwkHija_gafas.x = 1268; kwkHija_gafas.y = 1313; kwkHija_gafas.alpha = 1; kwkHija_gafas.oldAlpha = 1 
+       kwkHija_gafas.oriX = kwkHija_gafas.x; kwkHija_gafas.oriY = kwkHija_gafas.y 
+       kwkHija_gafas.name = "kwkHija_gafas" 
+       menuGroup:insert(kwkHija_gafas); menuGroup.kwkHija_gafas = kwkHija_gafas 
 
-       -- rect3 positioning 
-       rect3 = display.newImageRect( imgDir.. "p33_rect3.png", 522, 330 ); 
-       rect3.x = 2304; rect3.y = 864; rect3.alpha = 0.67843137254902; rect3.oldAlpha = 0.67843137254902 
-       rect3.oriX = rect3.x; rect3.oriY = rect3.y 
-       rect3.name = "rect3" 
-       menuGroup:insert(rect3); menuGroup.rect3 = rect3 
+       -- kwkSabio positioning 
+       kwkSabio = display.newImageRect( imgDir.. "kwksabio.png", 839, 1006 ); 
+       kwkSabio.x = 1884; kwkSabio.y = 602; kwkSabio.alpha = 1; kwkSabio.oldAlpha = 1 
+       kwkSabio.oriX = kwkSabio.x; kwkSabio.oriY = kwkSabio.y 
+       kwkSabio.name = "kwkSabio" 
+       menuGroup:insert(kwkSabio); menuGroup.kwkSabio = kwkSabio 
 
-       -- rect4 positioning 
-       rect4 = display.newImageRect( imgDir.. "p33_rect4.png", 522, 330 ); 
-       rect4.x = 768; rect4.y = 1280; rect4.alpha = 0.67843137254902; rect4.oldAlpha = 0.67843137254902 
-       rect4.oriX = rect4.x; rect4.oriY = rect4.y 
-       rect4.name = "rect4" 
-       menuGroup:insert(rect4); menuGroup.rect4 = rect4 
+       -- kwkMama_gafas positioning 
+       kwkMama_gafas = display.newImageRect( imgDir.. "kwkmama_gafas.png", 331, 637 ); 
+       kwkMama_gafas.x = 1577; kwkMama_gafas.y = 1265; kwkMama_gafas.alpha = 1; kwkMama_gafas.oldAlpha = 1 
+       kwkMama_gafas.oriX = kwkMama_gafas.x; kwkMama_gafas.oriY = kwkMama_gafas.y 
+       kwkMama_gafas.name = "kwkMama_gafas" 
+       menuGroup:insert(kwkMama_gafas); menuGroup.kwkMama_gafas = kwkMama_gafas 
 
-       -- rect5 positioning 
-       rect5 = display.newImageRect( imgDir.. "p33_rect5.png", 522, 330 ); 
-       rect5.x = 1792; rect5.y = 1280; rect5.alpha = 0.67843137254902; rect5.oldAlpha = 0.67843137254902 
-       rect5.oriX = rect5.x; rect5.oriY = rect5.y 
-       rect5.name = "rect5" 
-       menuGroup:insert(rect5); menuGroup.rect5 = rect5 
+       -- kwkRect2 positioning 
+       kwkRect2 = display.newImageRect( imgDir.. "kwkrect2.png", 523, 264 ); 
+       kwkRect2.x = 2303; kwkRect2.y = 127; kwkRect2.alpha = 0.74901960784314; kwkRect2.oldAlpha = 0.74901960784314 
+       kwkRect2.oriX = kwkRect2.x; kwkRect2.oriY = kwkRect2.y 
+       kwkRect2.name = "kwkRect2" 
+       menuGroup:insert(kwkRect2); menuGroup.kwkRect2 = kwkRect2 
 
-       -- T1 positioning 
-       T1 = display.newImageRect( imgDir.. "p33_t1.png", 13, 27 ); 
-       T1.x = 256; T1.y = 680; T1.alpha = 1; T1.oldAlpha = 1 
-       T1.oriX = T1.x; T1.oriY = T1.y 
-       T1.name = "T1" 
-       menuGroup:insert(T1); menuGroup.T1 = T1 
+       -- kwkRect1 positioning 
+       kwkRect1 = display.newImageRect( imgDir.. "kwkrect1.png", 522, 265 ); 
+       kwkRect1.x = 256; kwkRect1.y = 128; kwkRect1.alpha = 0.74901960784314; kwkRect1.oldAlpha = 0.74901960784314 
+       kwkRect1.oriX = kwkRect1.x; kwkRect1.oriY = kwkRect1.y 
+       kwkRect1.name = "kwkRect1" 
+       menuGroup:insert(kwkRect1); menuGroup.kwkRect1 = kwkRect1 
 
-       -- T2 positioning 
-       T2 = display.newImageRect( imgDir.. "p33_t2.png", 18, 27 ); 
-       T2.x = 1280; T2.y = 679; T2.alpha = 1; T2.oldAlpha = 1 
-       T2.oriX = T2.x; T2.oriY = T2.y 
-       T2.name = "T2" 
-       menuGroup:insert(T2); menuGroup.T2 = T2 
+       -- kwkCLText positioning 
+       kwkCLText = display.newText( CL, 2185, 97, native.systemFont, 48 ) 
+       kwkCLText:setTextColor (0, 0, 0) 
+       kwkCLText.oriX = kwkCLText.x; kwkCLText.oriY = kwkCLText.y 
+       kwkCLText.alpha = 1; kwkCLText.oldAlpha = 1 
+       menuGroup:insert(kwkCLText); menuGroup.kwkCLText = kwkCLText 
 
-       -- T3 positioning 
-       T3 = display.newImageRect( imgDir.. "p33_t3.png", 17, 27 ); 
-       T3.x = 2303; T3.y = 683; T3.alpha = 1; T3.oldAlpha = 1 
-       T3.oriX = T3.x; T3.oriY = T3.y 
-       T3.name = "T3" 
-       menuGroup:insert(T3); menuGroup.T3 = T3 
+       -- kwkComodinText positioning 
+       kwkComodinText = display.newText( comodin, 2473, 97, native.systemFont, 48 ) 
+       kwkComodinText:setTextColor (0, 0, 0) 
+       kwkComodinText.oriX = kwkComodinText.x; kwkComodinText.oriY = kwkComodinText.y 
+       kwkComodinText.alpha = 1; kwkComodinText.oldAlpha = 1 
+       menuGroup:insert(kwkComodinText); menuGroup.kwkComodinText = kwkComodinText 
 
-       -- T4 positioning 
-       T4 = display.newImageRect( imgDir.. "p33_t4.png", 21, 27 ); 
-       T4.x = 767; T4.y = 1096; T4.alpha = 1; T4.oldAlpha = 1 
-       T4.oriX = T4.x; T4.oriY = T4.y 
-       T4.name = "T4" 
-       menuGroup:insert(T4); menuGroup.T4 = T4 
+       -- kwkCIText positioning 
+       kwkCIText = display.newText( CI, 425, 99, native.systemFont, 48 ) 
+       kwkCIText:setTextColor (0, 0, 0) 
+       kwkCIText.oriX = kwkCIText.x; kwkCIText.oriY = kwkCIText.y 
+       kwkCIText.alpha = 1; kwkCIText.oldAlpha = 1 
+       menuGroup:insert(kwkCIText); menuGroup.kwkCIText = kwkCIText 
 
-       -- T5 positioning 
-       T5 = display.newImageRect( imgDir.. "p33_t5.png", 19, 27 ); 
-       T5.x = 1792; T5.y = 1101; T5.alpha = 1; T5.oldAlpha = 1 
-       T5.oriX = T5.x; T5.oriY = T5.y 
-       T5.name = "T5" 
-       menuGroup:insert(T5); menuGroup.T5 = T5 
+       -- kwkCGText positioning 
+       kwkCGText = display.newText( CG, 169, 103, native.systemFont, 48 ) 
+       kwkCGText:setTextColor (0, 0, 0) 
+       kwkCGText.oriX = kwkCGText.x; kwkCGText.oriY = kwkCGText.y 
+       kwkCGText.alpha = 1; kwkCGText.oldAlpha = 1 
+       menuGroup:insert(kwkCGText); menuGroup.kwkCGText = kwkCGText 
 
-       -- thumb3 positioning 
-       thumb3 = display.newImageRect( imgDir.. "p33_thumb3.png", 512, 320 ); 
-       thumb3.x = 1792; thumb3.y = 352; thumb3.alpha = 1; thumb3.oldAlpha = 1 
-       thumb3.oriX = thumb3.x; thumb3.oriY = thumb3.y 
-       thumb3.name = "thumb3" 
-       menuGroup:insert(thumb3); menuGroup.thumb3 = thumb3 
+       -- kwkDiamante positioning 
+       kwkDiamante = display.newImageRect( imgDir.. "kwkdiamante.png", 154, 105 ); 
+       kwkDiamante.x = 77; kwkDiamante.y = 125; kwkDiamante.alpha = 1; kwkDiamante.oldAlpha = 1 
+       kwkDiamante.oriX = kwkDiamante.x; kwkDiamante.oriY = kwkDiamante.y 
+       kwkDiamante.name = "kwkDiamante" 
+       menuGroup:insert(kwkDiamante); menuGroup.kwkDiamante = kwkDiamante 
 
-       -- thumb1 positioning 
-       thumb1 = display.newImageRect( imgDir.. "p33_thumb1.png", 512, 320 ); 
-       thumb1.x = 768; thumb1.y = 352; thumb1.alpha = 1; thumb1.oldAlpha = 1 
-       thumb1.oriX = thumb1.x; thumb1.oriY = thumb1.y 
-       thumb1.name = "thumb1" 
-       menuGroup:insert(thumb1); menuGroup.thumb1 = thumb1 
+       -- kwkEsmeralda positioning 
+       kwkEsmeralda = display.newImageRect( imgDir.. "kwkesmeralda.png", 109, 167 ); 
+       kwkEsmeralda.x = 2102; kwkEsmeralda.y = 114; kwkEsmeralda.alpha = 1; kwkEsmeralda.oldAlpha = 1 
+       kwkEsmeralda.oriX = kwkEsmeralda.x; kwkEsmeralda.oriY = kwkEsmeralda.y 
+       kwkEsmeralda.name = "kwkEsmeralda" 
+       menuGroup:insert(kwkEsmeralda); menuGroup.kwkEsmeralda = kwkEsmeralda 
 
-       -- thumb2 positioning 
-       thumb2 = display.newImageRect( imgDir.. "p33_thumb2.png", 512, 320 ); 
-       thumb2.x = 256; thumb2.y = 352; thumb2.alpha = 1; thumb2.oldAlpha = 1 
-       thumb2.oriX = thumb2.x; thumb2.oriY = thumb2.y 
-       thumb2.name = "thumb2" 
-       menuGroup:insert(thumb2); menuGroup.thumb2 = thumb2 
-
-       -- thumb4 positioning 
-       thumb4 = display.newImageRect( imgDir.. "p33_thumb4.png", 512, 320 ); 
-       thumb4.x = 1280; thumb4.y = 352; thumb4.alpha = 1; thumb4.oldAlpha = 1 
-       thumb4.oriX = thumb4.x; thumb4.oriY = thumb4.y 
-       thumb4.name = "thumb4" 
-       menuGroup:insert(thumb4); menuGroup.thumb4 = thumb4 
-
-       -- thumb5 positioning 
-       thumb5 = display.newImageRect( imgDir.. "p33_thumb5.png", 512, 320 ); 
-       thumb5.x = 2304; thumb5.y = 352; thumb5.alpha = 1; thumb5.oldAlpha = 1 
-       thumb5.oriX = thumb5.x; thumb5.oriY = thumb5.y 
-       thumb5.name = "thumb5" 
-       menuGroup:insert(thumb5); menuGroup.thumb5 = thumb5 
-
-       -- Rubi positioning 
-       Rubi = display.newImageRect( imgDir.. "p33_rubi.png", 197, 289 ); 
-       Rubi.x = 1280; Rubi.y = 1391; Rubi.alpha = 1; Rubi.oldAlpha = 1 
-       Rubi.oriX = Rubi.x; Rubi.oriY = Rubi.y 
-       Rubi.name = "Rubi" 
-       menuGroup:insert(Rubi); menuGroup.Rubi = Rubi 
+       -- kwkMedalla positioning 
+       kwkMedalla = display.newImageRect( imgDir.. "kwkmedalla.png", 176, 199 ); 
+       kwkMedalla.x = 2392; kwkMedalla.y = 113; kwkMedalla.alpha = 1; kwkMedalla.oldAlpha = 1 
+       kwkMedalla.oriX = kwkMedalla.x; kwkMedalla.oriY = kwkMedalla.y 
+       kwkMedalla.name = "kwkMedalla" 
+       menuGroup:insert(kwkMedalla); menuGroup.kwkMedalla = kwkMedalla 
 
        -- Text1 positioning 
-       Text1 = display.newImageRect( imgDir.. "p33_text1.png", 1893, 82 ); 
-       Text1.x = 1273; Text1.y = 80; Text1.alpha = 1; Text1.oldAlpha = 1 
+       Text1 = display.newImageRect( imgDir.. "p33_text1.png", 1514, 166 ); 
+       Text1.x = 1274; Text1.y = 86; Text1.alpha = 1; Text1.oldAlpha = 1 
        Text1.oriX = Text1.x; Text1.oriY = Text1.y 
        Text1.name = "Text1" 
        menuGroup:insert(Text1); menuGroup.Text1 = Text1 
 
-       -- TextFaltan positioning 
-       TextFaltan = display.newImageRect( imgDir.. "p33_textfaltan.png", 635, 30 ); 
-       TextFaltan.x = 1279; TextFaltan.y = 79; TextFaltan.alpha = 1; TextFaltan.oldAlpha = 1 
-       TextFaltan.oriX = TextFaltan.x; TextFaltan.oriY = TextFaltan.y 
-       TextFaltan.name = "TextFaltan" 
-       menuGroup:insert(TextFaltan); menuGroup.TextFaltan = TextFaltan 
+       -- A positioning 
+       A = display.newImageRect( imgDir.. "p33_a.png", 484, 50 ); 
+       A.x = 757; A.y = 396; A.alpha = 1; A.oldAlpha = 1 
+       A.oriX = A.x; A.oriY = A.y 
+       A.name = "A" 
+       menuGroup:insert(A); menuGroup.A = A 
 
-       -- TextMal positioning 
-       TextMal = display.newImageRect( imgDir.. "p33_textmal.png", 794, 39 ); 
-       TextMal.x = 1272; TextMal.y = 80; TextMal.alpha = 1; TextMal.oldAlpha = 1 
-       TextMal.oriX = TextMal.x; TextMal.oriY = TextMal.y 
-       TextMal.name = "TextMal" 
-       menuGroup:insert(TextMal); menuGroup.TextMal = TextMal 
+       -- B positioning 
+       B = display.newImageRect( imgDir.. "p33_b.png", 940, 109 ); 
+       B.x = 984; B.y = 530; B.alpha = 1; B.oldAlpha = 1 
+       B.oriX = B.x; B.oriY = B.y 
+       B.name = "B" 
+       menuGroup:insert(B); menuGroup.B = B 
 
-       -- TextTerminado positioning 
-       TextTerminado = display.newImageRect( imgDir.. "p33_textterminado.png", 1198, 40 ); 
-       TextTerminado.x = 1274; TextTerminado.y = 81; TextTerminado.alpha = 1; TextTerminado.oldAlpha = 1 
-       TextTerminado.oriX = TextTerminado.x; TextTerminado.oriY = TextTerminado.y 
-       TextTerminado.name = "TextTerminado" 
-       menuGroup:insert(TextTerminado); menuGroup.TextTerminado = TextTerminado 
+       -- C positioning 
+       C = display.newImageRect( imgDir.. "p33_c.png", 708, 109 ); 
+       C.x = 864; C.y = 701; C.alpha = 1; C.oldAlpha = 1 
+       C.oriX = C.x; C.oriY = C.y 
+       C.name = "C" 
+       menuGroup:insert(C); menuGroup.C = C 
 
-       -- kwkBurbuja positioning 
-       kwkBurbuja = display.newImageRect( imgDir.. "kwkburbuja.png", 428, 428 ); 
-       kwkBurbuja.x = 1280; kwkBurbuja.y = 1334; kwkBurbuja.alpha = 1; kwkBurbuja.oldAlpha = 1 
-       kwkBurbuja.oriX = kwkBurbuja.x; kwkBurbuja.oriY = kwkBurbuja.y 
-       kwkBurbuja.name = "kwkBurbuja" 
-       menuGroup:insert(kwkBurbuja); menuGroup.kwkBurbuja = kwkBurbuja 
+       -- D positioning 
+       D = display.newImageRect( imgDir.. "p33_d.png", 941, 109 ); 
+       D.x = 980; D.y = 857; D.alpha = 1; D.oldAlpha = 1 
+       D.oriX = D.x; D.oriY = D.y 
+       D.name = "D" 
+       menuGroup:insert(D); menuGroup.D = D 
+
+       -- circuloA positioning 
+       circuloA = display.newImageRect( imgDir.. "p33_circuloa.png", 60, 60 ); 
+       circuloA.x = 1054; circuloA.y = 391; circuloA.alpha = 1; circuloA.oldAlpha = 1 
+       circuloA.oriX = circuloA.x; circuloA.oriY = circuloA.y 
+       circuloA.name = "circuloA" 
+       menuGroup:insert(circuloA); menuGroup.circuloA = circuloA 
+
+       -- circuloB positioning 
+       circuloB = display.newImageRect( imgDir.. "p33_circulob.png", 60, 60 ); 
+       circuloB.x = 1053; circuloB.y = 555; circuloB.alpha = 1; circuloB.oldAlpha = 1 
+       circuloB.oriX = circuloB.x; circuloB.oriY = circuloB.y 
+       circuloB.name = "circuloB" 
+       menuGroup:insert(circuloB); menuGroup.circuloB = circuloB 
+
+       -- circuloC positioning 
+       circuloC = display.newImageRect( imgDir.. "p33_circuloc.png", 60, 60 ); 
+       circuloC.x = 867; circuloC.y = 726; circuloC.alpha = 1; circuloC.oldAlpha = 1 
+       circuloC.oriX = circuloC.x; circuloC.oriY = circuloC.y 
+       circuloC.name = "circuloC" 
+       menuGroup:insert(circuloC); menuGroup.circuloC = circuloC 
+
+       -- circuloD positioning 
+       circuloD = display.newImageRect( imgDir.. "p33_circulod.png", 60, 60 ); 
+       circuloD.x = 1222; circuloD.y = 888; circuloD.alpha = 1; circuloD.oldAlpha = 1 
+       circuloD.oriX = circuloD.x; circuloD.oriY = circuloD.y 
+       circuloD.name = "circuloD" 
+       menuGroup:insert(circuloD); menuGroup.circuloD = circuloD 
+
+       -- kwkTick positioning 
+       kwkTick = display.newImageRect( imgDir.. "kwktick.png", 303, 227 ); 
+       kwkTick.x = 946; kwkTick.y = 1091; kwkTick.alpha = 1; kwkTick.oldAlpha = 1 
+       kwkTick.oriX = kwkTick.x; kwkTick.oriY = kwkTick.y 
+       kwkTick.name = "kwkTick" 
+       menuGroup:insert(kwkTick); menuGroup.kwkTick = kwkTick 
+
+       -- End1 positioning 
+       End1 = display.newImageRect( imgDir.. "p33_end1.png", 1325, 51 ); 
+       End1.x = 1303; End1.y = 73; End1.alpha = 1; End1.oldAlpha = 1 
+       End1.oriX = End1.x; End1.oriY = End1.y 
+       End1.name = "End1" 
+       menuGroup:insert(End1); menuGroup.End1 = End1 
+
+       -- kwkruby positioning 
+       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
+       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
+       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
+       kwkruby.name = "kwkruby" 
+       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
+
+       -- kwkInvDestacado positioning 
+       kwkInvDestacado = display.newImageRect( imgDir.. "kwkinvdestacado.png", 597, 599 ); 
+       kwkInvDestacado.x = 147; kwkInvDestacado.y = 1452; kwkInvDestacado.alpha = 1; kwkInvDestacado.oldAlpha = 1 
+       kwkInvDestacado.oriX = kwkInvDestacado.x; kwkInvDestacado.oriY = kwkInvDestacado.y 
+       kwkInvDestacado.name = "kwkInvDestacado" 
+       menuGroup:insert(kwkInvDestacado); menuGroup.kwkInvDestacado = kwkInvDestacado 
+
+       -- kwkMochila positioning 
+
+       local function onkwkMochilaEvent() 
+          btnInventario() 
+       end 
+       kwkMochila = widget.newButton { 
+          id = "kwkMochila", 
+          defaultFile = imgDir.."kwkmochila.png", 
+          overFile = imgDir.."kwkmochila.png", 
+          width = 216, height = 263, 
+          onRelease = onkwkMochilaEvent 
+       } 
+       kwkMochila.x = 146; kwkMochila.y = 1444 
+       kwkMochila.oriX = 146; kwkMochila.oriY = 1444 
+       kwkMochila.alpha = 1; kwkMochila.oldAlpha = 1 
+       kwkMochila.name = "kwkMochila" 
+       menuGroup:insert(kwkMochila); menuGroup.kwkMochila = kwkMochila 
+
+       -- kwkRectInv positioning 
+       kwkRectInv = display.newImageRect( imgDir.. "kwkrectinv.png", 1028, 517 ); 
+       kwkRectInv.x = 1278; kwkRectInv.y = 1276; kwkRectInv.alpha = 1; kwkRectInv.oldAlpha = 1 
+       kwkRectInv.oriX = kwkRectInv.x; kwkRectInv.oriY = kwkRectInv.y 
+       kwkRectInv.name = "kwkRectInv" 
+       menuGroup:insert(kwkRectInv); menuGroup.kwkRectInv = kwkRectInv 
+
+       -- kwkInvCerrar positioning 
+       kwkInvCerrar = display.newImageRect( imgDir.. "kwkinvcerrar.png", 58, 62 ); 
+       kwkInvCerrar.x = 1764; kwkInvCerrar.y = 1061; kwkInvCerrar.alpha = 1; kwkInvCerrar.oldAlpha = 1 
+       kwkInvCerrar.oriX = kwkInvCerrar.x; kwkInvCerrar.oriY = kwkInvCerrar.y 
+       kwkInvCerrar.name = "kwkInvCerrar" 
+       menuGroup:insert(kwkInvCerrar); menuGroup.kwkInvCerrar = kwkInvCerrar 
+
+       -- kwkInvMaquina positioning 
+       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
+       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
+       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
+       kwkInvMaquina.name = "kwkInvMaquina" 
+       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
+
+       -- kwkInvBiberon positioning 
+       kwkInvBiberon = display.newImageRect( imgDir.. "kwkinvbiberon.png", 103, 256 ); 
+       kwkInvBiberon.x = 896; kwkInvBiberon.y = 1408; kwkInvBiberon.alpha = 1; kwkInvBiberon.oldAlpha = 1 
+       kwkInvBiberon.oriX = kwkInvBiberon.x; kwkInvBiberon.oriY = kwkInvBiberon.y 
+       kwkInvBiberon.name = "kwkInvBiberon" 
+       menuGroup:insert(kwkInvBiberon); menuGroup.kwkInvBiberon = kwkInvBiberon 
+
+       -- kwkInvTijeras positioning 
+       kwkInvTijeras = display.newImageRect( imgDir.. "kwkinvtijeras.png", 88, 257 ); 
+       kwkInvTijeras.x = 1083; kwkInvTijeras.y = 1147; kwkInvTijeras.alpha = 1; kwkInvTijeras.oldAlpha = 1 
+       kwkInvTijeras.oriX = kwkInvTijeras.x; kwkInvTijeras.oriY = kwkInvTijeras.y 
+       kwkInvTijeras.name = "kwkInvTijeras" 
+       menuGroup:insert(kwkInvTijeras); menuGroup.kwkInvTijeras = kwkInvTijeras 
+
+       -- kwkInvRosa positioning 
+       kwkInvRosa = display.newImageRect( imgDir.. "kwkinvrosa.png", 88, 255 ); 
+       kwkInvRosa.x = 1236; kwkInvRosa.y = 1152; kwkInvRosa.alpha = 1; kwkInvRosa.oldAlpha = 1 
+       kwkInvRosa.oriX = kwkInvRosa.x; kwkInvRosa.oriY = kwkInvRosa.y 
+       kwkInvRosa.name = "kwkInvRosa" 
+       menuGroup:insert(kwkInvRosa); menuGroup.kwkInvRosa = kwkInvRosa 
+
+       -- kwkInvErizo positioning 
+       kwkInvErizo = display.newImageRect( imgDir.. "kwkinverizo.png", 403, 254 ); 
+       kwkInvErizo.x = 1590; kwkInvErizo.y = 1149; kwkInvErizo.alpha = 1; kwkInvErizo.oldAlpha = 1 
+       kwkInvErizo.oriX = kwkInvErizo.x; kwkInvErizo.oriY = kwkInvErizo.y 
+       kwkInvErizo.name = "kwkInvErizo" 
+       menuGroup:insert(kwkInvErizo); menuGroup.kwkInvErizo = kwkInvErizo 
+
+       -- kwkInvCelo positioning 
+       kwkInvCelo = display.newImageRect( imgDir.. "kwkinvcelo.png", 271, 253 ); 
+       kwkInvCelo.x = 1159; kwkInvCelo.y = 1409; kwkInvCelo.alpha = 1; kwkInvCelo.oldAlpha = 1 
+       kwkInvCelo.oriX = kwkInvCelo.x; kwkInvCelo.oriY = kwkInvCelo.y 
+       kwkInvCelo.name = "kwkInvCelo" 
+       menuGroup:insert(kwkInvCelo); menuGroup.kwkInvCelo = kwkInvCelo 
+
+       -- kwkInvGuitarra positioning 
+       kwkInvGuitarra = display.newImageRect( imgDir.. "kwkinvguitarra.png", 152, 238 ); 
+       kwkInvGuitarra.x = 1480; kwkInvGuitarra.y = 1396; kwkInvGuitarra.alpha = 1; kwkInvGuitarra.oldAlpha = 1 
+       kwkInvGuitarra.oriX = kwkInvGuitarra.x; kwkInvGuitarra.oriY = kwkInvGuitarra.y 
+       kwkInvGuitarra.name = "kwkInvGuitarra" 
+       menuGroup:insert(kwkInvGuitarra); menuGroup.kwkInvGuitarra = kwkInvGuitarra 
+
+       -- kwkInvCola positioning 
+       kwkInvCola = display.newImageRect( imgDir.. "kwkinvcola.png", 108, 259 ); 
+       kwkInvCola.x = 1674; kwkInvCola.y = 1405; kwkInvCola.alpha = 1; kwkInvCola.oldAlpha = 1 
+       kwkInvCola.oriX = kwkInvCola.x; kwkInvCola.oriY = kwkInvCola.y 
+       kwkInvCola.name = "kwkInvCola" 
+       menuGroup:insert(kwkInvCola); menuGroup.kwkInvCola = kwkInvCola 
  
        -- Group(s) creation 
 
        -- (MIDDLE) External code will render here 
-       --Ocultar capas iniciales
-instantHide(kwkBurbuja)
-instantHide(TextTerminado)
-instantHide(TextMal)
-instantHide(TextFaltan)
+       --Ocultar capas al principio
 
-lastText = Text1
- 
+instantHide(circuloA)
+instantHide(circuloB)
+instantHide(circuloC)
+instantHide(circuloD)
+instantHide(kwkTick)
+instantHide(End1)
+
+local lastPressed = ""
+local terminado = false
+
+function hideLastPressed ()
+	if (lastPressed == "A") then
+		hide(circuloA)
+	elseif (lastPressed == "B") then
+		hide(circuloB)
+	elseif (lastPressed == "C") then
+		hide(circuloC)
+	elseif (lastPressed == "D") then
+		hide(circuloD)
+	end
+end
+
+function terminar ()
+	terminado = true
+
+	hide(Text1)
+	hide(kwkTick)
+
+	show(End1)
+
+	if (lastPressed == "A") then
+		end1()
+	elseif (lastPressed == "B" or lastPressed == "D") then
+		end2()
+	elseif (lastPressed == "C") then
+		badEnd()
+	end
+
+	saveKwikVars({"Preg02Completed", true})
+
+    local myClosure_switch = function() 
+        dispose(); director:changeScene( "page_"..(pag_pregunta2 + 1), "fade" ) 
+    end 
+    timerStash.newTimer_980 = timer.performWithDelay(3000, myClosure_switch, 1) 
+end
+
+function end1()
+	delayShow(End1, 0)
+	playAudioWithDelay(acierto, 0)
+
+	local currComodin = kwkVarCheck("comodin")
+	saveKwikVars({"comodin", currComodin + 10})	
+
+	updateCoefs()
+
+end
+
+function end2()
+	delayShow(End1, 0)
+	playAudioWithDelay(acierto, 0)
+
+	local currentCL3 = kwkVarCheck("CL3")
+	local currentCL1 = kwkVarCheck("CL1")
+
+	saveKwikVars({"CL3", currentCL3 + 5})
+	saveKwikVars({"CL1", currentCL1 + 2})
+
+	updateCoefs()
+end
+
+function badEnd()
+	delayShow(End1, 0)
+	playAudioWithDelay(fallo, 0)
+end 
  
        -- Actions (functions) 
-       function Drag1(event) 
-           --External code 
-           pos1 = whereIs (thumb1) 
+       function hideInventory(event) 
+            transitionStash.newTransition_159 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_159 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_159 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_161 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_161 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_161 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
+           InventoryShown = false
+          saveKwikVars({"InventoryShown",false}) 
        end 
 
-       function Drag2(event) 
-           --External code 
-           pos2 = whereIs (thumb2) 
-       end 
-
-       function Drag3(event) 
-           --External code 
-           pos3 = whereIs (thumb3) 
-       end 
-
-       function Drag4(event) 
-           --External code 
-           pos4 = whereIs (thumb4) 
-       end 
-
-       function Drag5(event) 
-           --External code 
-           pos5 = whereIs (thumb5) 
+       function showInventory(event) 
+            transitionStash.newTransition_169 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+         if (hasBiberon == true) then 
+            transitionStash.newTransition_170 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasTijeras == true) then 
+            transitionStash.newTransition_170 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasMaquina == true) then 
+            transitionStash.newTransition_171 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasRosa == true) then 
+            transitionStash.newTransition_172 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasErizo == true) then 
+            transitionStash.newTransition_172 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasCelo == true) then 
+            transitionStash.newTransition_173 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasGuitarra == true) then 
+            transitionStash.newTransition_174 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+         end 
+         if (hasCola == true) then 
+            transitionStash.newTransition_174 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+         end 
+           InventoryShown = true
+          saveKwikVars({"InventoryShown",true}) 
+            transitionStash.newTransition_183 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_184 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
        end 
 
  
       --End Actions (functions) 
 
  
-       -- Drag objects 
-       MultiTouch.activate( thumb1, "move", "single"  ) 
-       local function thumb1Drag (event ) 
-          local t = event.target 
-          if event.phase == "began" then  
-             local parent = t.parent; parent:insert(t); display.getCurrentStage():setFocus(t); t.isFocus = true 
-          elseif event.phase == "moved" then  
-            elseif event.phase == "ended" or event.phase == "cancelled" then  
-               Drag1()  
-               display.getCurrentStage():setFocus(nil); t.isFocus = false 
-          end  
-          return true 
-       end 
-       thumb1:addEventListener( MultiTouch.MULTITOUCH_EVENT, thumb1Drag ) 
-
-       MultiTouch.activate( thumb2, "move", "single"  ) 
-       local function thumb2Drag (event ) 
-          local t = event.target 
-          if event.phase == "began" then  
-             local parent = t.parent; parent:insert(t); display.getCurrentStage():setFocus(t); t.isFocus = true 
-          elseif event.phase == "moved" then  
-            elseif event.phase == "ended" or event.phase == "cancelled" then  
-               Drag2()  
-               display.getCurrentStage():setFocus(nil); t.isFocus = false 
-          end  
-          return true 
-       end 
-       thumb2:addEventListener( MultiTouch.MULTITOUCH_EVENT, thumb2Drag ) 
-
-       MultiTouch.activate( thumb3, "move", "single"  ) 
-       local function thumb3Drag (event ) 
-          local t = event.target 
-          if event.phase == "began" then  
-             local parent = t.parent; parent:insert(t); display.getCurrentStage():setFocus(t); t.isFocus = true 
-          elseif event.phase == "moved" then  
-            elseif event.phase == "ended" or event.phase == "cancelled" then  
-               Drag3()  
-               display.getCurrentStage():setFocus(nil); t.isFocus = false 
-          end  
-          return true 
-       end 
-       thumb3:addEventListener( MultiTouch.MULTITOUCH_EVENT, thumb3Drag ) 
-
-       MultiTouch.activate( thumb4, "move", "single"  ) 
-       local function thumb4Drag (event ) 
-          local t = event.target 
-          if event.phase == "began" then  
-             local parent = t.parent; parent:insert(t); display.getCurrentStage():setFocus(t); t.isFocus = true 
-          elseif event.phase == "moved" then  
-            elseif event.phase == "ended" or event.phase == "cancelled" then  
-               Drag4()  
-               display.getCurrentStage():setFocus(nil); t.isFocus = false 
-          end  
-          return true 
-       end 
-       thumb4:addEventListener( MultiTouch.MULTITOUCH_EVENT, thumb4Drag ) 
-
-       MultiTouch.activate( thumb5, "move", "single"  ) 
-       local function thumb5Drag (event ) 
-          local t = event.target 
-          if event.phase == "began" then  
-             local parent = t.parent; parent:insert(t); display.getCurrentStage():setFocus(t); t.isFocus = true 
-          elseif event.phase == "moved" then  
-            elseif event.phase == "ended" or event.phase == "cancelled" then  
-               Drag5()  
-               display.getCurrentStage():setFocus(nil); t.isFocus = false 
-          end  
-          return true 
-       end 
-       thumb5:addEventListener( MultiTouch.MULTITOUCH_EVENT, thumb5Drag ) 
-
+       -- Timers 
+       timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
 
        -- Button event listeners 
-       local function onRubiEvent(event) 
-          btnBoton(Rubi) 
+       local function onkwkInvCerrarEvent(event) 
+          btnCerrarInvent(kwkInvCerrar) 
           return true 
        end 
-       Rubi:addEventListener("tap", onRubiEvent ) 
-       local function onkwkBurbujaEvent(event) 
-          btnBurbuja(kwkBurbuja) 
+       kwkInvCerrar:addEventListener("tap", onkwkInvCerrarEvent ) 
+       local function onkwkTickEvent(event) 
+          btnTick(kwkTick) 
           return true 
        end 
-       kwkBurbuja:addEventListener("tap", onkwkBurbujaEvent ) 
+       kwkTick:addEventListener("tap", onkwkTickEvent ) 
+       local function onAEvent(event) 
+          btnA(A) 
+          return true 
+       end 
+       A:addEventListener("tap", onAEvent ) 
+       local function onBEvent(event) 
+          btnB(B) 
+          return true 
+       end 
+       B:addEventListener("tap", onBEvent ) 
+       local function onCEvent(event) 
+          btnC(C) 
+          return true 
+       end 
+       C:addEventListener("tap", onCEvent ) 
+       local function onDEvent(event) 
+          btnD(D) 
+          return true 
+       end 
+       D:addEventListener("tap", onDEvent ) 
 
        -- Button functions 
-       function btnBoton(self) 
-           --External code 
-           comprobar() 
+       function btnInventario(self) 
+         if (InventoryShown == false) then 
+           showInventory() 
+         else 
+           hideInventory() 
+         end 
        end 
 
-       function btnBurbuja(self) 
-            local myClosure_switch = function() 
-                dispose(); director:changeScene( "page_2", "fade" ) 
-            end 
-            timerStash.newTimer_803 = timer.performWithDelay(0, myClosure_switch, 1) 
+       function btnCerrarInvent(self) 
+           hideInventory() 
+       end 
+
+       function btnTick(self) 
+           --External code 
+           terminar() 
+       end 
+
+       function btnA(self) 
+           --External code 
+           if (lastPressed ~= "A" and terminado == false) then
+	show (circuloA)
+	hideLastPressed()
+	show (kwkTick)
+	lastPressed = "A"
+end 
+       end 
+
+       function btnB(self) 
+           --External code 
+           if (lastPressed ~= "B" and terminado == false) then
+	show (circuloB)
+	hideLastPressed()
+	show (kwkTick)
+	lastPressed = "B"
+end 
+       end 
+
+       function btnC(self) 
+           --External code 
+           if (lastPressed ~= "C" and terminado == false) then
+	show (circuloC)
+	hideLastPressed()
+	show (kwkTick)
+	lastPressed = "C"
+end 
+       end 
+
+       function btnD(self) 
+           --External code 
+           if (lastPressed ~= "D" and terminado == false) then
+	show (circuloD)
+	show (kwkTick)
+	hideLastPressed()
+	lastPressed = "D"
+end 
        end 
 
 
@@ -533,38 +635,18 @@ lastText = Text1
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
-          thumb1:removeEventListener ( MultiTouch.MULTITOUCH_EVENT,  thumb1Drag ); Gesture.deactivate(thumb1) 
-          thumb2:removeEventListener ( MultiTouch.MULTITOUCH_EVENT,  thumb2Drag ); Gesture.deactivate(thumb2) 
-          thumb3:removeEventListener ( MultiTouch.MULTITOUCH_EVENT,  thumb3Drag ); Gesture.deactivate(thumb3) 
-          thumb4:removeEventListener ( MultiTouch.MULTITOUCH_EVENT,  thumb4Drag ); Gesture.deactivate(thumb4) 
-          thumb5:removeEventListener ( MultiTouch.MULTITOUCH_EVENT,  thumb5Drag ); Gesture.deactivate(thumb5) 
+          if audio.isChannelActive ( 2 ) then 
+   audio.stop(2); 
+ end 
+ audio.dispose(fallo); fallo = nil 
+          if audio.isChannelActive ( 1 ) then 
+   audio.stop(1); 
+ end 
+ audio.dispose(acierto); acierto = nil 
        end 
 
        -- (BOTTOM) External code will render here 
-       function btnBurbuja(self) 
-	local pageToGo
-	if (not hasGuitarra) then
-		pageToGo = "page_31"
-	end
-	if (not hasMaquina) then
-		pageToGo = "page_29"
-	end
-	if (not hasErizo) then
-		pageToGo = "page_25"
-	end
-	if (not hasRosa) then
-		pageToGo = "page_11"
-	end
-	if (not hasBiberon or not hasTijeras) then
-		pageToGo = "page_2"
-	end
-    local myClosure_switch = function() 
-        dispose(); director:changeScene( pageToGo, "fade" ) 
-    end 
-    timerStash.newTimer_980 = timer.performWithDelay(0, myClosure_switch, 1) 
-end 
-
- 
+       instantHide (kwkInvDestacado) 
 
 
     end 

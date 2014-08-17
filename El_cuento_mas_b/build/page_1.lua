@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 34 
+    local numPages = 63 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -11,7 +11,12 @@ function new()
 
     local drawScreen = function() 
 
-        math.randomseed(os.time()) 
+       local curPage = 1 
+
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
+       Navigation.hide() 
+
+       math.randomseed(os.time()) 
 
        if (tonumber(_G.kAutoPlay) > 0) then 
           local function act_autoPlay(event) 
@@ -30,13 +35,17 @@ function new()
        -- Button names 
        local btnReiniciar
        local btnContinuar
+       local btnEmpezar
+       local but_877
 
        -- Layer names 
        local btn1  
+       local btn3  
+       local Rectangulo_redo  
        local btn2  
        local Empezar  
        local Continuar  
-       local Text1  
+       local Reiniciar  
 
        -- Added variables before layers render 
        _G.hasTijeras = false --  
@@ -149,6 +158,61 @@ function new()
        if kwkVarCheck("hasBiberon") ~= nil then  
           _G.hasBiberon = kwkVarCheck("hasBiberon") 
        end  
+       _G.Preg01Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg01Completed") ~= nil then  
+          _G.Preg01Completed = kwkVarCheck("Preg01Completed") 
+       end  
+       _G.Preg02Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg02Completed") ~= nil then  
+          _G.Preg02Completed = kwkVarCheck("Preg02Completed") 
+       end  
+       _G.Preg03Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg03Completed") ~= nil then  
+          _G.Preg03Completed = kwkVarCheck("Preg03Completed") 
+       end  
+       _G.Preg04Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg04Completed") ~= nil then  
+          _G.Preg04Completed = kwkVarCheck("Preg04Completed") 
+       end  
+       _G.Preg05Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg05Completed") ~= nil then  
+          _G.Preg05Completed = kwkVarCheck("Preg05Completed") 
+       end  
+       _G.Preg06Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg06Completed") ~= nil then  
+          _G.Preg06Completed = kwkVarCheck("Preg06Completed") 
+       end  
+       _G.Preg07Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg07Completed") ~= nil then  
+          _G.Preg07Completed = kwkVarCheck("Preg07Completed") 
+       end  
+       _G.Preg08Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg08Completed") ~= nil then  
+          _G.Preg08Completed = kwkVarCheck("Preg08Completed") 
+       end  
+       _G.Preg09Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Preg09Completed") ~= nil then  
+          _G.Preg09Completed = kwkVarCheck("Preg09Completed") 
+       end  
+       _G.Fav04Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav04Completed") ~= nil then  
+          _G.Fav04Completed = kwkVarCheck("Fav04Completed") 
+       end  
+       _G.Fav03Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav03Completed") ~= nil then  
+          _G.Fav03Completed = kwkVarCheck("Fav03Completed") 
+       end  
 
        -- (TOP) External code will render here 
 
@@ -159,6 +223,20 @@ function new()
        btn1.name = "btn1" 
        menuGroup:insert(btn1); menuGroup.btn1 = btn1 
 
+       -- btn3 positioning 
+       btn3 = display.newImageRect( imgDir.. "p1_btn3.png", 523, 110 ); 
+       btn3.x = 1279; btn3.y = 974; btn3.alpha = 1; btn3.oldAlpha = 1 
+       btn3.oriX = btn3.x; btn3.oriY = btn3.y 
+       btn3.name = "btn3" 
+       menuGroup:insert(btn3); menuGroup.btn3 = btn3 
+
+       -- Rectangulo_redo positioning 
+       Rectangulo_redo = display.newImageRect( imgDir.. "p1_rectangulo_redo.png", 408, 408 ); 
+       Rectangulo_redo.x = 1256; Rectangulo_redo.y = 540; Rectangulo_redo.alpha = 1; Rectangulo_redo.oldAlpha = 1 
+       Rectangulo_redo.oriX = Rectangulo_redo.x; Rectangulo_redo.oriY = Rectangulo_redo.y 
+       Rectangulo_redo.name = "Rectangulo_redo" 
+       menuGroup:insert(Rectangulo_redo); menuGroup.Rectangulo_redo = Rectangulo_redo 
+
        -- btn2 positioning 
        btn2 = display.newImageRect( imgDir.. "p1_btn2.png", 523, 110 ); 
        btn2.x = 1791; btn2.y = 974; btn2.alpha = 1; btn2.oldAlpha = 1 
@@ -167,8 +245,8 @@ function new()
        menuGroup:insert(btn2); menuGroup.btn2 = btn2 
 
        -- Empezar positioning 
-       Empezar = display.newImageRect( imgDir.. "p1_empezar.png", 193, 51 ); 
-       Empezar.x = 1802; Empezar.y = 980; Empezar.alpha = 1; Empezar.oldAlpha = 1 
+       Empezar = display.newImageRect( imgDir.. "p1_empezar.png", 194, 51 ); 
+       Empezar.x = 1281; Empezar.y = 971; Empezar.alpha = 1; Empezar.oldAlpha = 1 
        Empezar.oriX = Empezar.x; Empezar.oriY = Empezar.y 
        Empezar.name = "Empezar" 
        menuGroup:insert(Empezar); menuGroup.Empezar = Empezar 
@@ -180,12 +258,12 @@ function new()
        Continuar.name = "Continuar" 
        menuGroup:insert(Continuar); menuGroup.Continuar = Continuar 
 
-       -- Text1 positioning 
-       Text1 = display.newImageRect( imgDir.. "p1_text1.png", 425, 40 ); 
-       Text1.x = 768; Text1.y = 970; Text1.alpha = 1; Text1.oldAlpha = 1 
-       Text1.oriX = Text1.x; Text1.oriY = Text1.y 
-       Text1.name = "Text1" 
-       menuGroup:insert(Text1); menuGroup.Text1 = Text1 
+       -- Reiniciar positioning 
+       Reiniciar = display.newImageRect( imgDir.. "p1_reiniciar.png", 425, 40 ); 
+       Reiniciar.x = 768; Reiniciar.y = 970; Reiniciar.alpha = 1; Reiniciar.oldAlpha = 1 
+       Reiniciar.oriX = Reiniciar.x; Reiniciar.oriY = Reiniciar.y 
+       Reiniciar.name = "Reiniciar" 
+       menuGroup:insert(Reiniciar); menuGroup.Reiniciar = Reiniciar 
  
        -- Group(s) creation 
 
@@ -209,6 +287,16 @@ function new()
           return true 
        end 
        btn2:addEventListener("tap", onbtn2Event ) 
+       local function onbtn3Event(event) 
+          btnEmpezar(btn3) 
+          return true 
+       end 
+       btn3:addEventListener("tap", onbtn3Event ) 
+       local function onRectangulo_redoEvent(event) 
+          but_877(Rectangulo_redo) 
+          return true 
+       end 
+       Rectangulo_redo:addEventListener("tap", onRectangulo_redoEvent ) 
 
        -- Button functions 
        function btnReiniciar(self) 
@@ -266,6 +354,27 @@ print ("continuando historia")
 saveKwikVars ({"Reiniciado", false}) 
        end 
 
+       function btnEmpezar(self) 
+           --External code 
+           
+startVariables()
+
+local myClosure_switch = function() 
+    dispose(); director:changeScene( "page_2", "fade" ) 
+end 
+timerStash.newTimer_980 = timer.performWithDelay(0, myClosure_switch, 1) 
+
+saveKwikVars ({"Reiniciado", false}) 
+       end 
+
+       function but_877(self) 
+           if (kNavig.alpha == 0) then 
+              Navigation.show() 
+           else  
+              Navigation.hide() 
+           end 
+       end 
+
 
        -- do not swipe this page 
 
@@ -278,8 +387,12 @@ saveKwikVars ({"Reiniciado", false})
 
 if (reiniciado == true or reiniciado == nil) then
 	instantHide(Continuar)
+	instantHide(Reiniciar)
+	instantHide(btn1)
+	instantHide(btn2)
 else
 	instantHide(Empezar)
+	instantHide(btn3)
 end 
 
 

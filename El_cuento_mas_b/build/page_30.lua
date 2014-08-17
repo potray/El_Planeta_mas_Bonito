@@ -4,7 +4,7 @@ module(..., package.seeall)
 local widget = require("widget") 
 
 function new() 
-    local numPages = 34 
+    local numPages = 43 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -13,6 +13,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 30 
+
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -41,33 +45,28 @@ function new()
        local btnPrevPage
        local btnInventario
        local btnMaquina
+       local btnCerrarInvent
 
        -- Action names 
+       local hideMaquina 
        local hideInventory 
        local showInventory 
-       local hideMaquina 
-       local SceneAnim 
 
        -- Layer names 
        local kwkFondo5  
-       local kwkSabio  
-       local kwkSabioDormido  
        local kwkHija_gafas  
-       local kwkHija_gafas_s  
-       local Text2  
-       local Text4  
        local Text1  
-       local Text3  
+       local kwkInvDestacado  
        local kwkMaquinaAgran  
        local kwkMama_gafas  
-       local kwkMama_gafas_s  
        local kwkMochila  
        local kwkRectInv  
+       local kwkInvMaquina  
+       local kwkInvCerrar  
        local kwkInvBiberon  
        local kwkInvTijeras  
        local kwkInvRosa  
        local kwkInvErizo  
-       local kwkInvMaquina  
        local kwkInvCelo  
        local kwkInvGuitarra  
        local kwkInvCola  
@@ -79,8 +78,8 @@ function new()
        local kwkCGText  
        local kwkDiamante  
        local kwkEsmeralda  
-       local kwkruby  
        local kwkMedalla  
+       local kwkruby  
        local kwkNavnext  
        local kwkNavprev  
 
@@ -109,7 +108,10 @@ local comodin = kwkVarCheck("comodin")
 
 local favor2Started = kwkVarCheck("Favor2Visitado")
 local Fav01Completed = kwkVarCheck("Fav01Completed")
-local Fav02Completed = kwkVarCheck("Fav02Completed") 
+local Fav02Completed = kwkVarCheck("Fav02Completed")
+local Preg01Completed = kwkVarCheck("Preg01Completed")
+local Preg02Completed = kwkVarCheck("Preg02Completed")
+local Preg03Completed = kwkVarCheck("Preg03Completed") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -126,20 +128,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkFondo5.name = "kwkFondo5" 
        menuGroup:insert(1,kwkFondo5); menuGroup.kwkFondo5 = kwkFondo5 
 
-       -- kwkSabio positioning 
-       kwkSabio = display.newImageRect( imgDir.. "kwksabio.png", 910, 1091 ); 
-       kwkSabio.x = 1872; kwkSabio.y = 559; kwkSabio.alpha = 1; kwkSabio.oldAlpha = 1 
-       kwkSabio.oriX = kwkSabio.x; kwkSabio.oriY = kwkSabio.y 
-       kwkSabio.name = "kwkSabio" 
-       menuGroup:insert(kwkSabio); menuGroup.kwkSabio = kwkSabio 
-
-       -- kwkSabioDormido positioning 
-       kwkSabioDormido = display.newImageRect( imgDir.. "kwksabiodormido.png", 910, 1092 ); 
-       kwkSabioDormido.x = 1872; kwkSabioDormido.y = 560; kwkSabioDormido.alpha = 1; kwkSabioDormido.oldAlpha = 1 
-       kwkSabioDormido.oriX = kwkSabioDormido.x; kwkSabioDormido.oriY = kwkSabioDormido.y 
-       kwkSabioDormido.name = "kwkSabioDormido" 
-       menuGroup:insert(kwkSabioDormido); menuGroup.kwkSabioDormido = kwkSabioDormido 
-
        -- kwkHija_gafas positioning 
        kwkHija_gafas = display.newImageRect( imgDir.. "kwkhija_gafas.png", 287, 522 ); 
        kwkHija_gafas.x = 1268; kwkHija_gafas.y = 1313; kwkHija_gafas.alpha = 1; kwkHija_gafas.oldAlpha = 1 
@@ -147,43 +135,22 @@ local hasCola = kwkVarCheck("hasCola")
        kwkHija_gafas.name = "kwkHija_gafas" 
        menuGroup:insert(kwkHija_gafas); menuGroup.kwkHija_gafas = kwkHija_gafas 
 
-       -- kwkHija_gafas_s positioning 
-       kwkHija_gafas_s = display.newImageRect( imgDir.. "kwkhija_gafas_s.png", 287, 523 ); 
-       kwkHija_gafas_s.x = 1268; kwkHija_gafas_s.y = 1313; kwkHija_gafas_s.alpha = 1; kwkHija_gafas_s.oldAlpha = 1 
-       kwkHija_gafas_s.oriX = kwkHija_gafas_s.x; kwkHija_gafas_s.oriY = kwkHija_gafas_s.y 
-       kwkHija_gafas_s.name = "kwkHija_gafas_s" 
-       menuGroup:insert(kwkHija_gafas_s); menuGroup.kwkHija_gafas_s = kwkHija_gafas_s 
-
-       -- Text2 positioning 
-       Text2 = display.newImageRect( imgDir.. "p30_text2.png", 1398, 83 ); 
-       Text2.x = 1268; Text2.y = 127; Text2.alpha = 1; Text2.oldAlpha = 1 
-       Text2.oriX = Text2.x; Text2.oriY = Text2.y 
-       Text2.name = "Text2" 
-       menuGroup:insert(Text2); menuGroup.Text2 = Text2 
-
-       -- Text4 positioning 
-       Text4 = display.newImageRect( imgDir.. "p30_text4.png", 278, 31 ); 
-       Text4.x = 1054; Text4.y = 1101; Text4.alpha = 1; Text4.oldAlpha = 1 
-       Text4.oriX = Text4.x; Text4.oriY = Text4.y 
-       Text4.name = "Text4" 
-       menuGroup:insert(Text4); menuGroup.Text4 = Text4 
-
        -- Text1 positioning 
-       Text1 = display.newImageRect( imgDir.. "p30_text1.png", 873, 39 ); 
-       Text1.x = 1268; Text1.y = 40; Text1.alpha = 1; Text1.oldAlpha = 1 
+       Text1 = display.newImageRect( imgDir.. "p30_text1.png", 1440, 108 ); 
+       Text1.x = 1268; Text1.y = 75; Text1.alpha = 1; Text1.oldAlpha = 1 
        Text1.oriX = Text1.x; Text1.oriY = Text1.y 
        Text1.name = "Text1" 
        menuGroup:insert(Text1); menuGroup.Text1 = Text1 
 
-       -- Text3 positioning 
-       Text3 = display.newImageRect( imgDir.. "p30_text3.png", 534, 39 ); 
-       Text3.x = 2047; Text3.y = 1203; Text3.alpha = 1; Text3.oldAlpha = 1 
-       Text3.oriX = Text3.x; Text3.oriY = Text3.y 
-       Text3.name = "Text3" 
-       menuGroup:insert(Text3); menuGroup.Text3 = Text3 
+       -- kwkInvDestacado positioning 
+       kwkInvDestacado = display.newImageRect( imgDir.. "kwkinvdestacado.png", 597, 599 ); 
+       kwkInvDestacado.x = 147; kwkInvDestacado.y = 1452; kwkInvDestacado.alpha = 1; kwkInvDestacado.oldAlpha = 1 
+       kwkInvDestacado.oriX = kwkInvDestacado.x; kwkInvDestacado.oriY = kwkInvDestacado.y 
+       kwkInvDestacado.name = "kwkInvDestacado" 
+       menuGroup:insert(kwkInvDestacado); menuGroup.kwkInvDestacado = kwkInvDestacado 
 
        -- kwkMaquinaAgran positioning 
-       kwkMaquinaAgran = display.newImageRect( imgDir.. "kwkmaquinaagran.png", 484, 613 ); 
+       kwkMaquinaAgran = display.newImageRect( imgDir.. "kwkmaquinaagran.png", 484, 615 ); 
        kwkMaquinaAgran.x = 686; kwkMaquinaAgran.y = 1052; kwkMaquinaAgran.alpha = 1; kwkMaquinaAgran.oldAlpha = 1 
        kwkMaquinaAgran.oriX = kwkMaquinaAgran.x; kwkMaquinaAgran.oriY = kwkMaquinaAgran.y 
        kwkMaquinaAgran.name = "kwkMaquinaAgran" 
@@ -195,13 +162,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkMama_gafas.oriX = kwkMama_gafas.x; kwkMama_gafas.oriY = kwkMama_gafas.y 
        kwkMama_gafas.name = "kwkMama_gafas" 
        menuGroup:insert(kwkMama_gafas); menuGroup.kwkMama_gafas = kwkMama_gafas 
-
-       -- kwkMama_gafas_s positioning 
-       kwkMama_gafas_s = display.newImageRect( imgDir.. "kwkmama_gafas_s.png", 331, 635 ); 
-       kwkMama_gafas_s.x = 1577; kwkMama_gafas_s.y = 1265; kwkMama_gafas_s.alpha = 1; kwkMama_gafas_s.oldAlpha = 1 
-       kwkMama_gafas_s.oriX = kwkMama_gafas_s.x; kwkMama_gafas_s.oriY = kwkMama_gafas_s.y 
-       kwkMama_gafas_s.name = "kwkMama_gafas_s" 
-       menuGroup:insert(kwkMama_gafas_s); menuGroup.kwkMama_gafas_s = kwkMama_gafas_s 
 
        -- kwkMochila positioning 
 
@@ -227,6 +187,20 @@ local hasCola = kwkVarCheck("hasCola")
        kwkRectInv.oriX = kwkRectInv.x; kwkRectInv.oriY = kwkRectInv.y 
        kwkRectInv.name = "kwkRectInv" 
        menuGroup:insert(kwkRectInv); menuGroup.kwkRectInv = kwkRectInv 
+
+       -- kwkInvMaquina positioning 
+       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
+       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
+       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
+       kwkInvMaquina.name = "kwkInvMaquina" 
+       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
+
+       -- kwkInvCerrar positioning 
+       kwkInvCerrar = display.newImageRect( imgDir.. "kwkinvcerrar.png", 58, 62 ); 
+       kwkInvCerrar.x = 1764; kwkInvCerrar.y = 1061; kwkInvCerrar.alpha = 1; kwkInvCerrar.oldAlpha = 1 
+       kwkInvCerrar.oriX = kwkInvCerrar.x; kwkInvCerrar.oriY = kwkInvCerrar.y 
+       kwkInvCerrar.name = "kwkInvCerrar" 
+       menuGroup:insert(kwkInvCerrar); menuGroup.kwkInvCerrar = kwkInvCerrar 
 
        -- kwkInvBiberon positioning 
        kwkInvBiberon = display.newImageRect( imgDir.. "kwkinvbiberon.png", 103, 256 ); 
@@ -255,13 +229,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkInvErizo.oriX = kwkInvErizo.x; kwkInvErizo.oriY = kwkInvErizo.y 
        kwkInvErizo.name = "kwkInvErizo" 
        menuGroup:insert(kwkInvErizo); menuGroup.kwkInvErizo = kwkInvErizo 
-
-       -- kwkInvMaquina positioning 
-       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
-       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
-       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
-       kwkInvMaquina.name = "kwkInvMaquina" 
-       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
 
        -- kwkInvCelo positioning 
        kwkInvCelo = display.newImageRect( imgDir.. "kwkinvcelo.png", 271, 253 ); 
@@ -340,19 +307,19 @@ local hasCola = kwkVarCheck("hasCola")
        kwkEsmeralda.name = "kwkEsmeralda" 
        menuGroup:insert(kwkEsmeralda); menuGroup.kwkEsmeralda = kwkEsmeralda 
 
-       -- kwkruby positioning 
-       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
-       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
-       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
-       kwkruby.name = "kwkruby" 
-       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
-
        -- kwkMedalla positioning 
        kwkMedalla = display.newImageRect( imgDir.. "kwkmedalla.png", 176, 199 ); 
        kwkMedalla.x = 2392; kwkMedalla.y = 113; kwkMedalla.alpha = 1; kwkMedalla.oldAlpha = 1 
        kwkMedalla.oriX = kwkMedalla.x; kwkMedalla.oriY = kwkMedalla.y 
        kwkMedalla.name = "kwkMedalla" 
        menuGroup:insert(kwkMedalla); menuGroup.kwkMedalla = kwkMedalla 
+
+       -- kwkruby positioning 
+       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
+       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
+       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
+       kwkruby.name = "kwkruby" 
+       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
 
        -- kwkNavnext positioning 
        kwkNavnext = display.newImageRect( imgDir.. "kwknavnext.png", 106, 361 ); 
@@ -373,69 +340,57 @@ local hasCola = kwkVarCheck("hasCola")
        -- (MIDDLE) External code will render here 
  
        -- Actions (functions) 
+       function hideMaquina(event) 
+         if (hasMaquina == true) then 
+            transitionStash.newTransition_953 = transition.to( kwkMaquinaAgran, {alpha=0, time=0, delay=0}) 
+         end 
+       end 
+
        function hideInventory(event) 
-            transitionStash.newTransition_170 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_170 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_170 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_171 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_171 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_171 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_172 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_172 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_172 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_954 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_954 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_954 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_954 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_955 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_955 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_955 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_955 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_956 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_956 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
            InventoryShown = false
           saveKwikVars({"InventoryShown",false}) 
        end 
 
        function showInventory(event) 
-            transitionStash.newTransition_181 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_965 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_182 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_965 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
          end 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_182 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_966 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
          end 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_183 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_967 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
          end 
          if (hasRosa == true) then 
-            transitionStash.newTransition_184 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_967 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
          end 
          if (hasErizo == true) then 
-            transitionStash.newTransition_184 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_968 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCelo == true) then 
-            transitionStash.newTransition_185 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_969 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasGuitarra == true) then 
-            transitionStash.newTransition_186 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_970 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCola == true) then 
-            transitionStash.newTransition_186 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_970 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
          end 
            InventoryShown = true
           saveKwikVars({"InventoryShown",true}) 
-       end 
-
-       function hideMaquina(event) 
-         if (hasMaquina == true) then 
-            transitionStash.newTransition_193 = transition.to( kwkMaquinaAgran, {alpha=0, time=0, delay=0}) 
-         end 
-       end 
-
-       function SceneAnim(event) 
-            transitionStash.newTransition_194 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_194 = transition.to( Text3, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_194 = transition.to( Text4, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_195 = transition.to( kwkSabioDormido, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_195 = transition.to( kwkMama_gafas_s, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_195 = transition.to( kwkHija_gafas_s, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_195 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=2000}) 
-            transitionStash.newTransition_196 = transition.to( Text3, {alpha=Text3.oldAlpha, time=1000, delay=4000}) 
-            transitionStash.newTransition_196 = transition.to( kwkSabioDormido, {alpha=kwkSabioDormido.oldAlpha, time=1000, delay=6000}) 
-            transitionStash.newTransition_196 = transition.to( Text4, {alpha=Text4.oldAlpha, time=1000, delay=7000}) 
-            transitionStash.newTransition_196 = transition.to( kwkMama_gafas_s, {alpha=kwkMama_gafas_s.oldAlpha, time=1000, delay=7000}) 
-            transitionStash.newTransition_197 = transition.to( kwkHija_gafas_s, {alpha=kwkHija_gafas_s.oldAlpha, time=1000, delay=7000}) 
+            transitionStash.newTransition_978 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_978 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
        end 
 
  
@@ -444,7 +399,6 @@ local hasCola = kwkVarCheck("hasCola")
  
        -- Timers 
        timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
-       timerStash.timerAnim = timer.performWithDelay( 0, SceneAnim, 1 ) 
        timerStash.timerMaquina = timer.performWithDelay( 0, hideMaquina, 1 ) 
 
        -- Button event listeners 
@@ -463,20 +417,25 @@ local hasCola = kwkVarCheck("hasCola")
           return true 
        end 
        kwkMaquinaAgran:addEventListener("tap", onkwkMaquinaAgranEvent ) 
+       local function onkwkInvCerrarEvent(event) 
+          btnCerrarInvent(kwkInvCerrar) 
+          return true 
+       end 
+       kwkInvCerrar:addEventListener("tap", onkwkInvCerrarEvent ) 
 
        -- Button functions 
        function btnNextPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_31", "moveFromRight" ) 
             end 
-            timerStash.newTimer_252 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_037 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnPrevPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_29", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_252 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_038 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnInventario(self) 
@@ -491,6 +450,9 @@ local hasCola = kwkVarCheck("hasCola")
            _G.hasMaquina = true
           saveKwikVars({"hasMaquina",true}) 
            hideMaquina() 
+       end 
+
+       function btnCerrarInvent(self) 
            hideInventory() 
        end 
 
@@ -507,18 +469,21 @@ local hasCola = kwkVarCheck("hasCola")
 	hide(kwkNavprev)
 end
 
+instantHide(kwkInvDestacado)
+
 function btnMaquina(self) 
 	hasMaquina = true
+	show(kwkInvDestacado)
 	saveKwikVars({"hasMaquina",true}) 
 	hideMaquina() 
 	hideInventory() 
 	if (favor2Started) then
-		local pageToGo = "page_32"
+		local pageToGo = pag_favor2
 		if (not hasGuitarra) then
-			pageToGo = "page_31"
+			pageToGo = pag_guitarra
 		end
 	    local myClosure_switch = function() 
-	        dispose(); director:changeScene( pageToGo, "fade" ) 
+	        dispose(); director:changeScene( "page_"..pageToGo, "fade" ) 
 	    end 
 	    timerStash.newTimer_980 = timer.performWithDelay(0, myClosure_switch, 1) 
 	else
@@ -526,6 +491,7 @@ function btnMaquina(self)
 		saveKwikVars({"comodin", currComodin + 10})
 	end
 end  
+       instantHide (kwkInvDestacado) 
 
 
     end 

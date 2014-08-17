@@ -4,7 +4,7 @@ module(..., package.seeall)
 local widget = require("widget") 
 
 function new() 
-    local numPages = 34 
+    local numPages = 43 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -13,6 +13,10 @@ function new()
     local drawScreen = function() 
 
        local curPage = 28 
+
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -37,30 +41,33 @@ function new()
 
  
        -- Button names 
+       local btnBotaAbeja
        local btnNextPage
        local btnPrevPage
        local btnInventario
+       local btnCerrarInvent
 
        -- Action names 
+       local hideBotaAbeja 
        local hideInventory 
        local showInventory 
-       local SceneAnim 
 
        -- Layer names 
-       local Fondo  
-       local kwkCaballo  
+       local kwkFondo3  
        local Text1  
-       local Text2  
+       local kwkCaballo  
+       local kwkBota_abeja  
        local kwkHija_gafas  
        local kwkMama_gafas  
-       local Castillo  
+       local kwkInvDestacado  
        local kwkMochila  
        local kwkRectInv  
+       local kwkInvMaquina  
+       local kwkInvCerrar  
        local kwkInvBiberon  
        local kwkInvTijeras  
        local kwkInvRosa  
        local kwkInvErizo  
-       local kwkInvMaquina  
        local kwkInvCelo  
        local kwkInvGuitarra  
        local kwkInvCola  
@@ -70,10 +77,10 @@ function new()
        local kwkComodinText  
        local kwkCIText  
        local kwkCGText  
+       local kwkruby  
        local kwkDiamante  
        local kwkEsmeralda  
        local kwkMedalla  
-       local kwkruby  
        local kwkNavnext  
        local kwkNavprev  
 
@@ -102,7 +109,10 @@ local comodin = kwkVarCheck("comodin")
 
 local favor2Started = kwkVarCheck("Favor2Visitado")
 local Fav01Completed = kwkVarCheck("Fav01Completed")
-local Fav02Completed = kwkVarCheck("Fav02Completed") 
+local Fav02Completed = kwkVarCheck("Fav02Completed")
+local Preg01Completed = kwkVarCheck("Preg01Completed")
+local Preg02Completed = kwkVarCheck("Preg02Completed")
+local Preg03Completed = kwkVarCheck("Preg03Completed") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -112,54 +122,54 @@ local hasErizo = kwkVarCheck("hasErizo")
 local hasCelo = kwkVarCheck("hasCelo")
 local hasCola = kwkVarCheck("hasCola") 
 
-       -- Fondo positioning 
-       Fondo = display.newImageRect( imgDir.. "p28_fondo.png", 2560, 1600 ); 
-       Fondo.x = 1280; Fondo.y = 800; Fondo.alpha = 1; Fondo.oldAlpha = 1 
-       Fondo.oriX = Fondo.x; Fondo.oriY = Fondo.y 
-       Fondo.name = "Fondo" 
-       menuGroup:insert(1,Fondo); menuGroup.Fondo = Fondo 
-
-       -- kwkCaballo positioning 
-       kwkCaballo = display.newImageRect( imgDir.. "kwkcaballo.png", 172, 106 ); 
-       kwkCaballo.x = 1482; kwkCaballo.y = 1336; kwkCaballo.alpha = 1; kwkCaballo.oldAlpha = 1 
-       kwkCaballo.oriX = kwkCaballo.x; kwkCaballo.oriY = kwkCaballo.y 
-       kwkCaballo.name = "kwkCaballo" 
-       menuGroup:insert(kwkCaballo); menuGroup.kwkCaballo = kwkCaballo 
+       -- kwkFondo3 positioning 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.jpg", 2559, 1600 ); 
+       kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
+       kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
+       kwkFondo3.name = "kwkFondo3" 
+       menuGroup:insert(1,kwkFondo3); menuGroup.kwkFondo3 = kwkFondo3 
 
        -- Text1 positioning 
-       Text1 = display.newImageRect( imgDir.. "p28_text1.png", 752, 83 ); 
-       Text1.x = 902; Text1.y = 75; Text1.alpha = 1; Text1.oldAlpha = 1 
+       Text1 = display.newImageRect( imgDir.. "p28_text1.png", 1496, 166 ); 
+       Text1.x = 1282; Text1.y = 86; Text1.alpha = 1; Text1.oldAlpha = 1 
        Text1.oriX = Text1.x; Text1.oriY = Text1.y 
        Text1.name = "Text1" 
        menuGroup:insert(Text1); menuGroup.Text1 = Text1 
 
-       -- Text2 positioning 
-       Text2 = display.newImageRect( imgDir.. "p28_text2.png", 582, 39 ); 
-       Text2.x = 908; Text2.y = 191; Text2.alpha = 1; Text2.oldAlpha = 1 
-       Text2.oriX = Text2.x; Text2.oriY = Text2.y 
-       Text2.name = "Text2" 
-       menuGroup:insert(Text2); menuGroup.Text2 = Text2 
+       -- kwkCaballo positioning 
+       kwkCaballo = display.newImageRect( imgDir.. "kwkcaballo.png", 1393, 780 ); 
+       kwkCaballo.x = 2465; kwkCaballo.y = 306; kwkCaballo.alpha = 1; kwkCaballo.oldAlpha = 1 
+       kwkCaballo.oriX = kwkCaballo.x; kwkCaballo.oriY = kwkCaballo.y 
+       kwkCaballo.name = "kwkCaballo" 
+       menuGroup:insert(kwkCaballo); menuGroup.kwkCaballo = kwkCaballo 
+
+       -- kwkBota_abeja positioning 
+       kwkBota_abeja = display.newImageRect( imgDir.. "kwkbota_abeja.png", 428, 378 ); 
+       kwkBota_abeja.x = 359; kwkBota_abeja.y = 1269; kwkBota_abeja.alpha = 1; kwkBota_abeja.oldAlpha = 1 
+       kwkBota_abeja.oriX = kwkBota_abeja.x; kwkBota_abeja.oriY = kwkBota_abeja.y 
+       kwkBota_abeja.name = "kwkBota_abeja" 
+       menuGroup:insert(kwkBota_abeja); menuGroup.kwkBota_abeja = kwkBota_abeja 
 
        -- kwkHija_gafas positioning 
-       kwkHija_gafas = display.newImageRect( imgDir.. "kwkhija_gafas.png", 50, 91 ); 
-       kwkHija_gafas.x = 1305; kwkHija_gafas.y = 1330; kwkHija_gafas.alpha = 1; kwkHija_gafas.oldAlpha = 1 
+       kwkHija_gafas = display.newImageRect( imgDir.. "kwkhija_gafas.png", 448, 816 ); 
+       kwkHija_gafas.x = 1123; kwkHija_gafas.y = 999; kwkHija_gafas.alpha = 1; kwkHija_gafas.oldAlpha = 1 
        kwkHija_gafas.oriX = kwkHija_gafas.x; kwkHija_gafas.oriY = kwkHija_gafas.y 
        kwkHija_gafas.name = "kwkHija_gafas" 
        menuGroup:insert(kwkHija_gafas); menuGroup.kwkHija_gafas = kwkHija_gafas 
 
        -- kwkMama_gafas positioning 
-       kwkMama_gafas = display.newImageRect( imgDir.. "kwkmama_gafas.png", 58, 111 ); 
-       kwkMama_gafas.x = 1352; kwkMama_gafas.y = 1335; kwkMama_gafas.alpha = 1; kwkMama_gafas.oldAlpha = 1 
+       kwkMama_gafas = display.newImageRect( imgDir.. "kwkmama_gafas.png", 518, 994 ); 
+       kwkMama_gafas.x = 1539; kwkMama_gafas.y = 1039; kwkMama_gafas.alpha = 1; kwkMama_gafas.oldAlpha = 1 
        kwkMama_gafas.oriX = kwkMama_gafas.x; kwkMama_gafas.oriY = kwkMama_gafas.y 
        kwkMama_gafas.name = "kwkMama_gafas" 
        menuGroup:insert(kwkMama_gafas); menuGroup.kwkMama_gafas = kwkMama_gafas 
 
-       -- Castillo positioning 
-       Castillo = display.newImageRect( imgDir.. "p28_castillo.png", 1258, 1299 ); 
-       Castillo.x = 1642; Castillo.y = 649; Castillo.alpha = 1; Castillo.oldAlpha = 1 
-       Castillo.oriX = Castillo.x; Castillo.oriY = Castillo.y 
-       Castillo.name = "Castillo" 
-       menuGroup:insert(Castillo); menuGroup.Castillo = Castillo 
+       -- kwkInvDestacado positioning 
+       kwkInvDestacado = display.newImageRect( imgDir.. "kwkinvdestacado.png", 597, 599 ); 
+       kwkInvDestacado.x = 147; kwkInvDestacado.y = 1452; kwkInvDestacado.alpha = 1; kwkInvDestacado.oldAlpha = 1 
+       kwkInvDestacado.oriX = kwkInvDestacado.x; kwkInvDestacado.oriY = kwkInvDestacado.y 
+       kwkInvDestacado.name = "kwkInvDestacado" 
+       menuGroup:insert(kwkInvDestacado); menuGroup.kwkInvDestacado = kwkInvDestacado 
 
        -- kwkMochila positioning 
 
@@ -185,6 +195,20 @@ local hasCola = kwkVarCheck("hasCola")
        kwkRectInv.oriX = kwkRectInv.x; kwkRectInv.oriY = kwkRectInv.y 
        kwkRectInv.name = "kwkRectInv" 
        menuGroup:insert(kwkRectInv); menuGroup.kwkRectInv = kwkRectInv 
+
+       -- kwkInvMaquina positioning 
+       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
+       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
+       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
+       kwkInvMaquina.name = "kwkInvMaquina" 
+       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
+
+       -- kwkInvCerrar positioning 
+       kwkInvCerrar = display.newImageRect( imgDir.. "kwkinvcerrar.png", 58, 62 ); 
+       kwkInvCerrar.x = 1764; kwkInvCerrar.y = 1061; kwkInvCerrar.alpha = 1; kwkInvCerrar.oldAlpha = 1 
+       kwkInvCerrar.oriX = kwkInvCerrar.x; kwkInvCerrar.oriY = kwkInvCerrar.y 
+       kwkInvCerrar.name = "kwkInvCerrar" 
+       menuGroup:insert(kwkInvCerrar); menuGroup.kwkInvCerrar = kwkInvCerrar 
 
        -- kwkInvBiberon positioning 
        kwkInvBiberon = display.newImageRect( imgDir.. "kwkinvbiberon.png", 103, 256 ); 
@@ -213,13 +237,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkInvErizo.oriX = kwkInvErizo.x; kwkInvErizo.oriY = kwkInvErizo.y 
        kwkInvErizo.name = "kwkInvErizo" 
        menuGroup:insert(kwkInvErizo); menuGroup.kwkInvErizo = kwkInvErizo 
-
-       -- kwkInvMaquina positioning 
-       kwkInvMaquina = display.newImageRect( imgDir.. "kwkinvmaquina.png", 204, 258 ); 
-       kwkInvMaquina.x = 897; kwkInvMaquina.y = 1147; kwkInvMaquina.alpha = 1; kwkInvMaquina.oldAlpha = 1 
-       kwkInvMaquina.oriX = kwkInvMaquina.x; kwkInvMaquina.oriY = kwkInvMaquina.y 
-       kwkInvMaquina.name = "kwkInvMaquina" 
-       menuGroup:insert(kwkInvMaquina); menuGroup.kwkInvMaquina = kwkInvMaquina 
 
        -- kwkInvCelo positioning 
        kwkInvCelo = display.newImageRect( imgDir.. "kwkinvcelo.png", 271, 253 ); 
@@ -284,6 +301,13 @@ local hasCola = kwkVarCheck("hasCola")
        kwkCGText.alpha = 1; kwkCGText.oldAlpha = 1 
        menuGroup:insert(kwkCGText); menuGroup.kwkCGText = kwkCGText 
 
+       -- kwkruby positioning 
+       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
+       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
+       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
+       kwkruby.name = "kwkruby" 
+       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
+
        -- kwkDiamante positioning 
        kwkDiamante = display.newImageRect( imgDir.. "kwkdiamante.png", 154, 105 ); 
        kwkDiamante.x = 77; kwkDiamante.y = 125; kwkDiamante.alpha = 1; kwkDiamante.oldAlpha = 1 
@@ -305,13 +329,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkMedalla.name = "kwkMedalla" 
        menuGroup:insert(kwkMedalla); menuGroup.kwkMedalla = kwkMedalla 
 
-       -- kwkruby positioning 
-       kwkruby = display.newImageRect( imgDir.. "kwkruby.png", 224, 220 ); 
-       kwkruby.x = 332; kwkruby.y = 128; kwkruby.alpha = 1; kwkruby.oldAlpha = 1 
-       kwkruby.oriX = kwkruby.x; kwkruby.oriY = kwkruby.y 
-       kwkruby.name = "kwkruby" 
-       menuGroup:insert(kwkruby); menuGroup.kwkruby = kwkruby 
-
        -- kwkNavnext positioning 
        kwkNavnext = display.newImageRect( imgDir.. "kwknavnext.png", 106, 361 ); 
        kwkNavnext.x = 2445; kwkNavnext.y = 767; kwkNavnext.alpha = 1; kwkNavnext.oldAlpha = 1 
@@ -331,96 +348,140 @@ local hasCola = kwkVarCheck("hasCola")
        -- (MIDDLE) External code will render here 
 
        --Animations
-       -- Wait request for pathHija
-       local pathHija = function(event)
-          if gtStash.gt_pathHija then 
-              gtStash.gt_pathHija:toBeginning() 
-          end 
-          gtStash.gt_pathHija = btween.new( kwkHija_gafas, 3, { 
-         { x = 1280, y = 1332}, --regular curve
-         { x = 1280, y = 1332}, 
-         { x = 1430, y = 1023}, 
-         { x = 1561, y = 1023}, 
+       gtStash.gt_pathCaballo = btween.new( kwkCaballo, 1, { 
+         { x = 2352, y = 300}, --regular curve
+         { x = 2352, y = 300}, 
+         { x = 2047, y = 451}, 
+         { x = 1791, y = 454}, 
 
-         { x = 1561, y = 1023}, 
-         { x = 1561, y = 1023}, 
-         { x = 1561, y = 1023}, 
-         { x = 1561, y = 1023}, 
-angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=6, ""}, {  x=1281, y=1350,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
+         { x = 1791, y = 454}, --regular curve
+         { x = 1535, y = 458}, 
+         { x = 1171, y = 296}, 
+         { x = 935, y = 255}, 
 
-       end --closes function pathHija
+         { x = 935, y = 255}, --regular curve
+         { x = 698, y = 215}, 
+         { x = -70, y = 320}, 
+         { x = -208, y = 383}, 
 
-       -- Wait request for pathMama
-       local pathMama = function(event)
-          if gtStash.gt_pathMama then 
-              gtStash.gt_pathMama:toBeginning() 
-          end 
-          gtStash.gt_pathMama = btween.new( kwkMama_gafas, 3, { 
-         { x = 1348, y = 1326}, --regular curve
-         { x = 1348, y = 1326}, 
-         { x = 1433, y = 1070}, 
-         { x = 1573, y = 1123}, 
+         { x = -208, y = 383}, --regular curve
+         { x = -347, y = 447}, 
+         { x = -1056, y = 392}, 
+         { x = -1135, y = 255}, 
 
-         { x = 1573, y = 1123}, 
-         { x = 1573, y = 1123}, 
-         { x = 1573, y = 1123}, 
-         { x = 1573, y = 1123}, 
-angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=6, ""}, {  x=1332, y=1354,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=4, ""}, {  x=2465, y=306,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
 
-       end --closes function pathMama
+       gtStash.gt_pathHija = btween.new( kwkHija_gafas, 1, { 
+         { x = 1100, y = 928}, --regular curve
+         { x = 1100, y = 928}, 
+         { x = 748, y = 973}, 
+         { x = 658, y = 835}, 
+
+         { x = 658, y = 835}, --regular curve
+         { x = 569, y = 698}, 
+         { x = 408, y = 634}, 
+         { x = 230, y = 595}, 
+
+         { x = 230, y = 595}, --regular curve
+         { x = 53, y = 557}, 
+         { x = -57, y = 573}, 
+         { x = -191, y = 670}, 
+
+         { x = -191, y = 670}, --regular curve
+         { x = -326, y = 767}, 
+         { x = -932, y = 785}, 
+         { x = -946, y = 982}, 
+
+         { x = -946, y = 982}, 
+         { x = -946, y = 982}, 
+         { x = -946, y = 982}, 
+         { x = -946, y = 982}, 
+angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=2, ""}, {  x=1123, y=999,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
+
+       gtStash.gt_pathMama = btween.new( kwkMama_gafas, 1, { 
+         { x = 1535, y = 892}, --regular curve
+         { x = 1535, y = 892}, 
+         { x = 1159, y = 607}, 
+         { x = 922, y = 622}, 
+
+         { x = 922, y = 622}, --regular curve
+         { x = 686, y = 638}, 
+         { x = 344, y = 736}, 
+         { x = 255, y = 595}, 
+
+         { x = 255, y = 595}, --regular curve
+         { x = 183, y = 480}, 
+         { x = -353, y = -63}, 
+         { x = -632, y = 95}, 
+
+         { x = -632, y = 95}, --regular curve
+         { x = -912, y = 255}, 
+         { x = -1415, y = 411}, 
+         { x = -1347, y = 717}, 
+
+         { x = -1347, y = 717}, 
+         { x = -1347, y = 717}, 
+         { x = -1347, y = 717}, 
+         { x = -1347, y = 717}, 
+angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=2, ""}, {  x=1539, y=1039,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
 
  
        -- Actions (functions) 
+       function hideBotaAbeja(event) 
+         if (hasBotaAbeja == true) then 
+            transitionStash.newTransition_685 = transition.to( kwkBota_abeja, {alpha=0, time=0, delay=0}) 
+         end 
+       end 
+
        function hideInventory(event) 
-            transitionStash.newTransition_341 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_341 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_341 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_342 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_342 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_342 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_343 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_343 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_343 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_686 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_686 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_686 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_686 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_687 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_687 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_687 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_687 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_688 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_688 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
            InventoryShown = false
           saveKwikVars({"InventoryShown",false}) 
        end 
 
        function showInventory(event) 
-            transitionStash.newTransition_350 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_696 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_351 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_697 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
          end 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_351 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_697 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
          end 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_352 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_698 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
          end 
          if (hasRosa == true) then 
-            transitionStash.newTransition_353 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_699 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
          end 
          if (hasErizo == true) then 
-            transitionStash.newTransition_353 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_699 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCelo == true) then 
-            transitionStash.newTransition_354 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_700 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasGuitarra == true) then 
-            transitionStash.newTransition_355 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_701 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCola == true) then 
-            transitionStash.newTransition_355 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_702 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
          end 
            InventoryShown = true
           saveKwikVars({"InventoryShown",true}) 
-       end 
-
-       function SceneAnim(event) 
-            transitionStash.newTransition_364 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_364 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=2000}) 
-            transitionStash.newTransition_365 = transition.to( kwkCaballo, {alpha=0, time=1000, delay=4000}) 
-           pathHija() 
-           pathMama() 
+            transitionStash.newTransition_711 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_711 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
        end 
 
  
@@ -428,10 +489,15 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
 
  
        -- Timers 
+       timerStash.timerBotaAbeja = timer.performWithDelay( 0, hideBotaAbeja, 1 ) 
        timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
-       timerStash.timerAnim = timer.performWithDelay( 0, SceneAnim, 1 ) 
 
        -- Button event listeners 
+       local function onkwkBota_abejaEvent(event) 
+          btnBotaAbeja(kwkBota_abeja) 
+          return true 
+       end 
+       kwkBota_abeja:addEventListener("tap", onkwkBota_abejaEvent ) 
        local function onkwkNavnextEvent(event) 
           btnNextPage(kwkNavnext) 
           return true 
@@ -442,20 +508,31 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
           return true 
        end 
        kwkNavprev:addEventListener("tap", onkwkNavprevEvent ) 
+       local function onkwkInvCerrarEvent(event) 
+          btnCerrarInvent(kwkInvCerrar) 
+          return true 
+       end 
+       kwkInvCerrar:addEventListener("tap", onkwkInvCerrarEvent ) 
 
        -- Button functions 
+       function btnBotaAbeja(self) 
+           _G.hasBotaAbeja = true
+          saveKwikVars({"hasBotaAbeja",true}) 
+           hideBotaAbeja() 
+       end 
+
        function btnNextPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_29", "moveFromRight" ) 
             end 
-            timerStash.newTimer_420 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_778 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnPrevPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_27", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_420 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_779 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnInventario(self) 
@@ -464,6 +541,10 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
          else 
            hideInventory() 
          end 
+       end 
+
+       function btnCerrarInvent(self) 
+           hideInventory() 
        end 
 
 
@@ -475,6 +556,7 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
        end 
 
        -- (BOTTOM) External code will render here 
+       instantHide (kwkInvDestacado) 
 
 
     end 

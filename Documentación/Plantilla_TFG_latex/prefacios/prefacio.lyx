@@ -1,0 +1,794 @@
+#LyX file created by tex2lyx 2.1
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_title "\myTitle"
+\pdf_author "\myName (email (en) ugr (punto) es)"
+\pdf_keywords "palabra_clave1, palabra_clave2, palabra_clave3, ..."
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\pdf_quoted_options "pdfcreator={LaTeX con el paquete ....},pdfproducer={pdflatex}"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+
+\lang spanish
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+cleardoublepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset CommandInset include
+LatexCommand input
+preview false
+filename "Plantilla_TFG_latex/portada/portada_2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang spanish
+
+\size large
+
+\series bold
+Título del Proyecto: Subtítulo del proyecto
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang spanish
+Nombre Apellido1 Apellido2 (alumno)
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+vspace{0.7cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Palabras clave
+\series default
+: palabra_clave1, palabra_clave2, palabra_clave3, ......
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+
+\begin_inset VSpace 0.7cm
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Resumen
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+Poner aquí el resumen. 
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang spanish
+
+\size large
+
+\series bold
+Project Title: Project Subtitle
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang spanish
+First name, Family name (student)
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+vspace{0.7cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Keywords
+\series default
+: Keyword1, Keyword2, Keyword3, ....
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+
+\begin_inset VSpace 0.7cm
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Abstract
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+Write here the abstract in English.
+\end_layout
+
+\begin_layout Chapter*
+
+\lang spanish
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "-1ex"
+width "100text%"
+height "2pt"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+[4.5ex]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Yo, 
+\series bold
+Nombre Apellido1 Apellido2
+\series default
+, alumno de la titulación TITULACIÓN de la 
+\series bold
+Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación de la Universidad de Granada
+\series default
+, con DNI XXXXXXXXX, autorizo la ubicación de la siguiente copia de mi Trabajo Fin de Grado en la biblioteca del centro para que pueda ser consultada por las personas que lo deseen.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 6cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+Fdo: Nombre Apellido1 Apellido2
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\lang spanish
+Granada a X de mes de 201 . 
+\end_layout
+
+\begin_layout Chapter*
+
+\lang spanish
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "-1ex"
+width "100text%"
+height "2pt"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+[4.5ex]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+D. 
+\series bold
+Nombre Apellido1 Apellido2 (tutor1)
+\series default
+, Profesor del Área de XXXX del Departamento YYYY de la Universidad de Granada.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+D. 
+\series bold
+Nombre Apellido1 Apellido2 (tutor2)
+\series default
+, Profesor del Área de XXXX del Departamento YYYY de la Universidad de Granada.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\series bold
+Informan:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Que el presente trabajo, titulado 
+\shape italic
+
+\series bold
+Título del proyecto, Subtítulo del proyecto
+\series default
+
+\shape default
+, ha sido realizado bajo su supervisión por 
+\series bold
+Nombre Apellido1 Apellido2 (alumno)
+\series default
+, y autorizamos la defensa de dicho trabajo ante el tribunal que corresponda.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Y para que conste, expiden y firman el presente informe en Granada a X de mes de 201 .
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\series bold
+Los directores:
+\series default
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang spanish
+
+\series bold
+Nombre Apellido1 Apellido2 (tutor1) 
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+Nombre Apellido1 Apellido2 (tutor2)
+\series default
+
+\end_layout
+
+\begin_layout Chapter*
+
+\lang spanish
+Agradecimientos
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Poner aquí agradecimientos...
+\end_layout
+
+\end_body
+\end_document

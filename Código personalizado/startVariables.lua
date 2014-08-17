@@ -6,10 +6,40 @@ function show (toShow)
     transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=0}) 
 end
 
+function instantShow (toShow)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=1, delay=0})
+end
+
+function delayShow (toShow, del)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=del*1000})
+end
+
+function instantDelayShow (toShow, del)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=1, delay=del*1000})
+end
+
 
 function instantHide(toHide)
     transition.to( toHide, {alpha=0, time=0, delay=0}) 
 end
+
+function delayHide(toHide, del)
+    transition.to( toHide, {alpha=0, time=500, delay=del*1000}) 
+end
+
+function instantDelayHide(toHide, del)
+    transition.to( toHide, {alpha=0, time=0, delay=del*1000}) 
+end
+
+function playAudioWithDelay(clip, delay) 
+   audio.setVolume(1, {channel=1} ) 
+
+  local audioPlay = function() 
+     audio.play(clip, {  channel=1, loops=0 } ) 
+  end 
+  timerStash.newTimerAudio = timer.performWithDelay(delay*1000, audioPlay, 1) 
+end 
+
 
 function updateCoefs()
 	local newCL
@@ -77,6 +107,19 @@ function startVariables()
 
 	saveKwikVars({"Favor2Visitado", false})
 	saveKwikVars({"Fav02Completed", false})
+
+
+	saveKwikVars({"Fav03Completed", false})
+
+	saveKwikVars({"Preg01Completed", false})
+	saveKwikVars({"Preg02Completed", false})
+	saveKwikVars({"Preg03Completed", false})
+	saveKwikVars({"Preg04Completed", false})
+	saveKwikVars({"Preg05Completed", false})
+	saveKwikVars({"Preg06Completed", false})
+	saveKwikVars({"Preg07Completed", false})
+	saveKwikVars({"Preg08Completed", false})
+	saveKwikVars({"Preg09Completed", false})
 
 	print("Variables reiniciadas")
 end

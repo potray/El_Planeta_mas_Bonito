@@ -93,6 +93,17 @@ function whereIs (thumbnail)
 	return returnValue
 end
 
+function corregirValores()
+	if (addCI3 < 0) then
+		addCI3 = 0
+	end
+	if (addCG8 < 0) then
+		addCG8 = 0
+	end
+end
+
+
+
 function todosEnPosicion()
 	if (pos1 ~= -1 and pos2 ~= -1 and pos3 ~= -1 and pos4 ~= -1 and pos5 ~= -1) then
 		return true
@@ -111,6 +122,8 @@ end
 
 function terminarPrueba()
 	switchText(lastText, TextTerminado)
+	audio.setVolume(1, {channel=1} ) 
+	audio.play( acierto, {channel=1, loops = 0 } ) 
 	show(kwkBurbuja)
 	hide(Rubi)
 
@@ -127,6 +140,8 @@ function comprobar()
 	if (todosEnPosicion()) then
 		if (not todosEnSuSitio()) then
 			switchText(lastText, TextMal)
+			audio.setVolume(1, {channel=2} ) 
+			audio.play( fallo, {channel=2, loops = 0 } ) 
 			if (pos1 ~= 1) then
 				addCI3 = addCI3 - 1
 				addCG8 = addCG8 - 1
@@ -150,8 +165,11 @@ function comprobar()
 		else 
 			terminarPrueba()
 		end
+		corregirValores()
 	else
 		switchText(lastText, TextFaltan)
+		audio.setVolume(1, {channel=2} ) 
+		audio.play( fallo, {channel=2, loops = 0 } ) 
 	end
 
 	print ("CI3 = "..addCI3..", CG8 = "..addCG8)

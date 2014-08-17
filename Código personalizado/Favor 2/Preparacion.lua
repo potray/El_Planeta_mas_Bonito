@@ -45,6 +45,12 @@ function switchText (textToHide, textToShow)
     lastText = textToShow
 end
 
+function instantSwitchText (textToHide, textToShow)
+    transition.to( textToHide, {alpha=0, time=0, delay=0}) 
+    transition.to( textToShow, {alpha=textToShow.oldAlpha, time=1, delay=0}) 
+    lastText = textToShow
+end
+
 function fallar ()
 	addCL1 = addCL1 - 5
 	if (addCL1 < 0) then
@@ -76,9 +82,10 @@ function terminar()
 		saveKwikVars({"Favor2Visitado", false})
 
 	    local myClosure_switch = function() 
-	        dispose(); director:changeScene( "page_34", "moveFromRight" ) 
+	    	local page = pag_favor2 + 2
+	        dispose(); director:changeScene( "page_"..page, "moveFromRight" ) 
 	    end 
-	    timerStash.newTimer_980 = timer.performWithDelay(1000, myClosure_switch, 1) 
+	    timerStash.newTimer_980 = timer.performWithDelay(2000, myClosure_switch, 1) 
 	end
 end
 
@@ -110,8 +117,10 @@ if (not hasErizo) then
 	instantHide(kwkErizo)
 end
 
-if (not hasTijeras or not hasBiberon or not hasMaquina or not hasRosa or not hasGuitarra or not hasErizo) then
-	switchText(lastText, TextBurbuja)
+local missingSomething = not hasTijeras or not hasBiberon or not hasMaquina or not hasRosa or not hasGuitarra or not hasErizo
+
+if (missingSomething) then
+	instantSwitchText(lastText, TextBurbuja)
 	instantHide(Ayuda1)
 else
 	instantHide(kwkBurbuja)

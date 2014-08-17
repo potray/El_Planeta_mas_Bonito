@@ -3,24 +3,27 @@ if (favor2Started) then
 	hide(kwkNavprev)
 end
 
+instantHide(kwkInvDestacado)
+
 function btnRosa(self) 
 	hasRosa = true
+	show(kwkInvDestacado)
 	saveKwikVars({"hasRosa",true}) 
 	hideRosa() 
 	hideInventory() 
 	if (favor2Started) then
-		local pageToGo = "page_32"
+		local pageToGo = pag_favor2
 		if (not hasGuitarra) then
-			pageToGo = "page_31"
+			pageToGo = pag_guitarra
 		end
 		if (not hasMaquina) then
-			pageToGo = "page_29"
+			pageToGo = pag_maquina
 		end
 		if (not hasErizo) then
-			pageToGo = "page_25"
+			pageToGo = pag_erizo
 		end
 	    local myClosure_switch = function() 
-	        dispose(); director:changeScene( pageToGo, "fade" ) 
+	        dispose(); director:changeScene( "page_"..pageToGo, "fade" ) 
 	    end 
 	    timerStash.newTimer_980 = timer.performWithDelay(0, myClosure_switch, 1) 
 	else

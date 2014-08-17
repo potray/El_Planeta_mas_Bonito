@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Fri May 23 2014 02:17:05 GMT+0200 
+-- Exported on Sun Aug 17 2014 19:47:33 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -17,6 +17,7 @@ json = require("json")
 local function versionCheck(event) if "clicked" == event.action then if event.index == 2 then system.openURL( "https://developer.coronalabs.com/downloads/coronasdk" ) end end end 
 if ( system.getInfo("environment") =="simulator" and system.getInfo("build") ~="2013.2100" ) then native.showAlert("Corona SDK Incompatible Version","Your Corona SDK version is different than the certified one with Kwik. Install build 2013.2100 or you may have issues in your project.",{"OK", "Download"}, versionCheck) end 
 
+Navigation = require("kNavi") 
 local gtween = require("gtween") 
 local btween = require("btween") 
 Inventory = require("inventory") 
@@ -32,7 +33,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 6 
+local goPage = 64 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 
@@ -103,10 +104,40 @@ function show (toShow)
     transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=0}) 
 end
 
+function instantShow (toShow)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=1, delay=0})
+end
+
+function delayShow (toShow, del)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=500, delay=del*1000})
+end
+
+function instantDelayShow (toShow, del)
+    transition.to( toShow, {alpha=toShow.oldAlpha, time=1, delay=del*1000})
+end
+
 
 function instantHide(toHide)
     transition.to( toHide, {alpha=0, time=0, delay=0}) 
 end
+
+function delayHide(toHide, del)
+    transition.to( toHide, {alpha=0, time=500, delay=del*1000}) 
+end
+
+function instantDelayHide(toHide, del)
+    transition.to( toHide, {alpha=0, time=0, delay=del*1000}) 
+end
+
+function playAudioWithDelay(clip, delay) 
+   audio.setVolume(1, {channel=1} ) 
+
+  local audioPlay = function() 
+     audio.play(clip, {  channel=1, loops=0 } ) 
+  end 
+  timerStash.newTimerAudio = timer.performWithDelay(delay*1000, audioPlay, 1) 
+end 
+
 
 function updateCoefs()
 	local newCL
@@ -175,11 +206,49 @@ function startVariables()
 	saveKwikVars({"Favor2Visitado", false})
 	saveKwikVars({"Fav02Completed", false})
 
+
+	saveKwikVars({"Fav03Completed", false})
+
+	saveKwikVars({"Preg01Completed", false})
+	saveKwikVars({"Preg02Completed", false})
+	saveKwikVars({"Preg03Completed", false})
+	saveKwikVars({"Preg04Completed", false})
+	saveKwikVars({"Preg05Completed", false})
+	saveKwikVars({"Preg06Completed", false})
+	saveKwikVars({"Preg07Completed", false})
+	saveKwikVars({"Preg08Completed", false})
+	saveKwikVars({"Preg09Completed", false})
+
 	print("Variables reiniciadas")
 end
 
 --Mandar siempre a la primera pagina
 director:changeScene("page_1") 
+   --Códigos de páginas
+
+--Favores
+pag_favor1 = 7 	
+pag_favor2 = 36	
+pag_favor3 = 52
+pag_favor4 = 64
+pag_burbuja1 = 37	
+
+--Objetos
+pag_tijeras = 2  	--Tijeras y biberón
+pag_rosa = 11 		--Rosa
+pag_erizo = 25 		--Erizo
+pag_maquina = 31 	--Maquina de agrandar cosas
+pag_guitarra = 35 	--Guitarra
+
+--Preguntas
+pag_pregunta1 = 22	--Pregunta 1
+pag_pregunta2 = 33	--Pregunta 2
+pag_pregunta3 = 42	--Pregunta 3
+pag_pregunta4 = 45	--Pregunta 4
+pag_pregunta5 = 50 	--Pregunta 5
+pag_pregunta6 = 55	--Pregunta 6
+pag_pregunta7 = 57	--Pregunta 7
+ 
 
    director:changeScene("page_"..goPage)
    return true

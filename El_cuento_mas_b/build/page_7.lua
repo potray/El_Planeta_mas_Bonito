@@ -3,15 +3,24 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 34 
+    local numPages = 43 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
     local _H = display.contentHeight; 
 
+    -- Audio callings 
+    local fallo =  audio.loadSound( audioDir.."fallo.mp3") 
+    local acierto =  audio.loadSound( audioDir.."acierto.mp3") 
+
+
     local drawScreen = function() 
 
        local curPage = 7 
+
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={{ 2, "fallo"},{ 1, "acierto"},} } ) 
+       Navigation.hide() 
+
        if (tonumber(kBookmark) == 1) then 
           local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
           local file = io.open( path, "w+" ) 
@@ -41,9 +50,9 @@ function new()
        local btnChurreria
 
        -- Action names 
+       local hideStuff 
        local Fallar 
        local Acertar 
-       local hideStuff 
 
        -- Layer names 
        local Fondo  
@@ -98,11 +107,15 @@ local comodin = kwkVarCheck("comodin")
 
 local favor2Started = kwkVarCheck("Favor2Visitado")
 local Fav01Completed = kwkVarCheck("Fav01Completed")
-local Fav02Completed = kwkVarCheck("Fav02Completed") 
+local Fav02Completed = kwkVarCheck("Fav02Completed")
+local Preg01Completed = kwkVarCheck("Preg01Completed")
+local Preg02Completed = kwkVarCheck("Preg02Completed")
+local Preg03Completed = kwkVarCheck("Preg03Completed") 
        local addCL1 = 5
 local addCL3 = 5
 local addCI2 = 5
-local addCI4 = 5 
+local addCI4 = 5
+local acertado = false 
 
        -- Fondo positioning 
        Fondo = display.newImageRect( imgDir.. "p7_fondo.png", 2560, 1600 ); 
@@ -231,29 +244,29 @@ local addCI4 = 5
        menuGroup:insert(Churreria); menuGroup.Churreria = Churreria 
 
        -- Fallo positioning 
-       Fallo = display.newImageRect( imgDir.. "p7_fallo.png", 852, 39 ); 
-       Fallo.x = 1280; Fallo.y = 113; Fallo.alpha = 1; Fallo.oldAlpha = 1 
+       Fallo = display.newImageRect( imgDir.. "p7_fallo.png", 1148, 51 ); 
+       Fallo.x = 1280; Fallo.y = 92; Fallo.alpha = 1; Fallo.oldAlpha = 1 
        Fallo.oriX = Fallo.x; Fallo.oriY = Fallo.y 
        Fallo.name = "Fallo" 
        menuGroup:insert(Fallo); menuGroup.Fallo = Fallo 
 
        -- Acierto positioning 
-       Acierto = display.newImageRect( imgDir.. "p7_acierto.png", 608, 39 ); 
-       Acierto.x = 1280; Acierto.y = 116; Acierto.alpha = 1; Acierto.oldAlpha = 1 
+       Acierto = display.newImageRect( imgDir.. "p7_acierto.png", 827, 51 ); 
+       Acierto.x = 1280; Acierto.y = 92; Acierto.alpha = 1; Acierto.oldAlpha = 1 
        Acierto.oriX = Acierto.x; Acierto.oriY = Acierto.y 
        Acierto.name = "Acierto" 
        menuGroup:insert(Acierto); menuGroup.Acierto = Acierto 
 
        -- Text positioning 
-       Text = display.newImageRect( imgDir.. "p7_text.png", 1206, 82 ); 
-       Text.x = 1280; Text.y = 120; Text.alpha = 1; Text.oldAlpha = 1 
+       Text = display.newImageRect( imgDir.. "p7_text.png", 1280, 108 ); 
+       Text.x = 1281; Text.y = 91; Text.alpha = 1; Text.oldAlpha = 1 
        Text.oriX = Text.x; Text.oriY = Text.y 
        Text.name = "Text" 
        menuGroup:insert(Text); menuGroup.Text = Text 
 
        -- Ayuda positioning 
-       Ayuda = display.newImageRect( imgDir.. "p7_ayuda.png", 1480, 40 ); 
-       Ayuda.x = 1306; Ayuda.y = 961; Ayuda.alpha = 1; Ayuda.oldAlpha = 1 
+       Ayuda = display.newImageRect( imgDir.. "p7_ayuda.png", 1314, 51 ); 
+       Ayuda.x = 1279; Ayuda.y = 939; Ayuda.alpha = 1; Ayuda.oldAlpha = 1 
        Ayuda.oriX = Ayuda.x; Ayuda.oriY = Ayuda.y 
        Ayuda.name = "Ayuda" 
        menuGroup:insert(Ayuda); menuGroup.Ayuda = Ayuda 
@@ -263,9 +276,16 @@ local addCI4 = 5
        -- (MIDDLE) External code will render here 
  
        -- Actions (functions) 
+       function hideStuff(event) 
+            transitionStash.newTransition_133 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_133 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
+       end 
+
        function Fallar(event) 
-            transitionStash.newTransition_561 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_561 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_134 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_134 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
+           audio.setVolume(1, {channel=2} ) 
+           audio.play( fallo, {channel=2, loops = 0 } ) 
            --External code 
            addCL1 = addCL1 - 2
 
@@ -275,32 +295,39 @@ end
        end 
 
        function Acertar(event) 
-            transitionStash.newTransition_562 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
-            transitionStash.newTransition_562 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_562 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_160 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+           audio.setVolume(1, {channel=1} ) 
+           audio.play( acierto, {channel=1, loops = 0 } ) 
            --External code 
-           local currentCL1 = kwkVarCheck("CL1")
-local currentCL3 = kwkVarCheck("CL3")
-local currentCI2 = kwkVarCheck("CI2")
-local currentCI4 = kwkVarCheck("CI4")
+           if (not acertado) then
+	local currentCL1 = kwkVarCheck("CL1")
+	local currentCL3 = kwkVarCheck("CL3")
+	local currentCI2 = kwkVarCheck("CI2")
+	local currentCI4 = kwkVarCheck("CI4")
 
-saveKwikVars({"CL1", addCL1 + currentCL1})
-saveKwikVars({"CL3", addCL3 + currentCL3})
-saveKwikVars({"CI2", addCI2 + currentCI2})
-saveKwikVars({"CI4", addCI4 + currentCI4})
+	saveKwikVars({"CL1", addCL1 + currentCL1})
+	saveKwikVars({"CL3", addCL3 + currentCL3})
+	saveKwikVars({"CI2", addCI2 + currentCI2})
+	saveKwikVars({"CI4", addCI4 + currentCI4})
 
-local p1 = kwkVarCheck("CL1")
-local p2 = kwkVarCheck("CL3")
-local p3 = kwkVarCheck("CI2")
-local p4 = kwkVarCheck("CI4")
+	local p1 = kwkVarCheck("CL1")
+	local p2 = kwkVarCheck("CL3")
+	local p3 = kwkVarCheck("CI2")
+	local p4 = kwkVarCheck("CI4")
 
-print (p1.." "..p2.." "..p3.." "..p4) 
-           _G.Fav01Completed = true
-          saveKwikVars({"Fav01Completed",true}) 
-            local myClosure_switch = function() 
+	print (p1.." "..p2.." "..p3.." "..p4)
+
+	acertado = true
+
+	local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_8", "moveFromRight" ) 
             end 
-            timerStash.newTimer_571 = timer.performWithDelay(2000, myClosure_switch, 1) 
+    timerStash.newTimer_391 = timer.performWithDelay(2000, myClosure_switch, 1) 
+end 
+           _G.Fav01Completed = true
+          saveKwikVars({"Fav01Completed",true}) 
            --External code 
            local newCL
 local newCI
@@ -339,11 +366,6 @@ local s = kwkVarCheck("CI")
 local d = kwkVarCheck("CG")
 
 print ("AHora todo vale: "..a.." "..s.." "..d) 
-       end 
-
-       function hideStuff(event) 
-            transitionStash.newTransition_572 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_573 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
        end 
 
  
@@ -393,6 +415,14 @@ print ("AHora todo vale: "..a.." "..s.." "..d)
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
+          if audio.isChannelActive ( 2 ) then 
+   audio.stop(2); 
+ end 
+ audio.dispose(fallo); fallo = nil 
+          if audio.isChannelActive ( 1 ) then 
+   audio.stop(1); 
+ end 
+ audio.dispose(acierto); acierto = nil 
        end 
 
        -- (BOTTOM) External code will render here 
