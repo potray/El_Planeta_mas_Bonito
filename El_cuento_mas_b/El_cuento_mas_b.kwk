@@ -18420,6 +18420,16 @@
           <content>Formula</content>
           <where>before</where>
         </variable>
+        <variable id="Fav05Completed">
+          <name>Fav05Completed</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>true</save>
+          <type>global</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
       </variables>
       <layer id="Mama_casa">
         <name>Mama_casa</name>
@@ -29391,7 +29401,7 @@
         <action id="goPage_369">
           <name>goPage_369</name>
           <type>Show/Hide</type>
-          <showLayer>kwkHormiga</showLayer>
+          <showLayer>kwkHormiga2</showLayer>
           <show>false</show>
           <toggle>false</toggle>
           <duration>0</duration>
@@ -29444,7 +29454,7 @@
         <action id="goPage_369">
           <name>goPage_369</name>
           <type>Show/Hide</type>
-          <showLayer>kwkHormiga</showLayer>
+          <showLayer>kwkHormiga2</showLayer>
           <show>true</show>
           <toggle>false</toggle>
           <duration>1</duration>
@@ -38691,6 +38701,16 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
           <showLayer>Text2</showLayer>
           <show>false</show>
           <toggle>false</toggle>
@@ -38721,11 +38741,31 @@
         <action id="">
           <name/>
           <type>Show/Hide</type>
+          <showLayer>Text3</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>1</duration>
+          <delay>7</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
+          <showLayer>Text2</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0.5</duration>
+          <delay>7</delay>
+          <target>Layer</target>
+        </action>
+        <action id="">
+          <name/>
+          <type>Show/Hide</type>
           <showLayer>kwkNavnext</showLayer>
           <show>true</show>
           <toggle>false</toggle>
           <duration>1</duration>
-          <delay>2</delay>
+          <delay>7</delay>
           <target>Layer</target>
         </action>
       </trigger>
@@ -38765,21 +38805,6 @@
         <trigger>Anim</trigger>
         <loop>1</loop>
       </timer>
-      <button id="btnNextPage">
-        <name>btnNextPage</name>
-        <layer>kwkNavnext</layer>
-        <rollover>kwkNavnext</rollover>
-        <target>Layer</target>
-        <type>Tap</type>
-        <tap>1</tap>
-        <action id="goPage_673">
-          <name>goPage_673</name>
-          <type>Go to Page</type>
-          <page>Next (auto)</page>
-          <transition>Move from right</transition>
-          <wait>0</wait>
-        </action>
-      </button>
       <button id="btnInventario">
         <name>btnInventario</name>
         <layer>kwkMochila</layer>
@@ -38856,6 +38881,61 @@
           <page>Previous (auto)</page>
           <transition>Move from left</transition>
           <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="if_650">
+          <name>if_650</name>
+          <type>IF</type>
+          <exp1>Fav04Completed</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>false</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>InventoryShown</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+        <action id="else_681">
+          <name>else_681</name>
+          <type>Else</type>
+          <elseType>Simple</elseType>
+          <exp1>InventoryShown</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp/>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>InventoryShown</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="goPage_314">
+          <name>goPage_314</name>
+          <type>Go to Page</type>
+          <page>page52</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+        <action id="end_334">
+          <name>end_334</name>
+          <type>End IF</type>
         </action>
       </button>
       <code id="loadVariables">
@@ -39009,39 +39089,570 @@
         <fadeIn>false</fadeIn>
         <fadeInAmount>.5</fadeInAmount>
       </audio>
-      <canvas id="Cuerda_H1">
-        <layer>Cuerda_H1</layer>
-        <name>Cuerda_H1</name>
-        <width>2536</width>
-        <height>55</height>
-        <canvasColor>255,255,255</canvasColor>
-        <brushSize>15</brushSize>
-        <brushColor>196, 128, 2</brushColor>
-        <autoSave>false</autoSave>
-        <outline>false</outline>
-      </canvas>
-      <canvas id="Cuerda_H2">
-        <layer>Cuerda_H2</layer>
-        <name>Cuerda_H2</name>
-        <width>2536</width>
-        <height>55</height>
-        <canvasColor>255,255,255</canvasColor>
-        <brushSize>25</brushSize>
-        <brushColor>196, 128, 2</brushColor>
-        <autoSave>false</autoSave>
-        <outline>false</outline>
-      </canvas>
-      <canvas id="Cuerda_V3">
-        <layer>Cuerda_V3</layer>
-        <name>Cuerda_V3</name>
-        <width>55</width>
-        <height>1597</height>
-        <canvasColor>255,255,255</canvasColor>
-        <brushSize>15</brushSize>
-        <brushColor>196, 128, 2</brushColor>
-        <autoSave>false</autoSave>
-        <outline>true</outline>
-      </canvas>
+      <button id="btnReset">
+        <name>btnReset</name>
+        <layer>Rubi</layer>
+        <rollover>Rubi</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="reload_859">
+          <name>reload_859</name>
+          <type>Reload Page</type>
+          <reload>true</reload>
+        </action>
+      </button>
+    </page>
+    <page id="page52">
+      <name>page52</name>
+      <number>65</number>
+      <file>D:\Dropbox\TFG/El_cuento_mas_b/page52.psd</file>
+      <fileName>page52.psd</fileName>
+      <trigger id="hideInventory">
+        <name>hideInventory</name>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkRectInv</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvBiberon</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvTijeras</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvRosa</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvErizo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvMaquina</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_774">
+          <name>nav_774</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCelo</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_774">
+          <name>nav_774</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvGuitarra</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="nav_774">
+          <name>nav_774</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCola</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_158">
+          <name>act_158</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCerrar</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="var_180">
+          <name>var_180</name>
+          <type>Edit Variable</type>
+          <variable>InventoryShown</variable>
+          <value>false</value>
+        </action>
+      </trigger>
+      <trigger id="showInventory">
+        <name>showInventory</name>
+        <action id="if_310">
+          <name>if_310</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkRectInv</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="if_310">
+          <name>if_310</name>
+          <type>IF</type>
+          <exp1>hasBiberon</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_310">
+          <name>if_310</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvBiberon</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_296">
+          <name>end_296</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_313">
+          <name>if_313</name>
+          <type>IF</type>
+          <exp1>hasTijeras</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_861">
+          <name>if_861</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvTijeras</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_461">
+          <name>end_461</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_125">
+          <name>if_125</name>
+          <type>IF</type>
+          <exp1>hasMaquina</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_861">
+          <name>if_861</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvMaquina</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_635">
+          <name>end_635</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_246">
+          <name>if_246</name>
+          <type>IF</type>
+          <exp1>hasRosa</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="end_799">
+          <name>end_799</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvRosa</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_799">
+          <name>end_799</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_557">
+          <name>if_557</name>
+          <type>IF</type>
+          <exp1>hasErizo</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="end_799">
+          <name>end_799</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvErizo</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_551">
+          <name>end_551</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_861">
+          <name>if_861</name>
+          <type>IF</type>
+          <exp1>hasCelo</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="end_551">
+          <name>end_551</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCelo</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_177">
+          <name>end_177</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_021">
+          <name>if_021</name>
+          <type>IF</type>
+          <exp1>hasGuitarra</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_021">
+          <name>if_021</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvGuitarra</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_220">
+          <name>end_220</name>
+          <type>End IF</type>
+        </action>
+        <action id="if_381">
+          <name>if_381</name>
+          <type>IF</type>
+          <exp1>hasCola</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>true</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>hasBiberon</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="if_381">
+          <name>if_381</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCola</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="end_893">
+          <name>end_893</name>
+          <type>End IF</type>
+        </action>
+        <action id="var_835">
+          <name>var_835</name>
+          <type>Edit Variable</type>
+          <variable>InventoryShown</variable>
+          <value>true</value>
+        </action>
+        <action id="act_158">
+          <name>act_158</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvDestacado</showLayer>
+          <show>false</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+        <action id="act_158">
+          <name>act_158</name>
+          <type>Show/Hide</type>
+          <showLayer>kwkInvCerrar</showLayer>
+          <show>true</show>
+          <toggle>false</toggle>
+          <duration>0</duration>
+          <delay>0</delay>
+          <target>Layer</target>
+        </action>
+      </trigger>
+      <layer id="kwkFondo3">
+        <name>kwkFondo3</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo3</renderAs>
+      </layer>
+      <variables>
+        <variable id="InventoryShown">
+          <name>InventoryShown</name>
+          <value>false</value>
+          <comment/>
+          <table>false</table>
+          <save>false</save>
+          <type>local</type>
+          <content>Formula</content>
+          <where>before</where>
+        </variable>
+      </variables>
+      <timer id="timerInv">
+        <name>timerInv</name>
+        <delay>0</delay>
+        <trigger>hideInventory</trigger>
+        <loop>1</loop>
+      </timer>
+      <button id="btnNextPage">
+        <name>btnNextPage</name>
+        <layer>kwkNavnext</layer>
+        <rollover>kwkNavnext</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_673">
+          <name>goPage_673</name>
+          <type>Go to Page</type>
+          <page>Next (auto)</page>
+          <transition>Move from right</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnInventario">
+        <name>btnInventario</name>
+        <layer>kwkMochila</layer>
+        <rollover>kwkMochila</rollover>
+        <target>Layer</target>
+        <type>Press</type>
+        <action id="if_216">
+          <name>if_216</name>
+          <type>IF</type>
+          <exp1>InventoryShown</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp>false</exp1Comp>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>InventoryShown</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="act_153">
+          <name>act_153</name>
+          <type>Play Action</type>
+          <trigger>showInventory</trigger>
+        </action>
+        <action id="else_580">
+          <name>else_580</name>
+          <type>Else</type>
+          <elseType>Simple</elseType>
+          <exp1>InventoryShown</exp1>
+          <exp1Type>Variable</exp1Type>
+          <exp1Op>EQUAL</exp1Op>
+          <exp1Comp/>
+          <exp2Enabled>false</exp2Enabled>
+          <exp2Cond>AND</exp2Cond>
+          <exp2>InventoryShown</exp2>
+          <exp2Type>Variable</exp2Type>
+          <exp2Comp/>
+          <exp2Op>EQUAL</exp2Op>
+        </action>
+        <action id="act_386">
+          <name>act_386</name>
+          <type>Play Action</type>
+          <trigger>hideInventory</trigger>
+        </action>
+        <action id="end_031">
+          <name>end_031</name>
+          <type>End IF</type>
+        </action>
+      </button>
+      <button id="btnCerrarInvent">
+        <name>btnCerrarInvent</name>
+        <layer>kwkInvCerrar</layer>
+        <rollover>kwkInvCerrar</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="act_158">
+          <name>act_158</name>
+          <type>Play Action</type>
+          <trigger>hideInventory</trigger>
+        </action>
+      </button>
+      <button id="btnPrevPage">
+        <name>btnPrevPage</name>
+        <layer>kwkNavprev</layer>
+        <rollover>kwkNavprev</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_641">
+          <name>goPage_641</name>
+          <type>Go to Page</type>
+          <page>page51</page>
+          <transition>Move from left</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <code id="loadVariables">
+        <name>loadVariables</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/loadVariables.lua</extFile>
+      </code>
+      <code id="loadInventory">
+        <name>loadInventory</name>
+        <code/>
+        <position>top</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/CargarInventario.lua</extFile>
+      </code>
+      <code id="hideInvDestacado">
+        <name>hideInvDestacado</name>
+        <code/>
+        <position>bottom</position>
+        <extFile>/d/Dropbox/TFG/C%C3%B3digo%20personalizado/OcultarDestacado.lua</extFile>
+      </code>
+      <replacement id="kwkCGText">
+        <name>kwkCGText</name>
+        <type>Dynamic</type>
+        <layer>kwkCGText</layer>
+        <variable>CG</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCIText">
+        <name>kwkCIText</name>
+        <type>Dynamic</type>
+        <layer>kwkCIText</layer>
+        <variable>CI</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkCLText">
+        <name>kwkCLText</name>
+        <type>Dynamic</type>
+        <layer>kwkCLText</layer>
+        <variable>CL</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
+      <replacement id="kwkComodinText">
+        <name>kwkComodinText</name>
+        <type>Dynamic</type>
+        <layer>kwkComodinText</layer>
+        <variable>comodin</variable>
+        <useNative>true</useNative>
+        <offset>0</offset>
+      </replacement>
     </page>
   </pages>
 </project>

@@ -12,19 +12,6 @@ local lastText = Text1
 saveKwikVars({"Favor2Visitado", true})
 print("Guardado favor2visitado a true")
 
-function isOn (moving, static)
-	local condicion1 = moving.x >= static.x - static.width/2
-	local condicion2 = moving.x <= static.x + static.width/2
-	local condicion3 = moving.y >= static.y - static.height/2
-	local condicion4 = moving.y <= static.y + static.height/2
-
-	if (condicion1 and condicion2 and condicion3 and condicion4) then
-		return true
-	else
-		return false
-	end
-end
-
 function moveTo (moving, static)
 	moving.x = static.x
 	moving.y = static.y

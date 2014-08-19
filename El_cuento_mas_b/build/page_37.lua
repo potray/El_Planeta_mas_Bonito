@@ -107,11 +107,6 @@ function isOn (moving, static)
 	end
 end
 
-function moveTo (moving, static)
-	moving.x = static.x
-	moving.y = static.y
-end
-
 function moveToNumber (moving, number)
 	if (number == 1) then
 		moveTo (moving, rect1)

@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 63 
+    local numPages = 65 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -15,6 +15,13 @@ function new()
 
        Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
        Navigation.hide() 
+
+       if (tonumber(kBookmark) == 1) then 
+          local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
+          local file = io.open( path, "w+" ) 
+          file:write ( curPage.."\n1" ) 
+          io.close( file ) 
+       end 
 
        math.randomseed(os.time()) 
 
@@ -46,6 +53,7 @@ function new()
        local Empezar  
        local Continuar  
        local Reiniciar  
+       local Textnav  
 
        -- Added variables before layers render 
        _G.hasTijeras = false --  
@@ -213,6 +221,11 @@ function new()
        if kwkVarCheck("Fav03Completed") ~= nil then  
           _G.Fav03Completed = kwkVarCheck("Fav03Completed") 
        end  
+       _G.Fav05Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav05Completed") ~= nil then  
+          _G.Fav05Completed = kwkVarCheck("Fav05Completed") 
+       end  
 
        -- (TOP) External code will render here 
 
@@ -264,6 +277,13 @@ function new()
        Reiniciar.oriX = Reiniciar.x; Reiniciar.oriY = Reiniciar.y 
        Reiniciar.name = "Reiniciar" 
        menuGroup:insert(Reiniciar); menuGroup.Reiniciar = Reiniciar 
+
+       -- Textnav positioning 
+       Textnav = display.newImageRect( imgDir.. "p1_textnav.png", 330, 280 ); 
+       Textnav.x = 1253; Textnav.y = 535; Textnav.alpha = 1; Textnav.oldAlpha = 1 
+       Textnav.oriX = Textnav.x; Textnav.oriY = Textnav.y 
+       Textnav.name = "Textnav" 
+       menuGroup:insert(Textnav); menuGroup.Textnav = Textnav 
  
        -- Group(s) creation 
 

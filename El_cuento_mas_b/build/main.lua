@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Sun Aug 17 2014 19:47:33 GMT+0200 
+-- Exported on Tue Aug 19 2014 22:59:59 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -33,7 +33,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 64 
+local goPage = 1 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 
@@ -138,6 +138,37 @@ function playAudioWithDelay(clip, delay)
   timerStash.newTimerAudio = timer.performWithDelay(delay*1000, audioPlay, 1) 
 end 
 
+function isOn (moving, static)
+	local condicion1 = moving.x >= static.x - static.width/2
+	local condicion2 = moving.x <= static.x + static.width/2
+	local condicion3 = moving.y >= static.y - static.height/2
+	local condicion4 = moving.y <= static.y + static.height/2
+
+	if (condicion1 and condicion2 and condicion3 and condicion4) then
+		return true
+	else
+		return false
+	end
+end
+
+function isPositionOn (x, y, static)
+	local condicion1 = x >= static.x - static.width/2
+	local condicion2 = x <= static.x + static.width/2
+	local condicion3 = y >= static.y - static.height/2
+	local condicion4 = y <= static.y + static.height/2
+
+	if (condicion1 and condicion2 and condicion3 and condicion4) then
+		return true
+	else
+		return false
+	end
+end
+
+
+function moveTo (moving, static)
+	moving.x = static.x
+	moving.y = static.y
+end
 
 function updateCoefs()
 	local newCL
@@ -205,9 +236,8 @@ function startVariables()
 
 	saveKwikVars({"Favor2Visitado", false})
 	saveKwikVars({"Fav02Completed", false})
-
-
 	saveKwikVars({"Fav03Completed", false})
+	saveKwikVars({"Fav04Completed", false})
 
 	saveKwikVars({"Preg01Completed", false})
 	saveKwikVars({"Preg02Completed", false})
