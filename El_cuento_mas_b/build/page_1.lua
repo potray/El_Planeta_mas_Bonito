@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 65 
+    local numPages = 85 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -225,6 +225,21 @@ function new()
        -- Check if variable has a pre-saved content 
        if kwkVarCheck("Fav05Completed") ~= nil then  
           _G.Fav05Completed = kwkVarCheck("Fav05Completed") 
+       end  
+       _G.Favor5Visitado = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Favor5Visitado") ~= nil then  
+          _G.Favor5Visitado = kwkVarCheck("Favor5Visitado") 
+       end  
+       _G.Fav06Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav06Completed") ~= nil then  
+          _G.Fav06Completed = kwkVarCheck("Fav06Completed") 
+       end  
+       _G.Fav07Completed = false --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Fav07Completed") ~= nil then  
+          _G.Fav07Completed = kwkVarCheck("Fav07Completed") 
        end  
 
        -- (TOP) External code will render here 

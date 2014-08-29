@@ -4,8 +4,8 @@ local pos3 = -1
 local pos4 = -1
 local pos5 = -1
 
-local addCI3 = 5
-local addCG8 = 5
+local addCI3 = 8
+local addCG8 = 8
 
 local lastText = Text1
 

@@ -46,7 +46,7 @@ function switchText (textToHide, textToShow)
 end
 
 function instantSwitchText (textToHide, textToShow)
-    transition.to( textToHide, {alpha=0, time=0, delay=0}) 
+    transition.to( textToHide, {alpha=0, time=1, delay=0}) 
     transition.to( textToShow, {alpha=textToShow.oldAlpha, time=1, delay=0}) 
     lastText = textToShow
 end

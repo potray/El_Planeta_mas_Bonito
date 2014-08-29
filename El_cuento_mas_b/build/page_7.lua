@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 43 
+    local numPages = 85 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -106,11 +106,28 @@ local CG = kwkVarCheck("CG")
 local comodin = kwkVarCheck("comodin")
 
 local favor2Started = kwkVarCheck("Favor2Visitado")
+local favor5Started = kwkVarCheck("Favor5Visitado")
+--En algunas páginas se llama distinta esta variable
+local Favor5Visitado = kwkVarCheck("Favor5Visitado")
 local Fav01Completed = kwkVarCheck("Fav01Completed")
 local Fav02Completed = kwkVarCheck("Fav02Completed")
+local Fav03Completed = kwkVarCheck("Fav03Completed")
+local Fav04Completed = kwkVarCheck("Fav04Completed")
+local Fav05Completed = kwkVarCheck("Fav05Completed")
+local Fav06Completed = kwkVarCheck("Fav06Completed")
+local Fav07Completed = kwkVarCheck("Fav07Completed")
+
 local Preg01Completed = kwkVarCheck("Preg01Completed")
 local Preg02Completed = kwkVarCheck("Preg02Completed")
-local Preg03Completed = kwkVarCheck("Preg03Completed") 
+local Preg03Completed = kwkVarCheck("Preg03Completed")
+local Preg04Completed = kwkVarCheck("Preg04Completed")
+local Preg05Completed = kwkVarCheck("Preg05Completed")
+local Preg06Completed = kwkVarCheck("Preg06Completed")
+local Preg07Completed = kwkVarCheck("Preg07Completed")
+local Preg08Completed = kwkVarCheck("Preg08Completed")
+local Preg09Completed = kwkVarCheck("Preg09Completed")
+
+local cuentoTerminado = kwkVarCheck("CuentoTerminado") 
        local addCL1 = 5
 local addCL3 = 5
 local addCI2 = 5
@@ -277,13 +294,13 @@ local acertado = false
  
        -- Actions (functions) 
        function hideStuff(event) 
-            transitionStash.newTransition_133 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_133 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_888 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_888 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
        end 
 
        function Fallar(event) 
-            transitionStash.newTransition_134 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_134 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_889 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_889 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
            audio.setVolume(1, {channel=2} ) 
            audio.play( fallo, {channel=2, loops = 0 } ) 
            --External code 
@@ -295,9 +312,9 @@ end
        end 
 
        function Acertar(event) 
-            transitionStash.newTransition_160 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
-            transitionStash.newTransition_160 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_160 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_896 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_896 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_896 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
            audio.setVolume(1, {channel=1} ) 
            audio.play( acierto, {channel=1, loops = 0 } ) 
            --External code 

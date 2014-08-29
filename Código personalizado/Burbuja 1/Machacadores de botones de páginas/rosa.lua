@@ -1,6 +1,6 @@
 if (favor2Started) then
-	hide(kwkNavnext)
-	hide(kwkNavprev)
+	instantHide(kwkNavnext)
+	instantHide(kwkNavprev)
 end
 
 instantHide(kwkInvDestacado)

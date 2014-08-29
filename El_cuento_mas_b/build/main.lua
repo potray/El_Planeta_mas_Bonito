@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Tue Aug 19 2014 22:59:59 GMT+0200 
+-- Exported on Fri Aug 29 2014 17:39:10 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -235,9 +235,13 @@ function startVariables()
 	saveKwikVars({"Fav01Completed", false})
 
 	saveKwikVars({"Favor2Visitado", false})
+	saveKwikVars({"Favor5Visitado", false})
 	saveKwikVars({"Fav02Completed", false})
 	saveKwikVars({"Fav03Completed", false})
 	saveKwikVars({"Fav04Completed", false})
+	saveKwikVars({"Fav05Completed", false})
+	saveKwikVars({"Fav06Completed", false})
+	saveKwikVars({"Fav07Completed", false})
 
 	saveKwikVars({"Preg01Completed", false})
 	saveKwikVars({"Preg02Completed", false})
@@ -248,6 +252,9 @@ function startVariables()
 	saveKwikVars({"Preg07Completed", false})
 	saveKwikVars({"Preg08Completed", false})
 	saveKwikVars({"Preg09Completed", false})
+
+
+	saveKwikVars({"CuentoTerminado", false})
 
 	print("Variables reiniciadas")
 end
@@ -261,7 +268,11 @@ pag_favor1 = 7
 pag_favor2 = 36	
 pag_favor3 = 52
 pag_favor4 = 64
+pag_favor5 = 72
+pag_favor6 = 80
+pag_favor7 = 84
 pag_burbuja1 = 37	
+pag_burbuja2 = 73
 
 --Objetos
 pag_tijeras = 2  	--Tijeras y biberón
@@ -269,6 +280,8 @@ pag_rosa = 11 		--Rosa
 pag_erizo = 25 		--Erizo
 pag_maquina = 31 	--Maquina de agrandar cosas
 pag_guitarra = 35 	--Guitarra
+pag_cola = 49		--Cola blanca
+pag_celo = 71		--Celo
 
 --Preguntas
 pag_pregunta1 = 22	--Pregunta 1
@@ -278,6 +291,7 @@ pag_pregunta4 = 45	--Pregunta 4
 pag_pregunta5 = 50 	--Pregunta 5
 pag_pregunta6 = 55	--Pregunta 6
 pag_pregunta7 = 57	--Pregunta 7
+pag_pregunta8 = 78	--Pregunta 8
  
 
    director:changeScene("page_"..goPage)

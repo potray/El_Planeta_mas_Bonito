@@ -296,7 +296,7 @@ function terminar()
 	saveKwikVars ({"CI2", addCI2 + currentCI2})
 	saveKwikVars ({"CI5", addCI5 + currentCI5})
 
-	saveKwikVars({"Fav04Completed", false})
+	saveKwikVars({"Fav04Completed", true})
 
 	local myClosure_switch = function() 
 	    dispose(); director:changeScene( "page_"..pag_favor4 + 1, "fade" ) 

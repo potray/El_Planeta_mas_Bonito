@@ -137,9 +137,13 @@ function startVariables()
 	saveKwikVars({"Fav01Completed", false})
 
 	saveKwikVars({"Favor2Visitado", false})
+	saveKwikVars({"Favor5Visitado", false})
 	saveKwikVars({"Fav02Completed", false})
 	saveKwikVars({"Fav03Completed", false})
 	saveKwikVars({"Fav04Completed", false})
+	saveKwikVars({"Fav05Completed", false})
+	saveKwikVars({"Fav06Completed", false})
+	saveKwikVars({"Fav07Completed", false})
 
 	saveKwikVars({"Preg01Completed", false})
 	saveKwikVars({"Preg02Completed", false})
@@ -150,6 +154,9 @@ function startVariables()
 	saveKwikVars({"Preg07Completed", false})
 	saveKwikVars({"Preg08Completed", false})
 	saveKwikVars({"Preg09Completed", false})
+
+
+	saveKwikVars({"CuentoTerminado", false})
 
 	print("Variables reiniciadas")
 end

@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 43 
+    local numPages = 85 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -49,11 +49,11 @@ function new()
        local btnBurbuja
 
        -- Action names 
-       local Drag1 
        local Drag2 
        local Drag3 
        local Drag4 
        local Drag5 
+       local Drag1 
 
        -- Layer names 
        local Fondo  
@@ -86,25 +86,17 @@ local pos3 = -1
 local pos4 = -1
 local pos5 = -1
 
-local addCI3 = 5
-local addCG8 = 5
+local addCI3 = 8
+local addCG8 = 8
 
 local lastText = Text1
 
 saveKwikVars({"Favor2Visitado", true})
 print("Guardado favor2visitado a true")
 
-function isOn (moving, static)
-	local condicion1 = moving.x >= static.x - static.width/2
-	local condicion2 = moving.x <= static.x + static.width/2
-	local condicion3 = moving.y >= static.y - static.height/2
-	local condicion4 = moving.y <= static.y + static.height/2
-
-	if (condicion1 and condicion2 and condicion3 and condicion4) then
-		return true
-	else
-		return false
-	end
+function moveTo (moving, static)
+	moving.x = static.x
+	moving.y = static.y
 end
 
 function moveToNumber (moving, number)
@@ -432,11 +424,6 @@ lastText = Text1
  
  
        -- Actions (functions) 
-       function Drag1(event) 
-           --External code 
-           pos1 = whereIs (thumb1) 
-       end 
-
        function Drag2(event) 
            --External code 
            pos2 = whereIs (thumb2) 
@@ -455,6 +442,11 @@ lastText = Text1
        function Drag5(event) 
            --External code 
            pos5 = whereIs (thumb5) 
+       end 
+
+       function Drag1(event) 
+           --External code 
+           pos1 = whereIs (thumb1) 
        end 
 
  
@@ -555,7 +547,7 @@ lastText = Text1
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_2", "fade" ) 
             end 
-            timerStash.newTimer_926 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_446 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 

@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 51 
+    local numPages = 85 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -269,7 +269,7 @@ function switchText (textToHide, textToShow)
 end
 
 function instantSwitchText (textToHide, textToShow)
-    transition.to( textToHide, {alpha=0, time=0, delay=0}) 
+    transition.to( textToHide, {alpha=0, time=1, delay=0}) 
     transition.to( textToShow, {alpha=textToShow.oldAlpha, time=1, delay=0}) 
     lastText = textToShow
 end
@@ -448,13 +448,13 @@ end
        end 
 
        function HideAll(event) 
-            transitionStash.newTransition_495 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_495 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_496 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_496 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_496 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_496 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_497 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_769 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_769 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_769 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_770 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_770 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_770 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_770 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
        end 
 
  
@@ -534,7 +534,7 @@ end
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_37", "crossfade" ) 
             end 
-            timerStash.newTimer_559 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_836 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 
