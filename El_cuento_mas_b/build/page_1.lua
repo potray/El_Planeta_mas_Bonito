@@ -16,13 +16,6 @@ function new()
        Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
        Navigation.hide() 
 
-       if (tonumber(kBookmark) == 1) then 
-          local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
-          local file = io.open( path, "w+" ) 
-          file:write ( curPage.."\n1" ) 
-          io.close( file ) 
-       end 
-
        math.randomseed(os.time()) 
 
        if (tonumber(_G.kAutoPlay) > 0) then 
@@ -46,6 +39,7 @@ function new()
        local but_877
 
        -- Layer names 
+       local kwkFondo3  
        local btn1  
        local btn3  
        local Rectangulo_redo  
@@ -54,6 +48,16 @@ function new()
        local Continuar  
        local Reiniciar  
        local Textnav  
+       local Cabeza_Mama_gaf  
+       local Cabeza_Hija_Gaf  
+       local Cabeza_bebe  
+       local Cabeza_Ser  
+       local Cabeza_Hormigui  
+       local Cabeza_Sabio  
+       local Cabeza_Ser_2  
+       local Nube  
+       local Nube_caballo  
+       local Objeto_intelige  
 
        -- Added variables before layers render 
        _G.hasTijeras = false --  
@@ -244,6 +248,13 @@ function new()
 
        -- (TOP) External code will render here 
 
+       -- kwkFondo3 positioning 
+       kwkFondo3 = display.newImageRect( imgDir.. "kwkfondo3.png", 2559, 1600 ); 
+       kwkFondo3.x = 1279; kwkFondo3.y = 800; kwkFondo3.alpha = 1; kwkFondo3.oldAlpha = 1 
+       kwkFondo3.oriX = kwkFondo3.x; kwkFondo3.oriY = kwkFondo3.y 
+       kwkFondo3.name = "kwkFondo3" 
+       menuGroup:insert(1,kwkFondo3); menuGroup.kwkFondo3 = kwkFondo3 
+
        -- btn1 positioning 
        btn1 = display.newImageRect( imgDir.. "p1_btn1.png", 523, 109 ); 
        btn1.x = 767; btn1.y = 974; btn1.alpha = 1; btn1.oldAlpha = 1 
@@ -299,6 +310,76 @@ function new()
        Textnav.oriX = Textnav.x; Textnav.oriY = Textnav.y 
        Textnav.name = "Textnav" 
        menuGroup:insert(Textnav); menuGroup.Textnav = Textnav 
+
+       -- Cabeza_Mama_gaf positioning 
+       Cabeza_Mama_gaf = display.newImageRect( imgDir.. "p1_cabeza_mama_gaf.png", 368, 391 ); 
+       Cabeza_Mama_gaf.x = 264; Cabeza_Mama_gaf.y = 1346; Cabeza_Mama_gaf.alpha = 1; Cabeza_Mama_gaf.oldAlpha = 1 
+       Cabeza_Mama_gaf.oriX = Cabeza_Mama_gaf.x; Cabeza_Mama_gaf.oriY = Cabeza_Mama_gaf.y 
+       Cabeza_Mama_gaf.name = "Cabeza_Mama_gaf" 
+       menuGroup:insert(Cabeza_Mama_gaf); menuGroup.Cabeza_Mama_gaf = Cabeza_Mama_gaf 
+
+       -- Cabeza_Hija_Gaf positioning 
+       Cabeza_Hija_Gaf = display.newImageRect( imgDir.. "p1_cabeza_hija_gaf.png", 267, 348 ); 
+       Cabeza_Hija_Gaf.x = 2346; Cabeza_Hija_Gaf.y = 1048; Cabeza_Hija_Gaf.alpha = 1; Cabeza_Hija_Gaf.oldAlpha = 1 
+       Cabeza_Hija_Gaf.oriX = Cabeza_Hija_Gaf.x; Cabeza_Hija_Gaf.oriY = Cabeza_Hija_Gaf.y 
+       Cabeza_Hija_Gaf.name = "Cabeza_Hija_Gaf" 
+       menuGroup:insert(Cabeza_Hija_Gaf); menuGroup.Cabeza_Hija_Gaf = Cabeza_Hija_Gaf 
+
+       -- Cabeza_bebe positioning 
+       Cabeza_bebe = display.newImageRect( imgDir.. "p1_cabeza_bebe.png", 382, 303 ); 
+       Cabeza_bebe.x = 1281; Cabeza_bebe.y = 1409; Cabeza_bebe.alpha = 1; Cabeza_bebe.oldAlpha = 1 
+       Cabeza_bebe.oriX = Cabeza_bebe.x; Cabeza_bebe.oriY = Cabeza_bebe.y 
+       Cabeza_bebe.name = "Cabeza_bebe" 
+       menuGroup:insert(Cabeza_bebe); menuGroup.Cabeza_bebe = Cabeza_bebe 
+
+       -- Cabeza_Ser positioning 
+       Cabeza_Ser = display.newImageRect( imgDir.. "p1_cabeza_ser.png", 236, 346 ); 
+       Cabeza_Ser.x = 271; Cabeza_Ser.y = 927; Cabeza_Ser.alpha = 1; Cabeza_Ser.oldAlpha = 1 
+       Cabeza_Ser.oriX = Cabeza_Ser.x; Cabeza_Ser.oriY = Cabeza_Ser.y 
+       Cabeza_Ser.name = "Cabeza_Ser" 
+       menuGroup:insert(Cabeza_Ser); menuGroup.Cabeza_Ser = Cabeza_Ser 
+
+       -- Cabeza_Hormigui positioning 
+       Cabeza_Hormigui = display.newImageRect( imgDir.. "p1_cabeza_hormigui.png", 217, 329 ); 
+       Cabeza_Hormigui.x = 2406; Cabeza_Hormigui.y = 1402; Cabeza_Hormigui.alpha = 1; Cabeza_Hormigui.oldAlpha = 1 
+       Cabeza_Hormigui.oriX = Cabeza_Hormigui.x; Cabeza_Hormigui.oriY = Cabeza_Hormigui.y 
+       Cabeza_Hormigui.name = "Cabeza_Hormigui" 
+       menuGroup:insert(Cabeza_Hormigui); menuGroup.Cabeza_Hormigui = Cabeza_Hormigui 
+
+       -- Cabeza_Sabio positioning 
+       Cabeza_Sabio = display.newImageRect( imgDir.. "p1_cabeza_sabio.png", 424, 514 ); 
+       Cabeza_Sabio.x = 1907; Cabeza_Sabio.y = 1328; Cabeza_Sabio.alpha = 1; Cabeza_Sabio.oldAlpha = 1 
+       Cabeza_Sabio.oriX = Cabeza_Sabio.x; Cabeza_Sabio.oriY = Cabeza_Sabio.y 
+       Cabeza_Sabio.name = "Cabeza_Sabio" 
+       menuGroup:insert(Cabeza_Sabio); menuGroup.Cabeza_Sabio = Cabeza_Sabio 
+
+       -- Cabeza_Ser_2 positioning 
+       Cabeza_Ser_2 = display.newImageRect( imgDir.. "p1_cabeza_ser_2.png", 291, 420 ); 
+       Cabeza_Ser_2.x = 777; Cabeza_Ser_2.y = 1351; Cabeza_Ser_2.alpha = 1; Cabeza_Ser_2.oldAlpha = 1 
+       Cabeza_Ser_2.oriX = Cabeza_Ser_2.x; Cabeza_Ser_2.oriY = Cabeza_Ser_2.y 
+       Cabeza_Ser_2.name = "Cabeza_Ser_2" 
+       menuGroup:insert(Cabeza_Ser_2); menuGroup.Cabeza_Ser_2 = Cabeza_Ser_2 
+
+       -- Nube positioning 
+       Nube = display.newImageRect( imgDir.. "p1_nube.png", 551, 299 ); 
+       Nube.x = 294; Nube.y = 569; Nube.alpha = 1; Nube.oldAlpha = 1 
+       Nube.oriX = Nube.x; Nube.oriY = Nube.y 
+       Nube.name = "Nube" 
+       menuGroup:insert(Nube); menuGroup.Nube = Nube 
+
+       -- Nube_caballo positioning 
+       Nube_caballo = display.newImageRect( imgDir.. "p1_nube_caballo.png", 718, 449 ); 
+       Nube_caballo.x = 2313; Nube_caballo.y = 716; Nube_caballo.alpha = 1; Nube_caballo.oldAlpha = 1 
+       Nube_caballo.oriX = Nube_caballo.x; Nube_caballo.oriY = Nube_caballo.y 
+       Nube_caballo.name = "Nube_caballo" 
+       menuGroup:insert(Nube_caballo); menuGroup.Nube_caballo = Nube_caballo 
+
+       -- Objeto_intelige positioning 
+       Objeto_intelige = display.newImageRect( imgDir.. "p1_objeto_intelige.png", 2291, 729 ); 
+       Objeto_intelige.x = 1285; Objeto_intelige.y = 392; Objeto_intelige.alpha = 1; Objeto_intelige.oldAlpha = 1 
+       Objeto_intelige.oriX = Objeto_intelige.x; Objeto_intelige.oriY = Objeto_intelige.y 
+       Objeto_intelige.name = "Objeto_intelige" 
+       menuGroup:insert(Objeto_intelige); menuGroup.Objeto_intelige = Objeto_intelige 
  
        -- Group(s) creation 
 

@@ -448,13 +448,13 @@ end
        end 
 
        function HideAll(event) 
-            transitionStash.newTransition_769 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_769 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_769 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_770 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_770 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_770 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_770 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_940 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_940 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_941 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_941 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_941 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_941 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_942 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
        end 
 
  
@@ -534,7 +534,7 @@ end
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_37", "crossfade" ) 
             end 
-            timerStash.newTimer_836 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_018 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 

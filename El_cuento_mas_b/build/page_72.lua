@@ -309,7 +309,7 @@ local hasCola = kwkVarCheck("hasCola")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_73", "fade" ) 
             end 
-            timerStash.newTimer_995 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_126 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 

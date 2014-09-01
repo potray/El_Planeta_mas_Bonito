@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Fri Aug 29 2014 17:39:10 GMT+0200 
+-- Exported on Mon Sep 01 2014 18:40:10 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -33,7 +33,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 1 
+local goPage = 24 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 

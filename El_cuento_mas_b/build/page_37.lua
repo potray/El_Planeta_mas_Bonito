@@ -547,7 +547,7 @@ lastText = Text1
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_2", "fade" ) 
             end 
-            timerStash.newTimer_446 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_138 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 

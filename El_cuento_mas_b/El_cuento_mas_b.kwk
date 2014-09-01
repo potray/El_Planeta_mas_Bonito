@@ -2115,6 +2115,22 @@
         <useNative>true</useNative>
         <offset>0</offset>
       </replacement>
+      <audio id="page_3">
+        <name>page_3</name>
+        <audio>D:\Dropbox\TFG/El_cuento_mas_b/page_3.mp3</audio>
+        <delay>0</delay>
+        <loop>1</loop>
+        <isShort>false</isShort>
+        <allowRepeat>false</allowRepeat>
+        <isReadMe>false</isReadMe>
+        <keep>false</keep>
+        <autoPlay>true</autoPlay>
+        <lang>All</lang>
+        <channel>1</channel>
+        <volume>10</volume>
+        <fadeIn>true</fadeIn>
+        <fadeInAmount>.5</fadeInAmount>
+      </audio>
     </page>
     <page id="page4">
       <name>page4</name>
@@ -5081,6 +5097,38 @@
         <useNative>true</useNative>
         <offset>0</offset>
       </replacement>
+      <audio id="pag8">
+        <name>pag8</name>
+        <audio>D:\Dropbox\TFG/El_cuento_mas_b/pag8.mp3</audio>
+        <delay>1</delay>
+        <loop>1</loop>
+        <isShort>false</isShort>
+        <allowRepeat>false</allowRepeat>
+        <isReadMe>false</isReadMe>
+        <keep>false</keep>
+        <autoPlay>true</autoPlay>
+        <lang>All</lang>
+        <channel>2</channel>
+        <volume>10</volume>
+        <fadeIn>true</fadeIn>
+        <fadeInAmount>.5</fadeInAmount>
+      </audio>
+      <audio id="hermana_page8">
+        <name>hermana_page8</name>
+        <audio>D:\Dropbox\TFG/El_cuento_mas_b/hermana_page8.mp3</audio>
+        <delay>0</delay>
+        <loop>1</loop>
+        <isShort>false</isShort>
+        <allowRepeat>false</allowRepeat>
+        <isReadMe>false</isReadMe>
+        <keep>false</keep>
+        <autoPlay>true</autoPlay>
+        <lang>All</lang>
+        <channel>2</channel>
+        <volume>10</volume>
+        <fadeIn>true</fadeIn>
+        <fadeInAmount>.5</fadeInAmount>
+      </audio>
     </page>
     <page id="page9">
       <name>page9</name>
@@ -11106,25 +11154,6 @@
       <number>21</number>
       <file>/d/Dropbox/TFG/El_cuento_mas_b/page19.psd</file>
       <fileName>page19.psd</fileName>
-      <button id="btnChancla">
-        <name>btnChancla</name>
-        <layer>Chancla_verde</layer>
-        <rollover>Chancla_verde</rollover>
-        <target>Layer</target>
-        <type>Tap</type>
-        <tap>1</tap>
-        <action id="var_812">
-          <name>var_812</name>
-          <type>Edit Variable</type>
-          <variable>hasChanclaVerde</variable>
-          <value>true</value>
-        </action>
-        <action id="act_537">
-          <name>act_537</name>
-          <type>Play Action</type>
-          <trigger>hideChancla</trigger>
-        </action>
-      </button>
       <button id="btnPrevPage">
         <name>btnPrevPage</name>
         <layer>kwkNavprev</layer>
@@ -11258,12 +11287,6 @@
           <type>End IF</type>
         </action>
       </button>
-      <timer id="timerChancla">
-        <name>timerChancla</name>
-        <delay>0</delay>
-        <trigger>hideChancla</trigger>
-        <loop>1</loop>
-      </timer>
       <timer id="timerInv">
         <name>timerInv</name>
         <delay>0</delay>
@@ -11404,37 +11427,6 @@
         <useNative>true</useNative>
         <offset>0</offset>
       </replacement>
-      <trigger id="hideChancla">
-        <name>hideChancla</name>
-        <action id="if_326">
-          <name>if_326</name>
-          <type>IF</type>
-          <exp1>hasChanclaVerde</exp1>
-          <exp1Type>Variable</exp1Type>
-          <exp1Op>EQUAL</exp1Op>
-          <exp1Comp>true</exp1Comp>
-          <exp2Enabled>false</exp2Enabled>
-          <exp2Cond>AND</exp2Cond>
-          <exp2>hasChanclaVerde</exp2>
-          <exp2Type>Variable</exp2Type>
-          <exp2Comp/>
-          <exp2Op>EQUAL</exp2Op>
-        </action>
-        <action id="">
-          <name/>
-          <type>Show/Hide</type>
-          <showLayer>Chancla_verde</showLayer>
-          <show>false</show>
-          <toggle>false</toggle>
-          <duration>0</duration>
-          <delay>0</delay>
-          <target>Layer</target>
-        </action>
-        <action id="end_195">
-          <name>end_195</name>
-          <type>End IF</type>
-        </action>
-      </trigger>
       <trigger id="hideInventory">
         <name>hideInventory</name>
         <action id="act_153">
@@ -12909,6 +12901,22 @@
           <target>Layer</target>
         </action>
       </trigger>
+      <audio id="page21">
+        <name>page21</name>
+        <audio>D:\Dropbox\TFG/El_cuento_mas_b/page21.mp3</audio>
+        <delay>0</delay>
+        <loop>1</loop>
+        <isShort>false</isShort>
+        <allowRepeat>false</allowRepeat>
+        <isReadMe>false</isReadMe>
+        <keep>false</keep>
+        <autoPlay>true</autoPlay>
+        <lang>All</lang>
+        <channel>1</channel>
+        <volume>10</volume>
+        <fadeIn>true</fadeIn>
+        <fadeInAmount>.5</fadeInAmount>
+      </audio>
     </page>
     <page id="page22">
       <name>page22</name>

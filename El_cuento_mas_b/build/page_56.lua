@@ -413,69 +413,69 @@ local hasCola = kwkVarCheck("hasCola")
  
        -- Actions (functions) 
        function hideInventory(event) 
-            transitionStash.newTransition_614 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_614 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_615 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_615 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_615 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_615 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_616 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_616 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_616 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_617 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_819 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_819 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_820 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_820 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_820 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_820 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_821 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_821 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_821 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_821 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
            InventoryShown = false
           saveKwikVars({"InventoryShown",false}) 
        end 
 
        function showInventory(event) 
-            transitionStash.newTransition_637 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_838 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_638 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_839 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
          end 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_639 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_840 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
          end 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_639 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_840 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
          end 
          if (hasRosa == true) then 
-            transitionStash.newTransition_640 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_841 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
          end 
          if (hasErizo == true) then 
-            transitionStash.newTransition_641 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_842 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCelo == true) then 
-            transitionStash.newTransition_642 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_842 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasGuitarra == true) then 
-            transitionStash.newTransition_642 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_843 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCola == true) then 
-            transitionStash.newTransition_643 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_844 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
          end 
            InventoryShown = true
           saveKwikVars({"InventoryShown",true}) 
-            transitionStash.newTransition_662 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_662 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_861 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_861 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
        end 
 
        function Anim(event) 
-            transitionStash.newTransition_663 = transition.to( kwkNavnext, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_663 = transition.to( kwkNube2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_663 = transition.to( kwkArbol2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_664 = transition.to( kwkBolsa2, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_664 = transition.to( kwkNubeViento, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_664 = transition.to( kwkNube2, {alpha=kwkNube2.oldAlpha, time=1000, delay=1000}) 
-            transitionStash.newTransition_664 = transition.to( kwkNube, {alpha=0, time=1000, delay=1000}) 
-            transitionStash.newTransition_665 = transition.to( kwkNubeViento, {alpha=kwkNubeViento.oldAlpha, time=500, delay=2000}) 
-            transitionStash.newTransition_665 = transition.to( kwkNubeViento, {alpha=0, time=500, delay=2500}) 
-            transitionStash.newTransition_665 = transition.to( kwkNubeViento, {alpha=kwkNubeViento.oldAlpha, time=500, delay=3000}) 
-            transitionStash.newTransition_666 = transition.to( kwkNubeViento, {alpha=0, time=500, delay=3500}) 
-            transitionStash.newTransition_666 = transition.to( kwkBolsa2, {alpha=kwkBolsa2.oldAlpha, time=1000, delay=4000}) 
-            transitionStash.newTransition_667 = transition.to( kwkBolsa1, {alpha=0, time=1000, delay=4000}) 
-            transitionStash.newTransition_667 = transition.to( kwkArbol2, {alpha=kwkArbol2.oldAlpha, time=1000, delay=4000}) 
-            transitionStash.newTransition_667 = transition.to( kwkArbol, {alpha=0, time=1000, delay=4000}) 
-            transitionStash.newTransition_667 = transition.to( kwkNavnext, {alpha=kwkNavnext.oldAlpha, time=1000, delay=5000}) 
+            transitionStash.newTransition_862 = transition.to( kwkNavnext, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_862 = transition.to( kwkNube2, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_862 = transition.to( kwkArbol2, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_862 = transition.to( kwkBolsa2, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_863 = transition.to( kwkNubeViento, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_863 = transition.to( kwkNube2, {alpha=kwkNube2.oldAlpha, time=1000, delay=1000}) 
+            transitionStash.newTransition_863 = transition.to( kwkNube, {alpha=0, time=1000, delay=1000}) 
+            transitionStash.newTransition_863 = transition.to( kwkNubeViento, {alpha=kwkNubeViento.oldAlpha, time=500, delay=2000}) 
+            transitionStash.newTransition_864 = transition.to( kwkNubeViento, {alpha=0, time=500, delay=2500}) 
+            transitionStash.newTransition_865 = transition.to( kwkNubeViento, {alpha=kwkNubeViento.oldAlpha, time=500, delay=3000}) 
+            transitionStash.newTransition_865 = transition.to( kwkNubeViento, {alpha=0, time=500, delay=3500}) 
+            transitionStash.newTransition_865 = transition.to( kwkBolsa2, {alpha=kwkBolsa2.oldAlpha, time=1000, delay=4000}) 
+            transitionStash.newTransition_866 = transition.to( kwkBolsa1, {alpha=0, time=1000, delay=4000}) 
+            transitionStash.newTransition_866 = transition.to( kwkArbol2, {alpha=kwkArbol2.oldAlpha, time=1000, delay=4000}) 
+            transitionStash.newTransition_866 = transition.to( kwkArbol, {alpha=0, time=1000, delay=4000}) 
+            transitionStash.newTransition_866 = transition.to( kwkNavnext, {alpha=kwkNavnext.oldAlpha, time=1000, delay=5000}) 
        end 
 
  
@@ -520,7 +520,7 @@ local hasCola = kwkVarCheck("hasCola")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_54", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_734 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_932 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnNextPage(self) 
@@ -528,12 +528,12 @@ local hasCola = kwkVarCheck("hasCola")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_57", "moveFromRight" ) 
             end 
-            timerStash.newTimer_735 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_933 = timer.performWithDelay(0, myClosure_switch, 1) 
          else 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_58", "moveFromRight" ) 
             end 
-            timerStash.newTimer_741 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_938 = timer.performWithDelay(0, myClosure_switch, 1) 
          end 
        end 
 
