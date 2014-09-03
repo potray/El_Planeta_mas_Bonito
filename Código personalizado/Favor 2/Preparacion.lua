@@ -120,7 +120,8 @@ end
 local missingSomething = not hasTijeras or not hasBiberon or not hasMaquina or not hasRosa or not hasGuitarra or not hasErizo
 
 if (missingSomething) then
-	instantSwitchText(lastText, TextBurbuja)
+	instantHide(Text1)
+	instantShow(TextBurbuja)
 	instantHide(Ayuda1)
 else
 	instantHide(kwkBurbuja)

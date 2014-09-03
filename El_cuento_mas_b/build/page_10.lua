@@ -22,13 +22,6 @@ function new()
        Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={{ 2, "pag8"},{ 2, "hermana_page8"},} } ) 
        Navigation.hide() 
 
-       if (tonumber(kBookmark) == 1) then 
-          local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
-          local file = io.open( path, "w+" ) 
-          file:write ( curPage.."\n1" ) 
-          io.close( file ) 
-       end 
-
        math.randomseed(os.time()) 
 
        if (tonumber(_G.kAutoPlay) > 0) then 

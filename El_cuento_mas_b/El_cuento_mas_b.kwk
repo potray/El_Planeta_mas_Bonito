@@ -38700,7 +38700,7 @@
       <trigger id="Anim">
         <name>Anim</name>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>kwkNavnext</showLayer>
           <show>false</show>
@@ -38710,7 +38710,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text3</showLayer>
           <show>false</show>
@@ -38720,7 +38720,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text2</showLayer>
           <show>false</show>
@@ -38730,7 +38730,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text1</showLayer>
           <show>false</show>
@@ -38740,7 +38740,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text2</showLayer>
           <show>true</show>
@@ -38750,7 +38750,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text3</showLayer>
           <show>true</show>
@@ -38760,7 +38760,7 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>Text2</showLayer>
           <show>false</show>
@@ -38770,13 +38770,13 @@
           <target>Layer</target>
         </action>
         <action id="">
-          <name/>
+          <name></name>
           <type>Show/Hide</type>
           <showLayer>kwkNavnext</showLayer>
           <show>true</show>
           <toggle>false</toggle>
           <duration>1</duration>
-          <delay>7</delay>
+          <delay>9</delay>
           <target>Layer</target>
         </action>
       </trigger>

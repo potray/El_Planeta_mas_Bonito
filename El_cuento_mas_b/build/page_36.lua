@@ -343,7 +343,8 @@ end
 local missingSomething = not hasTijeras or not hasBiberon or not hasMaquina or not hasRosa or not hasGuitarra or not hasErizo
 
 if (missingSomething) then
-	instantSwitchText(lastText, TextBurbuja)
+	instantHide(Text1)
+	instantShow(TextBurbuja)
 	instantHide(Ayuda1)
 else
 	instantHide(kwkBurbuja)
@@ -448,13 +449,13 @@ end
        end 
 
        function HideAll(event) 
-            transitionStash.newTransition_940 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_940 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_941 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_941 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_941 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_941 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_942 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_271 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_271 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_272 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_272 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_272 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_272 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_273 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
        end 
 
  
@@ -534,7 +535,7 @@ end
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_37", "crossfade" ) 
             end 
-            timerStash.newTimer_018 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_338 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 
