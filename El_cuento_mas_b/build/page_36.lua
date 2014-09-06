@@ -316,6 +316,14 @@ end
 
 --Ocultar cosas
 
+transitionStash.newTransition_299 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_299 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_299 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+
 if (not hasTijeras) then
 	instantHide(kwkTijeras)
 end
@@ -349,6 +357,7 @@ if (missingSomething) then
 else
 	instantHide(kwkBurbuja)
 end
+
  
  
        -- Actions (functions) 
@@ -449,21 +458,18 @@ end
        end 
 
        function HideAll(event) 
-            transitionStash.newTransition_271 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_271 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_272 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_272 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_272 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_272 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_273 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_957 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_957 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_957 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_958 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_958 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_958 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_958 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
        end 
 
  
       --End Actions (functions) 
 
- 
-       -- Timers 
-       timerStash.timerHideAll = timer.performWithDelay( 0, HideAll, 1 ) 
  
        -- Drag objects 
        MultiTouch.activate( kwkTijeras, "move", "single"  ) 
@@ -535,7 +541,7 @@ end
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_37", "crossfade" ) 
             end 
-            timerStash.newTimer_338 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_062 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 

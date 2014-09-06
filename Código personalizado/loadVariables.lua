@@ -40,3 +40,5 @@ local Preg08Completed = kwkVarCheck("Preg08Completed")
 local Preg09Completed = kwkVarCheck("Preg09Completed")
 
 local cuentoTerminado = kwkVarCheck("CuentoTerminado")
+
+local Audio = kwkVarCheck("Audio")

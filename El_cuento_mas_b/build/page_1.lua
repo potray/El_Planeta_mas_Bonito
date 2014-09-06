@@ -42,11 +42,14 @@ function new()
        local kwkFondo3  
        local btn1  
        local btn3  
+       local btnAudio  
        local Rectangulo_redo  
        local btn2  
        local Empezar  
        local Continuar  
        local Reiniciar  
+       local TextAudioOff  
+       local TextAudioOn  
        local Textnav  
        local Cabeza_Mama_gaf  
        local Cabeza_Hija_Gaf  
@@ -58,6 +61,8 @@ function new()
        local Nube  
        local Nube_caballo  
        local Objeto_intelige  
+       local AudioSi  
+       local AudioNo  
 
        -- Added variables before layers render 
        _G.hasTijeras = false --  
@@ -245,6 +250,11 @@ function new()
        if kwkVarCheck("Fav07Completed") ~= nil then  
           _G.Fav07Completed = kwkVarCheck("Fav07Completed") 
        end  
+       _G.Audio = true --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("Audio") ~= nil then  
+          _G.Audio = kwkVarCheck("Audio") 
+       end  
 
        -- (TOP) External code will render here 
 
@@ -268,6 +278,13 @@ function new()
        btn3.oriX = btn3.x; btn3.oriY = btn3.y 
        btn3.name = "btn3" 
        menuGroup:insert(btn3); menuGroup.btn3 = btn3 
+
+       -- btnAudio positioning 
+       btnAudio = display.newImageRect( imgDir.. "p1_btnaudio.png", 522, 109 ); 
+       btnAudio.x = 1280; btnAudio.y = 1133; btnAudio.alpha = 1; btnAudio.oldAlpha = 1 
+       btnAudio.oriX = btnAudio.x; btnAudio.oriY = btnAudio.y 
+       btnAudio.name = "btnAudio" 
+       menuGroup:insert(btnAudio); menuGroup.btnAudio = btnAudio 
 
        -- Rectangulo_redo positioning 
        Rectangulo_redo = display.newImageRect( imgDir.. "p1_rectangulo_redo.png", 408, 408 ); 
@@ -303,6 +320,20 @@ function new()
        Reiniciar.oriX = Reiniciar.x; Reiniciar.oriY = Reiniciar.y 
        Reiniciar.name = "Reiniciar" 
        menuGroup:insert(Reiniciar); menuGroup.Reiniciar = Reiniciar 
+
+       -- TextAudioOff positioning 
+       TextAudioOff = display.newImageRect( imgDir.. "p1_textaudiooff.png", 290, 48 ); 
+       TextAudioOff.x = 1277; TextAudioOff.y = 1130; TextAudioOff.alpha = 1; TextAudioOff.oldAlpha = 1 
+       TextAudioOff.oriX = TextAudioOff.x; TextAudioOff.oriY = TextAudioOff.y 
+       TextAudioOff.name = "TextAudioOff" 
+       menuGroup:insert(TextAudioOff); menuGroup.TextAudioOff = TextAudioOff 
+
+       -- TextAudioOn positioning 
+       TextAudioOn = display.newImageRect( imgDir.. "p1_textaudioon.png", 263, 40 ); 
+       TextAudioOn.x = 1277; TextAudioOn.y = 1126; TextAudioOn.alpha = 1; TextAudioOn.oldAlpha = 1 
+       TextAudioOn.oriX = TextAudioOn.x; TextAudioOn.oriY = TextAudioOn.y 
+       TextAudioOn.name = "TextAudioOn" 
+       menuGroup:insert(TextAudioOn); menuGroup.TextAudioOn = TextAudioOn 
 
        -- Textnav positioning 
        Textnav = display.newImageRect( imgDir.. "p1_textnav.png", 330, 280 ); 
@@ -380,6 +411,20 @@ function new()
        Objeto_intelige.oriX = Objeto_intelige.x; Objeto_intelige.oriY = Objeto_intelige.y 
        Objeto_intelige.name = "Objeto_intelige" 
        menuGroup:insert(Objeto_intelige); menuGroup.Objeto_intelige = Objeto_intelige 
+
+       -- AudioSi positioning 
+       AudioSi = display.newImageRect( imgDir.. "p1_audiosi.png", 227, 38 ); 
+       AudioSi.x = 1275; AudioSi.y = 1221; AudioSi.alpha = 1; AudioSi.oldAlpha = 1 
+       AudioSi.oriX = AudioSi.x; AudioSi.oriY = AudioSi.y 
+       AudioSi.name = "AudioSi" 
+       menuGroup:insert(AudioSi); menuGroup.AudioSi = AudioSi 
+
+       -- AudioNo positioning 
+       AudioNo = display.newImageRect( imgDir.. "p1_audiono.png", 247, 38 ); 
+       AudioNo.x = 1279; AudioNo.y = 1215; AudioNo.alpha = 1; AudioNo.oldAlpha = 1 
+       AudioNo.oriX = AudioNo.x; AudioNo.oriY = AudioNo.y 
+       AudioNo.name = "AudioNo" 
+       menuGroup:insert(AudioNo); menuGroup.AudioNo = AudioNo 
  
        -- Group(s) creation 
 
@@ -509,7 +554,34 @@ if (reiniciado == true or reiniciado == nil) then
 else
 	instantHide(Empezar)
 	instantHide(btn3)
-end 
+end
+
+if (Audio) then
+	instantHide(TextAudioOn)
+	instantHide(AudioNo)
+else
+	instantHide(TextAudioOff)
+	instantHide(AudioSi)
+end
+
+function quitarAudio()
+	saveKwikVars({"Audio", false})	
+  instantShow(TextAudioOn)
+  instantHide(TextAudioOff)
+  instantHide(AudioSi)
+  instantShow(AudioNo)
+end
+
+function ponerAudio()
+	saveKwikVars({"Audio", true})	
+  instantHide(TextAudioOn)
+	instantShow(TextAudioOff)
+	instantShow(AudioSi)
+  instantHide(AudioNo)
+end
+
+TextAudioOn:addEventListener( "tap", ponerAudio )
+TextAudioOff:addEventListener( "tap", quitarAudio ) 
 
 
     end 

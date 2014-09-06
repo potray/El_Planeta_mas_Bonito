@@ -41,14 +41,12 @@ function new()
 
  
        -- Button names 
-       local btnBotaAbeja
        local btnNextPage
        local btnPrevPage
        local btnInventario
        local btnCerrarInvent
 
        -- Action names 
-       local hideBotaAbeja 
        local hideInventory 
        local showInventory 
 
@@ -56,7 +54,6 @@ function new()
        local kwkFondo3  
        local Text1  
        local kwkCaballo  
-       local kwkBota_abeja  
        local kwkHija_gafas  
        local kwkMama_gafas  
        local kwkInvDestacado  
@@ -159,13 +156,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkCaballo.oriX = kwkCaballo.x; kwkCaballo.oriY = kwkCaballo.y 
        kwkCaballo.name = "kwkCaballo" 
        menuGroup:insert(kwkCaballo); menuGroup.kwkCaballo = kwkCaballo 
-
-       -- kwkBota_abeja positioning 
-       kwkBota_abeja = display.newImageRect( imgDir.. "kwkbota_abeja.png", 428, 378 ); 
-       kwkBota_abeja.x = 359; kwkBota_abeja.y = 1269; kwkBota_abeja.alpha = 1; kwkBota_abeja.oldAlpha = 1 
-       kwkBota_abeja.oriX = kwkBota_abeja.x; kwkBota_abeja.oriY = kwkBota_abeja.y 
-       kwkBota_abeja.name = "kwkBota_abeja" 
-       menuGroup:insert(kwkBota_abeja); menuGroup.kwkBota_abeja = kwkBota_abeja 
 
        -- kwkHija_gafas positioning 
        kwkHija_gafas = display.newImageRect( imgDir.. "kwkhija_gafas.png", 448, 816 ); 
@@ -419,86 +409,80 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = fals
          { x = -1347, y = 717}, 
 angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=2, ""}, {  x=1539, y=1039,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
 
-       gtStash.gt_path_caballo = btween.new( kwkMama_gafas, 1, { 
-         { x = 1100, y = 928}, --regular curve
-         { x = 1100, y = 928}, 
-         { x = 748, y = 973}, 
-         { x = 658, y = 835}, 
+       gtStash.gt_pathCaballo = btween.new( kwkCaballo, 1, { 
+         { x = 2352, y = 300}, --regular curve
+         { x = 2352, y = 300}, 
+         { x = 2047, y = 451}, 
+         { x = 1791, y = 454}, 
 
-         { x = 658, y = 835}, --regular curve
-         { x = 569, y = 698}, 
-         { x = 408, y = 634}, 
-         { x = 230, y = 595}, 
+         { x = 1791, y = 454}, --regular curve
+         { x = 1535, y = 458}, 
+         { x = 1171, y = 296}, 
+         { x = 935, y = 255}, 
 
-         { x = 230, y = 595}, --regular curve
-         { x = 53, y = 557}, 
-         { x = -57, y = 573}, 
-         { x = -191, y = 670}, 
+         { x = 935, y = 255}, --regular curve
+         { x = 698, y = 215}, 
+         { x = -70, y = 320}, 
+         { x = -208, y = 383}, 
 
-         { x = -191, y = 670}, --regular curve
-         { x = -326, y = 767}, 
-         { x = -932, y = 785}, 
-         { x = -946, y = 982}, 
+         { x = -208, y = 383}, --regular curve
+         { x = -347, y = 447}, 
+         { x = -1056, y = 392}, 
+         { x = -1135, y = 255}, 
 
-         { x = -946, y = 982}, 
-         { x = -946, y = 982}, 
-         { x = -946, y = 982}, 
-         { x = -946, y = 982}, 
-angle = 0       }, {ease = gtween.easing.linear, repeatCount = math.huge, reflect = false,  delay=3, ""}, {  x=1539, y=1039,  alpha=1, xScale=1, yScale=1, newAngle=180}) 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+         { x = -1135, y = 255}, 
+angle = 0       }, {ease = gtween.easing.linear, repeatCount = 1, reflect = false,  delay=3, ""}, {  x=2465, y=306,  alpha=1, rotation=0, xScale=1, yScale=1, newAngle=180}) 
 
  
        -- Actions (functions) 
-       function hideBotaAbeja(event) 
-         if (hasBotaAbeja == true) then 
-            transitionStash.newTransition_816 = transition.to( kwkBota_abeja, {alpha=0, time=0, delay=0}) 
-         end 
-       end 
-
        function hideInventory(event) 
-            transitionStash.newTransition_817 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_817 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_817 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_818 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_818 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_818 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_819 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_819 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_819 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_819 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_765 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_765 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_766 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_766 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_766 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_766 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_767 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_767 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_767 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_767 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
            InventoryShown = false
           saveKwikVars({"InventoryShown",false}) 
        end 
 
        function showInventory(event) 
-            transitionStash.newTransition_835 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_785 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_836 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_786 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
          end 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_837 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_787 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
          end 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_838 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_788 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
          end 
          if (hasRosa == true) then 
-            transitionStash.newTransition_838 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_788 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
          end 
          if (hasErizo == true) then 
-            transitionStash.newTransition_839 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_789 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCelo == true) then 
-            transitionStash.newTransition_840 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_790 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasGuitarra == true) then 
-            transitionStash.newTransition_841 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_791 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCola == true) then 
-            transitionStash.newTransition_841 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_792 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
          end 
            InventoryShown = true
           saveKwikVars({"InventoryShown",true}) 
-            transitionStash.newTransition_858 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_858 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_810 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_810 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
        end 
 
  
@@ -506,15 +490,9 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = math.huge, reflec
 
  
        -- Timers 
-       timerStash.timerBotaAbeja = timer.performWithDelay( 0, hideBotaAbeja, 1 ) 
        timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
 
        -- Button event listeners 
-       local function onkwkBota_abejaEvent(event) 
-          btnBotaAbeja(kwkBota_abeja) 
-          return true 
-       end 
-       kwkBota_abeja:addEventListener("tap", onkwkBota_abejaEvent ) 
        local function onkwkNavnextEvent(event) 
           btnNextPage(kwkNavnext) 
           return true 
@@ -532,24 +510,18 @@ angle = 0       }, {ease = gtween.easing.linear, repeatCount = math.huge, reflec
        kwkInvCerrar:addEventListener("tap", onkwkInvCerrarEvent ) 
 
        -- Button functions 
-       function btnBotaAbeja(self) 
-           _G.hasBotaAbeja = true
-          saveKwikVars({"hasBotaAbeja",true}) 
-           hideBotaAbeja() 
-       end 
-
        function btnNextPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_29", "moveFromRight" ) 
             end 
-            timerStash.newTimer_939 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_869 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnPrevPage(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_27", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_939 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_870 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnInventario(self) 

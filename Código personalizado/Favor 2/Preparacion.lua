@@ -93,6 +93,14 @@ end
 
 --Ocultar cosas
 
+transitionStash.newTransition_299 = transition.to( TextErizo, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_299 = transition.to( TextBiberon, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_299 = transition.to( TextGuitarra, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextRosa, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextFallo, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextBurbuja, {alpha=0, time=0, delay=0}) 
+transitionStash.newTransition_300 = transition.to( TextTerminar, {alpha=0, time=0, delay=0}) 
+
 if (not hasTijeras) then
 	instantHide(kwkTijeras)
 end
@@ -126,3 +134,4 @@ if (missingSomething) then
 else
 	instantHide(kwkBurbuja)
 end
+

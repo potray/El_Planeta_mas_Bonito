@@ -2,7 +2,7 @@
 -- Copyright (C) 2012 kwiksher.com. All Rights Reserved. 
 -- uses Director class, by Ricardo Rauber 
 -- uses DMC classes, by David McCuskey 
--- Exported on Wed Sep 03 2014 10:29:11 GMT+0200 
+-- Exported on Sat Sep 06 2014 19:26:32 GMT+0200 
 -- uses gTween class, by Josh Tynjala (modified by Kwiksher) 
 -- uses bTween class, by Josh Tynjala (modified by Kwiksher) 
 
@@ -33,7 +33,7 @@ _G.lang = ""
 kBidi = false 
 _G.kAutoPlay = 0 
 initPage = 1 
-local goPage = 63 
+local goPage = 13 
 
 -- Json code for external variable loading 
 local jsonFile = function(filename ) 
@@ -253,8 +253,9 @@ function startVariables()
 	saveKwikVars({"Preg08Completed", false})
 	saveKwikVars({"Preg09Completed", false})
 
-
 	saveKwikVars({"CuentoTerminado", false})
+
+	saveKwikVars({"Audio", true})
 
 	print("Variables reiniciadas")
 end

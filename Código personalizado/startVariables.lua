@@ -155,8 +155,9 @@ function startVariables()
 	saveKwikVars({"Preg08Completed", false})
 	saveKwikVars({"Preg09Completed", false})
 
-
 	saveKwikVars({"CuentoTerminado", false})
+
+	saveKwikVars({"Audio", true})
 
 	print("Variables reiniciadas")
 end

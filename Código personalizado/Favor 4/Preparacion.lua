@@ -566,42 +566,30 @@ end
 
 --Función de crear una nueva nuez
 local function crearNuez()
-	if (not lockNuez) then
-		lockNuez = true
-		local nuevaNuez
-		nuevaNuez = display.newImageRect( imgDir.. "kwknuez.png", 174, 140 ); 
-		nuevaNuez.x = 1624; nuevaNuez.y = 287; nuevaNuez.alpha = 1; nuevaNuez.oldAlpha = 1 
-		nuevaNuez.oriX = nuevaNuez.x; nuevaNuez.oriY = nuevaNuez.y 
-		nuevaNuez.name = "nuevaNuez"..tostring(contadorNueces) 
-		contadorNueces = contadorNueces + 1
-		menuGroup:insert(nuevaNuez); menuGroup.nuevaNuez = nuevaNuez 
+	local nuevaNuez
+	nuevaNuez = display.newImageRect( imgDir.. "kwknuez.png", 174, 140 ); 
+	nuevaNuez.x = 1624; nuevaNuez.y = 287; nuevaNuez.alpha = 1; nuevaNuez.oldAlpha = 1 
+	nuevaNuez.oriX = nuevaNuez.x; nuevaNuez.oriY = nuevaNuez.y 
+	nuevaNuez.name = "nuevaNuez"..tostring(contadorNueces) 
+	contadorNueces = contadorNueces + 1
+	menuGroup:insert(nuevaNuez); menuGroup.nuevaNuez = nuevaNuez 
 
-		MultiTouch.activate( nuevaNuez, "move", "single"  ) 
-		nuevaNuez:addEventListener( MultiTouch.MULTITOUCH_EVENT, kwkNuezDrag )
-
-	else
-		print ("Lock de nueces activado")
-	end
+	MultiTouch.activate( nuevaNuez, "move", "single"  ) 
+	nuevaNuez:addEventListener( MultiTouch.MULTITOUCH_EVENT, kwkNuezDrag )
 end
 
 --Función de crear un nudo de hoja
 local function crearHoja()
-	if (not lockHoja) then
-		lockHoja = true
-		local nuevaHoja
-		nuevaHoja = display.newImageRect( imgDir.. "kwkNudo.png", 235, 181 ); 
-		nuevaHoja.x = 930; nuevaHoja.y = 226; nuevaHoja.alpha = 1; nuevaHoja.oldAlpha = 1 
-		nuevaHoja.oriX = nuevaHoja.x; nuevaHoja.oriY = nuevaHoja.y 
-		nuevaHoja.name = "nuevaHoja"..tostring(contadorHojas) 
-		contadorHojas = contadorHojas + 1
-		menuGroup:insert(nuevaHoja); menuGroup.nuevaHoja = nuevaHoja 
+	local nuevaHoja
+	nuevaHoja = display.newImageRect( imgDir.. "kwknudo.png", 235, 181 ); 
+	nuevaHoja.x = 930; nuevaHoja.y = 226; nuevaHoja.alpha = 1; nuevaHoja.oldAlpha = 1 
+	nuevaHoja.oriX = nuevaHoja.x; nuevaHoja.oriY = nuevaHoja.y 
+	nuevaHoja.name = "nuevaHoja"..tostring(contadorHojas) 
+	contadorHojas = contadorHojas + 1
+	menuGroup:insert(nuevaHoja); menuGroup.nuevaHoja = nuevaHoja 
 
-		MultiTouch.activate( nuevaHoja, "move", "single"  ) 
-		nuevaHoja:addEventListener( MultiTouch.MULTITOUCH_EVENT, kwkHojaDrag )
-
-	else
-		print ("Lock de hojas activado")
-	end
+	MultiTouch.activate( nuevaHoja, "move", "single"  ) 
+	nuevaHoja:addEventListener( MultiTouch.MULTITOUCH_EVENT, kwkHojaDrag )
 end
 
 --Event Listeners

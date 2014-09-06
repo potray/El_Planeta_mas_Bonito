@@ -127,7 +127,9 @@ local Preg07Completed = kwkVarCheck("Preg07Completed")
 local Preg08Completed = kwkVarCheck("Preg08Completed")
 local Preg09Completed = kwkVarCheck("Preg09Completed")
 
-local cuentoTerminado = kwkVarCheck("CuentoTerminado") 
+local cuentoTerminado = kwkVarCheck("CuentoTerminado")
+
+local Audio = kwkVarCheck("Audio") 
        local addCL1 = 5
 local addCL3 = 5
 local addCI2 = 5
@@ -294,13 +296,13 @@ local acertado = false
  
        -- Actions (functions) 
        function hideStuff(event) 
-            transitionStash.newTransition_186 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_187 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_507 = transition.to( Acierto, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_507 = transition.to( Fallo, {alpha=0, time=0, delay=0}) 
        end 
 
        function Fallar(event) 
-            transitionStash.newTransition_188 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_188 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_508 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_508 = transition.to( Fallo, {alpha=Fallo.oldAlpha, time=1000, delay=0}) 
            audio.setVolume(1, {channel=2} ) 
            audio.play( fallo, {channel=2, loops = 0 } ) 
            --External code 
@@ -312,9 +314,9 @@ end
        end 
 
        function Acertar(event) 
-            transitionStash.newTransition_205 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
-            transitionStash.newTransition_206 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
-            transitionStash.newTransition_207 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_517 = transition.to( Acierto, {alpha=Acierto.oldAlpha, time=1000, delay=0}) 
+            transitionStash.newTransition_517 = transition.to( Fallo, {alpha=0, time=1000, delay=0}) 
+            transitionStash.newTransition_518 = transition.to( Text, {alpha=0, time=1000, delay=0}) 
            audio.setVolume(1, {channel=1} ) 
            audio.play( acierto, {channel=1, loops = 0 } ) 
            --External code 
