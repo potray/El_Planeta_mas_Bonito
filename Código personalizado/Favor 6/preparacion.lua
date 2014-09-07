@@ -110,8 +110,8 @@ function objetoAbajo (event)
 
 	if (pulsado ~= nil) then		
 		hide(destacadorMostrado)
-
-		if (correspondencias[pulsado] == t) then
+		--Cambio de diseño: El árbol puede ir con la red, y la hormiga con el botón.
+		if (correspondencias[pulsado] == t or (pulsado == Arbol and t == kwkRed) or (pulsado == kwkHormiga2 and t == Boton)) then
 			--Ha acertado
 			audioAcertar()
 			correctos = correctos + 1

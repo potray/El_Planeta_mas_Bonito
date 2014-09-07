@@ -120,7 +120,9 @@ local Preg07Completed = kwkVarCheck("Preg07Completed")
 local Preg08Completed = kwkVarCheck("Preg08Completed")
 local Preg09Completed = kwkVarCheck("Preg09Completed")
 
-local cuentoTerminado = kwkVarCheck("CuentoTerminado") 
+local cuentoTerminado = kwkVarCheck("CuentoTerminado")
+
+local Audio = kwkVarCheck("Audio") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -485,8 +487,8 @@ function objetoAbajo (event)
 
 	if (pulsado ~= nil) then		
 		hide(destacadorMostrado)
-
-		if (correspondencias[pulsado] == t) then
+		--Cambio de diseño: El árbol puede ir con la red, y la hormiga con el botón.
+		if (correspondencias[pulsado] == t or (pulsado == Arbol and t == kwkRed) or (pulsado == kwkHormiga2 and t == Boton)) then
 			--Ha acertado
 			audioAcertar()
 			correctos = correctos + 1

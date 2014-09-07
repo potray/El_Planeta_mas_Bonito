@@ -12,15 +12,15 @@ function new()
 
     -- Audio callings 
     local sabio_page30 =  audio.loadStream( audioDir.."sabio_page30.mp3") 
-    local page30 =  audio.loadStream( audioDir.."page30.mp3") 
     local sabio_roncando =  audio.loadStream( audioDir.."sabio_roncando.mp3") 
+    local page30 =  audio.loadStream( audioDir.."page30.mp3") 
 
 
     local drawScreen = function() 
 
        local curPage = 34 
 
-       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={{ 1, "sabio_page30"},{ 2, "page30"},{ 3, "sabio_roncando"},} } ) 
+       Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={{ 1, "sabio_page30"},{ 3, "sabio_roncando"},{ 2, "page30"},} } ) 
        Navigation.hide() 
 
        if (tonumber(kBookmark) == 1) then 
@@ -57,6 +57,7 @@ function new()
        local hideMaquina 
        local hideInventory 
        local showInventory 
+       local AudioAction 
        local SceneAnim 
 
        -- Layer names 
@@ -66,7 +67,6 @@ function new()
        local kwkHija_gafas_s  
        local Text1  
        local kwkSabioDormido  
-       local Text3  
        local Text2  
        local kwkMama_gafas  
        local kwkMama_gafas_s  
@@ -141,7 +141,9 @@ local Preg07Completed = kwkVarCheck("Preg07Completed")
 local Preg08Completed = kwkVarCheck("Preg08Completed")
 local Preg09Completed = kwkVarCheck("Preg09Completed")
 
-local cuentoTerminado = kwkVarCheck("CuentoTerminado") 
+local cuentoTerminado = kwkVarCheck("CuentoTerminado")
+
+local Audio = kwkVarCheck("Audio") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -192,13 +194,6 @@ local hasCola = kwkVarCheck("hasCola")
        kwkSabioDormido.oriX = kwkSabioDormido.x; kwkSabioDormido.oriY = kwkSabioDormido.y 
        kwkSabioDormido.name = "kwkSabioDormido" 
        menuGroup:insert(kwkSabioDormido); menuGroup.kwkSabioDormido = kwkSabioDormido 
-
-       -- Text3 positioning 
-       Text3 = display.newImageRect( imgDir.. "p34_text3.png", 357, 51 ); 
-       Text3.x = 1056; Text3.y = 1025; Text3.alpha = 1; Text3.oldAlpha = 1 
-       Text3.oriX = Text3.x; Text3.oriY = Text3.y 
-       Text3.name = "Text3" 
-       menuGroup:insert(Text3); menuGroup.Text3 = Text3 
 
        -- Text2 positioning 
        Text2 = display.newImageRect( imgDir.. "p34_text2.png", 719, 51 ); 
@@ -414,71 +409,82 @@ local hasCola = kwkVarCheck("hasCola")
        -- Actions (functions) 
        function hideMaquina(event) 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_890 = transition.to( kwkMaquinaAgran, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_321 = transition.to( kwkMaquinaAgran, {alpha=0, time=0, delay=0}) 
          end 
        end 
 
        function hideInventory(event) 
-            transitionStash.newTransition_891 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_891 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_891 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_892 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_892 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_892 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_893 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_893 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_893 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_893 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_322 = transition.to( kwkRectInv, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_322 = transition.to( kwkInvBiberon, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_322 = transition.to( kwkInvTijeras, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_323 = transition.to( kwkInvRosa, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_323 = transition.to( kwkInvErizo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_323 = transition.to( kwkInvMaquina, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_323 = transition.to( kwkInvCelo, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_324 = transition.to( kwkInvGuitarra, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_324 = transition.to( kwkInvCola, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_324 = transition.to( kwkInvCerrar, {alpha=0, time=0, delay=0}) 
            InventoryShown = false
           saveKwikVars({"InventoryShown",false}) 
        end 
 
        function showInventory(event) 
-            transitionStash.newTransition_910 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_343 = transition.to( kwkRectInv, {alpha=kwkRectInv.oldAlpha, time=0, delay=0}) 
          if (hasBiberon == true) then 
-            transitionStash.newTransition_911 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_344 = transition.to( kwkInvBiberon, {alpha=kwkInvBiberon.oldAlpha, time=0, delay=0}) 
          end 
          if (hasTijeras == true) then 
-            transitionStash.newTransition_911 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_345 = transition.to( kwkInvTijeras, {alpha=kwkInvTijeras.oldAlpha, time=0, delay=0}) 
          end 
          if (hasMaquina == true) then 
-            transitionStash.newTransition_912 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_345 = transition.to( kwkInvMaquina, {alpha=kwkInvMaquina.oldAlpha, time=0, delay=0}) 
          end 
          if (hasRosa == true) then 
-            transitionStash.newTransition_913 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_346 = transition.to( kwkInvRosa, {alpha=kwkInvRosa.oldAlpha, time=0, delay=0}) 
          end 
          if (hasErizo == true) then 
-            transitionStash.newTransition_914 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_347 = transition.to( kwkInvErizo, {alpha=kwkInvErizo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCelo == true) then 
-            transitionStash.newTransition_914 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_348 = transition.to( kwkInvCelo, {alpha=kwkInvCelo.oldAlpha, time=0, delay=0}) 
          end 
          if (hasGuitarra == true) then 
-            transitionStash.newTransition_915 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_349 = transition.to( kwkInvGuitarra, {alpha=kwkInvGuitarra.oldAlpha, time=0, delay=0}) 
          end 
          if (hasCola == true) then 
-            transitionStash.newTransition_916 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_349 = transition.to( kwkInvCola, {alpha=kwkInvCola.oldAlpha, time=0, delay=0}) 
          end 
            InventoryShown = true
           saveKwikVars({"InventoryShown",true}) 
-            transitionStash.newTransition_933 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_933 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
+            transitionStash.newTransition_367 = transition.to( kwkInvDestacado, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_368 = transition.to( kwkInvCerrar, {alpha=kwkInvCerrar.oldAlpha, time=0, delay=0}) 
+       end 
+
+       function AudioAction(event) 
+         if (Audio == true) then 
+           audio.setVolume(1, {channel=1} ) 
+           audio.play( sabio_page30, {channel=1, loops = 0 } ) 
+           audio.setVolume(1, {channel=2} ) 
+
+          local myClosure_page30 = function() 
+             audio.play(page30, {  channel=2, loops=0 } ) 
+          end 
+          timerStash.newTimer_394 = timer.performWithDelay(13000, myClosure_page30, 1) 
+         end 
        end 
 
        function SceneAnim(event) 
-            transitionStash.newTransition_933 = transition.to( kwkNavnext, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_933 = transition.to( kwkHija_gafas_s, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_934 = transition.to( kwkMama_gafas_s, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_934 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_934 = transition.to( Text3, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_935 = transition.to( kwkSabioDormido, {alpha=0, time=0, delay=0}) 
-            transitionStash.newTransition_935 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=12000}) 
-            transitionStash.newTransition_935 = transition.to( kwkSabioDormido, {alpha=kwkSabioDormido.oldAlpha, time=1000, delay=15000}) 
-            transitionStash.newTransition_935 = transition.to( kwkSabio, {alpha=0, time=1000, delay=15000}) 
-            transitionStash.newTransition_936 = transition.to( kwkMama_gafas_s, {alpha=kwkMama_gafas_s.oldAlpha, time=1000, delay=17000}) 
-            transitionStash.newTransition_936 = transition.to( kwkHija_gafas_s, {alpha=kwkHija_gafas_s.oldAlpha, time=1000, delay=17000}) 
-            transitionStash.newTransition_936 = transition.to( Text3, {alpha=Text3.oldAlpha, time=1000, delay=17000}) 
-            transitionStash.newTransition_936 = transition.to( kwkNavnext, {alpha=kwkNavnext.oldAlpha, time=1000, delay=18000}) 
+            transitionStash.newTransition_394 = transition.to( kwkNavnext, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_395 = transition.to( kwkHija_gafas_s, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_395 = transition.to( kwkMama_gafas_s, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_395 = transition.to( Text2, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_395 = transition.to( kwkSabioDormido, {alpha=0, time=0, delay=0}) 
+            transitionStash.newTransition_396 = transition.to( Text2, {alpha=Text2.oldAlpha, time=1000, delay=12000}) 
+            transitionStash.newTransition_396 = transition.to( kwkSabioDormido, {alpha=kwkSabioDormido.oldAlpha, time=1000, delay=15000}) 
+            transitionStash.newTransition_396 = transition.to( kwkSabio, {alpha=0, time=1000, delay=15000}) 
+            transitionStash.newTransition_396 = transition.to( kwkMama_gafas_s, {alpha=kwkMama_gafas_s.oldAlpha, time=1000, delay=17000}) 
+            transitionStash.newTransition_397 = transition.to( kwkHija_gafas_s, {alpha=kwkHija_gafas_s.oldAlpha, time=1000, delay=17000}) 
+            transitionStash.newTransition_397 = transition.to( kwkNavnext, {alpha=kwkNavnext.oldAlpha, time=1000, delay=18000}) 
        end 
 
  
@@ -489,6 +495,7 @@ local hasCola = kwkVarCheck("hasCola")
        timerStash.timerInv = timer.performWithDelay( 0, hideInventory, 1 ) 
        timerStash.timerAnim = timer.performWithDelay( 0, SceneAnim, 1 ) 
        timerStash.timerMaquina = timer.performWithDelay( 0, hideMaquina, 1 ) 
+       timerStash.AudioTimer = timer.performWithDelay( 0, AudioAction, 1 ) 
 
        -- Button event listeners 
        local function onkwkNavnextEvent(event) 
@@ -517,7 +524,7 @@ local hasCola = kwkVarCheck("hasCola")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_35", "moveFromRight" ) 
             end 
-            timerStash.newTimer_117 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_460 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
        function btnInventario(self) 
@@ -542,7 +549,7 @@ local hasCola = kwkVarCheck("hasCola")
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_32", "moveFromLeft" ) 
             end 
-            timerStash.newTimer_138 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_483 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 
@@ -554,14 +561,14 @@ local hasCola = kwkVarCheck("hasCola")
    audio.stop(1); 
  end 
  audio.dispose(sabio_page30); sabio_page30 = nil 
-          if audio.isChannelActive ( 2 ) then 
-   audio.stop(2); 
- end 
- audio.dispose(page30); page30 = nil 
           if audio.isChannelActive ( 3 ) then 
    audio.stop(3); 
  end 
  audio.dispose(sabio_roncando); sabio_roncando = nil 
+          if audio.isChannelActive ( 2 ) then 
+   audio.stop(2); 
+ end 
+ audio.dispose(page30); page30 = nil 
        end 
 
        -- (BOTTOM) External code will render here 
@@ -598,26 +605,12 @@ end
     end 
     drawScreen() 
 
-    local myClosure_sabio_page30 = function() 
-       audio.setVolume(1, { channel=1} ); 
-       audio.play(sabio_page30, {  channel=1, loops=0, fadein=500 } ) 
-    end 
-
-    timerStash.newTimer_950 = timer.performWithDelay(0, myClosure_sabio_page30, 1) 
-
-    local myClosure_page30 = function() 
-       audio.setVolume(1, { channel=2} ); 
-       audio.play(page30, {  channel=2, loops=0, fadein=500 } ) 
-    end 
-
-    timerStash.newTimer_968 = timer.performWithDelay(13000, myClosure_page30, 1) 
-
     local myClosure_sabio_roncando = function() 
        audio.setVolume(1, { channel=3} ); 
        audio.play(sabio_roncando, {  channel=3, loops=-1, fadein=500 } ) 
     end 
 
-    timerStash.newTimer_986 = timer.performWithDelay(15000, myClosure_sabio_roncando, 1) 
+    timerStash.newTimer_277 = timer.performWithDelay(15000, myClosure_sabio_roncando, 1) 
 
     return menuGroup 
 end 

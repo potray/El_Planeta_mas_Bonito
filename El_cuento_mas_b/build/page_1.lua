@@ -280,8 +280,8 @@ function new()
        menuGroup:insert(btn3); menuGroup.btn3 = btn3 
 
        -- btnAudio positioning 
-       btnAudio = display.newImageRect( imgDir.. "p1_btnaudio.png", 522, 109 ); 
-       btnAudio.x = 1280; btnAudio.y = 1133; btnAudio.alpha = 1; btnAudio.oldAlpha = 1 
+       btnAudio = display.newImageRect( imgDir.. "p1_btnaudio.png", 523, 110 ); 
+       btnAudio.x = 1279; btnAudio.y = 1133; btnAudio.alpha = 1; btnAudio.oldAlpha = 1 
        btnAudio.oriX = btnAudio.x; btnAudio.oriY = btnAudio.y 
        btnAudio.name = "btnAudio" 
        menuGroup:insert(btnAudio); menuGroup.btnAudio = btnAudio 
