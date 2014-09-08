@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 85 
+    local numPages = 90 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -37,15 +37,21 @@ function new()
        local btnContinuar
        local btnEmpezar
        local but_877
+       local but_570
+       local botonAyuda
 
        -- Layer names 
        local kwkFondo3  
        local btn1  
+       local btnAyuda  
+       local textAyuda  
        local btn3  
+       local btn4  
        local btnAudio  
        local Rectangulo_redo  
        local btn2  
        local Empezar  
+       local Evaluacion  
        local Continuar  
        local Reiniciar  
        local TextAudioOff  
@@ -255,6 +261,21 @@ function new()
        if kwkVarCheck("Audio") ~= nil then  
           _G.Audio = kwkVarCheck("Audio") 
        end  
+       _G.CG1 = 0 --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("CG1") ~= nil then  
+          _G.CG1 = kwkVarCheck("CG1") 
+       end  
+       _G.CG2 = 0 --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("CG2") ~= nil then  
+          _G.CG2 = kwkVarCheck("CG2") 
+       end  
+       _G.CG = 0 --  
+       -- Check if variable has a pre-saved content 
+       if kwkVarCheck("CG") ~= nil then  
+          _G.CG = kwkVarCheck("CG") 
+       end  
 
        -- (TOP) External code will render here 
 
@@ -272,12 +293,33 @@ function new()
        btn1.name = "btn1" 
        menuGroup:insert(btn1); menuGroup.btn1 = btn1 
 
+       -- btnAyuda positioning 
+       btnAyuda = display.newImageRect( imgDir.. "p1_btnayuda.png", 220, 220 ); 
+       btnAyuda.x = 2440; btnAyuda.y = 426; btnAyuda.alpha = 1; btnAyuda.oldAlpha = 1 
+       btnAyuda.oriX = btnAyuda.x; btnAyuda.oriY = btnAyuda.y 
+       btnAyuda.name = "btnAyuda" 
+       menuGroup:insert(btnAyuda); menuGroup.btnAyuda = btnAyuda 
+
+       -- textAyuda positioning 
+       textAyuda = display.newImageRect( imgDir.. "p1_textayuda.png", 97, 153 ); 
+       textAyuda.x = 2442; textAyuda.y = 428; textAyuda.alpha = 1; textAyuda.oldAlpha = 1 
+       textAyuda.oriX = textAyuda.x; textAyuda.oriY = textAyuda.y 
+       textAyuda.name = "textAyuda" 
+       menuGroup:insert(textAyuda); menuGroup.textAyuda = textAyuda 
+
        -- btn3 positioning 
        btn3 = display.newImageRect( imgDir.. "p1_btn3.png", 523, 110 ); 
        btn3.x = 1279; btn3.y = 974; btn3.alpha = 1; btn3.oldAlpha = 1 
        btn3.oriX = btn3.x; btn3.oriY = btn3.y 
        btn3.name = "btn3" 
        menuGroup:insert(btn3); menuGroup.btn3 = btn3 
+
+       -- btn4 positioning 
+       btn4 = display.newImageRect( imgDir.. "p1_btn4.png", 523, 110 ); 
+       btn4.x = 1279; btn4.y = 974; btn4.alpha = 1; btn4.oldAlpha = 1 
+       btn4.oriX = btn4.x; btn4.oriY = btn4.y 
+       btn4.name = "btn4" 
+       menuGroup:insert(btn4); menuGroup.btn4 = btn4 
 
        -- btnAudio positioning 
        btnAudio = display.newImageRect( imgDir.. "p1_btnaudio.png", 523, 110 ); 
@@ -306,6 +348,13 @@ function new()
        Empezar.oriX = Empezar.x; Empezar.oriY = Empezar.y 
        Empezar.name = "Empezar" 
        menuGroup:insert(Empezar); menuGroup.Empezar = Empezar 
+
+       -- Evaluacion positioning 
+       Evaluacion = display.newImageRect( imgDir.. "p1_evaluacion.png", 232, 41 ); 
+       Evaluacion.x = 1281; Evaluacion.y = 965; Evaluacion.alpha = 1; Evaluacion.oldAlpha = 1 
+       Evaluacion.oriX = Evaluacion.x; Evaluacion.oriY = Evaluacion.y 
+       Evaluacion.name = "Evaluacion" 
+       menuGroup:insert(Evaluacion); menuGroup.Evaluacion = Evaluacion 
 
        -- Continuar positioning 
        Continuar = display.newImageRect( imgDir.. "p1_continuar.png", 215, 39 ); 
@@ -458,6 +507,16 @@ function new()
           return true 
        end 
        Rectangulo_redo:addEventListener("tap", onRectangulo_redoEvent ) 
+       local function onbtn4Event(event) 
+          but_570(btn4) 
+          return true 
+       end 
+       btn4:addEventListener("tap", onbtn4Event ) 
+       local function onbtnAyudaEvent(event) 
+          botonAyuda(btnAyuda) 
+          return true 
+       end 
+       btnAyuda:addEventListener("tap", onbtnAyudaEvent ) 
 
        -- Button functions 
        function btnReiniciar(self) 
@@ -536,12 +595,29 @@ saveKwikVars ({"Reiniciado", false})
            end 
        end 
 
+       function but_570(self) 
+            local myClosure_switch = function() 
+                dispose(); director:changeScene( "page_86", "fade" ) 
+            end 
+            timerStash.newTimer_972 = timer.performWithDelay(0, myClosure_switch, 1) 
+       end 
+
+       function botonAyuda(self) 
+            local myClosure_switch = function() 
+                dispose(); director:changeScene( "page_90", "fade" ) 
+            end 
+            timerStash.newTimer_987 = timer.performWithDelay(0, myClosure_switch, 1) 
+       end 
+
 
        -- do not swipe this page 
 
        dispose = function(event) 
           cancelAllTimers(); cancelAllTransitions() 
        end 
+
+       instantHide(Rectangulo_redo)
+       instantHide(Textnav)
 
        -- (BOTTOM) External code will render here 
        local reiniciado = kwkVarCheck("Reiniciado")
@@ -578,6 +654,11 @@ function ponerAudio()
 	instantShow(TextAudioOff)
 	instantShow(AudioSi)
   instantHide(AudioNo)
+end
+
+if (not kwkVarCheck("CuentoTerminado")) then
+	instantHide(btn4)
+	instantHide(Evaluacion)
 end
 
 TextAudioOn:addEventListener( "tap", ponerAudio )

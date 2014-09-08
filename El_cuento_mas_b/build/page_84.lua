@@ -115,7 +115,9 @@ local Preg07Completed = kwkVarCheck("Preg07Completed")
 local Preg08Completed = kwkVarCheck("Preg08Completed")
 local Preg09Completed = kwkVarCheck("Preg09Completed")
 
-local cuentoTerminado = kwkVarCheck("CuentoTerminado") 
+local cuentoTerminado = kwkVarCheck("CuentoTerminado")
+
+local Audio = kwkVarCheck("Audio") 
        local hasRosa = kwkVarCheck("hasRosa")
 local hasTijeras = kwkVarCheck("hasTijeras")
 local hasBiberon = kwkVarCheck("hasBiberon")
@@ -438,10 +440,15 @@ function tick ()
 	for key, value in pairs( posiciones ) do
 		if (not correctos[value]) then
 			addCL3 = addCL3 - 1
+			if (addCL3 < 0) then
+				addCL3 = 0
+			end
 			addCL2 = addCL2 - 5
 			acertado = false
 		end
 	end
+
+	print ("Se va a dar "..addCL3.." de CL.3 y "..addCL2.." de CL.2")
 
 	if (acertado) then
 		switchText(TextAcierto)
@@ -456,7 +463,7 @@ function tick ()
 	local currentCL3 = kwkVarCheck("CL3")
 
 	saveKwikVars({"CL2", currentCL2 + addCL2})
-	saveKwikVars({"CL3", currentCL2 + addCL3})
+	saveKwikVars({"CL3", currentCL3 + addCL3})
 
 	updateCoefs()
 

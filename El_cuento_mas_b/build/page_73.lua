@@ -377,7 +377,7 @@ end
 --Función de fallar
 function fallar()
 	print("Fallado!")
-  	switchText(textMal)
+  	switchText(TextMal)
 	audioFallar()
 	addCI3 = addCI3 - 1
 	addCG8 = addCG8 - 1

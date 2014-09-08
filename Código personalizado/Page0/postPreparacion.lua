@@ -34,5 +34,10 @@ function ponerAudio()
   instantHide(AudioNo)
 end
 
+if (not kwkVarCheck("CuentoTerminado")) then
+	instantHide(btn4)
+	instantHide(Evaluacion)
+end
+
 TextAudioOn:addEventListener( "tap", ponerAudio )
 TextAudioOff:addEventListener( "tap", quitarAudio )
