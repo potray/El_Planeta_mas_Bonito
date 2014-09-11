@@ -19810,10 +19810,9 @@
           <where>before</where>
         </variable>
         <variable id="CG1">
-          
           <name>CG1</name>
           <value>0</value>
-          <comment></comment>
+          <comment/>
           <table>false</table>
           <save>true</save>
           <type>global</type>
@@ -19821,10 +19820,9 @@
           <where>before</where>
         </variable>
         <variable id="CG2">
-          
           <name>CG2</name>
           <value>0</value>
-          <comment></comment>
+          <comment/>
           <table>false</table>
           <save>true</save>
           <type>global</type>
@@ -19832,10 +19830,9 @@
           <where>before</where>
         </variable>
         <variable id="CG">
-          
           <name>CG</name>
           <value>0</value>
-          <comment></comment>
+          <comment/>
           <table>false</table>
           <save>true</save>
           <type>global</type>
@@ -53674,6 +53671,55 @@
           <name>goPage_402</name>
           <type>Go to Page</type>
           <page>page0</page>
+          <transition>Fade</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+      <button id="btnCreditos">
+        <name>btnCreditos</name>
+        <layer>kwkBtnCreditos</layer>
+        <rollover>kwkBtnCreditos</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_658">
+          <name>goPage_658</name>
+          <type>Go to Page</type>
+          <page>creditos</page>
+          <transition>Fade</transition>
+          <wait>0</wait>
+        </action>
+      </button>
+    </page>
+    <page id="creditos">
+      <name>creditos</name>
+      <number>91</number>
+      <file>D:\Dropbox\TFG/El_cuento_mas_b/creditos.psd</file>
+      <fileName>creditos.psd</fileName>
+      <layer id="kwkFondo3">
+        <name>kwkFondo3</name>
+        <scaleW>100</scaleW>
+        <scaleH>100</scaleH>
+        <rotate>0</rotate>
+        <randX>false</randX>
+        <randY>false</randY>
+        <render>true</render>
+        <jpg>true</jpg>
+        <jpgQuality>6</jpgQuality>
+        <renderAs>kwkFondo3</renderAs>
+      </layer>
+      <variables/>
+      <button id="btnVolver">
+        <name>btnVolver</name>
+        <layer>kwkBtnVolver</layer>
+        <rollover>kwkBtnVolver</rollover>
+        <target>Layer</target>
+        <type>Tap</type>
+        <tap>1</tap>
+        <action id="goPage_402">
+          <name>goPage_402</name>
+          <type>Go to Page</type>
+          <page>ayuda</page>
           <transition>Fade</transition>
           <wait>0</wait>
         </action>

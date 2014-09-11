@@ -3,7 +3,7 @@
 module(..., package.seeall) 
 
 function new() 
-    local numPages = 90 
+    local numPages = 91 
     local menuGroup = display.newGroup() 
     local dispose 
     local _W = display.contentWidth; 
@@ -15,6 +15,13 @@ function new()
 
        Navigation.new("page", { backColor = {125, 125, 125}, anim=1, timer=1,  totPages = numPages, curPage = curPage, thumbW = 200, thumbH = 125, alpha = 0, imageDir = imgDir, dire = "bottom", audio={} } ) 
        Navigation.hide() 
+
+       if (tonumber(kBookmark) == 1) then 
+          local path = system.pathForFile( "book.txt", system.DocumentsDirectory ) 
+          local file = io.open( path, "w+" ) 
+          file:write ( curPage.."\n1" ) 
+          io.close( file ) 
+       end 
 
        math.randomseed(os.time()) 
 
@@ -34,10 +41,13 @@ function new()
  
        -- Button names 
        local btnVolver
+       local btnCreditos
 
        -- Layer names 
        local kwkFondo_62  
        local kwkBtnVolver  
+       local kwkBtnCreditos  
+       local TextCreditos  
        local tituloAyuda  
        local textAyuda  
        local kwkTextVolver  
@@ -57,6 +67,20 @@ function new()
        kwkBtnVolver.oriX = kwkBtnVolver.x; kwkBtnVolver.oriY = kwkBtnVolver.y 
        kwkBtnVolver.name = "kwkBtnVolver" 
        menuGroup:insert(kwkBtnVolver); menuGroup.kwkBtnVolver = kwkBtnVolver 
+
+       -- kwkBtnCreditos positioning 
+       kwkBtnCreditos = display.newImageRect( imgDir.. "kwkbtncreditos.png", 522, 110 ); 
+       kwkBtnCreditos.x = 297; kwkBtnCreditos.y = 1527; kwkBtnCreditos.alpha = 1; kwkBtnCreditos.oldAlpha = 1 
+       kwkBtnCreditos.oriX = kwkBtnCreditos.x; kwkBtnCreditos.oriY = kwkBtnCreditos.y 
+       kwkBtnCreditos.name = "kwkBtnCreditos" 
+       menuGroup:insert(kwkBtnCreditos); menuGroup.kwkBtnCreditos = kwkBtnCreditos 
+
+       -- TextCreditos positioning 
+       TextCreditos = display.newImageRect( imgDir.. "p90_textcreditos.png", 189, 41 ); 
+       TextCreditos.x = 281; TextCreditos.y = 1523; TextCreditos.alpha = 1; TextCreditos.oldAlpha = 1 
+       TextCreditos.oriX = TextCreditos.x; TextCreditos.oriY = TextCreditos.y 
+       TextCreditos.name = "TextCreditos" 
+       menuGroup:insert(TextCreditos); menuGroup.TextCreditos = TextCreditos 
 
        -- tituloAyuda positioning 
        tituloAyuda = display.newImageRect( imgDir.. "p90_tituloayuda.png", 172, 63 ); 
@@ -89,13 +113,25 @@ function new()
           return true 
        end 
        kwkBtnVolver:addEventListener("tap", onkwkBtnVolverEvent ) 
+       local function onkwkBtnCreditosEvent(event) 
+          btnCreditos(kwkBtnCreditos) 
+          return true 
+       end 
+       kwkBtnCreditos:addEventListener("tap", onkwkBtnCreditosEvent ) 
 
        -- Button functions 
        function btnVolver(self) 
             local myClosure_switch = function() 
                 dispose(); director:changeScene( "page_1", "fade" ) 
             end 
-            timerStash.newTimer_985 = timer.performWithDelay(0, myClosure_switch, 1) 
+            timerStash.newTimer_373 = timer.performWithDelay(0, myClosure_switch, 1) 
+       end 
+
+       function btnCreditos(self) 
+            local myClosure_switch = function() 
+                dispose(); director:changeScene( "page_91", "fade" ) 
+            end 
+            timerStash.newTimer_379 = timer.performWithDelay(0, myClosure_switch, 1) 
        end 
 
 
